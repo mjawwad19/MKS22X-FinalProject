@@ -1,2 +1,2 @@
 # MKS22X-FinalProject
-tetris in processing
+Classic Tetris in Processing
