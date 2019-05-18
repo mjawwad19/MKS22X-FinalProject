@@ -1,4 +1,13 @@
+//Useful globally
 PFont font28; //NES font
+int frame = 0; //helpful to keep track as the speed of the game is based on 60 fps
+final int lineHeight = height / 20; //useful constant possibly
+
+//For the UI elements
+int level = 0;
+int speed; //not shown on-screen but calculated from the level via a switch statement
+int lines = 0;
+int score = 0;
 
 class Block {
   int x;
@@ -40,5 +49,5 @@ void setup() {
 }
 
 void draw() {
-  
+  ++frame; //unless you have the program running a year in a row, this is never overflowing
 }
