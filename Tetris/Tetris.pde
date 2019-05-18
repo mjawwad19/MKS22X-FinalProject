@@ -1,3 +1,5 @@
+PFont font28; //NES font
+
 class Block {
   int x;
   int y;
@@ -14,7 +16,10 @@ class Block {
 }
 
 void setup() {
-  
+  size(960, 720);
+  frameRate(60);
+  background(64, 71, 71); //gray
+  font28 = createFont("PressStart2P-Regular.ttf", 28);
 }
 
 void draw() {
