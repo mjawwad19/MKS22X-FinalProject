@@ -1,8 +1,16 @@
 PShape IPiece, OPiece, JPiece, LPiece, SPiece, ZPiece, TPiece;
 
-IPiece = IPiece.createShape();
-IPiece.beginShape();
-IPiece.fill(IPieceTurqoise);
+void createPieces() {
+  //Create I piece shape
+  IPiece = createShape();
+  IPiece.beginShape();
+  IPiece.fill(IPieceTurqoise);
+  IPiece.vertex(0, 0);
+  IPiece.vertex(0, lineHeight * 4);
+  IPiece.vertex(lineHeight, lineHeight * 4);
+  IPiece.vertex(lineHeight, 0);
+  IPiece.endShape(CLOSE);
+}
 
 class Pieces {
   PShape piece;
