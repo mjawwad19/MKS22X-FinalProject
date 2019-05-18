@@ -43,16 +43,19 @@ void setup() {
   stroke(255); //black borders
   strokeWeight(2);
   rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
+  //pushMatrix();
+  //translate(width * .5, height * .55);
   float xB = pFieldWidth/20;
   float yB = pFieldHeight/40;
   for (int r = 0; r < 20; r++) {
     for (int c = 0; c < 10; c++) {
-      pField[r][c] = new Block(xB, yB, 255, 0, 0);
+      pField[r][c] = new Block(xB, yB, 0, 0, 0);
       xB += pFieldWidth/10;
     }
     xB = pFieldWidth/20;
     yB += pFieldHeight/20;
   }
+  //popMatrix();
   //Lines box
   rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
   
@@ -66,11 +69,14 @@ void draw() {
   ++frame; //unless you have the program running a year in a row, this is never overflowing
   ++lines; //those 2 are just to show the numbers changing
   ++score;
+  pushMatrix();
+  translate(pFieldWidth * 1.015, height * .175);
   for (int r = 0; r < 20; r++) {
     for (int c = 0; c < 10; c++) {
       pField[r][c].display();
     }
   }
+  popMatrix();
   frameCounter();
   lineCounter();
   scoreCounter();
