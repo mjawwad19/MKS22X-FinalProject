@@ -48,6 +48,18 @@ void lineCounter() {
   text("LINES-" + String.format("%03d", lines % 240), width/2, height * 0.1);
 }
 
+void scoreCounter() {
+  //To clear text
+  fill(0);
+  stroke(0);
+  rect(width * (0.83), height * 0.25, width/5 - 10, height * 0.1 - 10);
+  
+  textFont(font28);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  text(String.format("%06d", score), width * (0.83), height * 0.25);
+}
+
 void setup() {
   size(960, 720);
   frameRate(60);
@@ -79,4 +91,5 @@ void draw() {
   
   frameCounter();
   lineCounter();
+  scoreCounter();
 }
