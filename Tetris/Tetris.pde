@@ -23,6 +23,11 @@ class Block {
     rect(x, y, 10, 10);
   }
 }
+void CountH() {
+  textFont(font28);
+  textAlign(CENTER, CENTER);
+  fill(255);
+}
 
 void frameCounter() { //top left
   //To clear text
@@ -30,9 +35,7 @@ void frameCounter() { //top left
   stroke(64, 67, 71);
   rect(40, 30, 60, 60);
   
-  textFont(font28);
-  textAlign(CENTER, CENTER);
-  fill(255);
+  CountH();
   text(String.format("%02d", frame % 60), 40, 30); //2 digits
 }
 
@@ -42,9 +45,7 @@ void lineCounter() {
   stroke(0);
   rect(width/2, height * 0.1, width /3 - 10, height * 0.1 - 10);
   
-  textFont(font28);
-  textAlign(CENTER, CENTER);
-  fill(255);
+  CountH();
   text("LINES-" + String.format("%03d", lines % 240), width/2, height * 0.1);
 }
 
@@ -54,9 +55,7 @@ void scoreCounter() {
   stroke(0);
   rect(width * (0.83), height * 0.25, width/5 - 10, height * 0.1 - 10);
   
-  textFont(font28);
-  textAlign(CENTER, CENTER);
-  fill(255);
+  CountH();
   text(String.format("%06d", score), width * (0.83), height * 0.25);
 }
 
