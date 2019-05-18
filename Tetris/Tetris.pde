@@ -1,13 +1,14 @@
 //Useful globally
 PFont font28; //NES font, size 28
-int frame = 0; //helpful to keep track as the speed of the game is based on 60 fps
+int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 final int lineHeight = height / 20; //useful constant possibly
 
-//For the UI elements
-int level = 0;
+//For the counters
+int level, lines = 0, score = 0;
 int speed; //not shown on-screen but calculated from the level via a switch statement
-int lines = 0;
-int score = 0;
+
+float pFieldWidth = width * 0.33;
+float pFieldHeight = height * 0.75;
 
 class Block {
   int x;
@@ -25,6 +26,9 @@ class Block {
 }
 
 void setup() {
+  System.out.println(width);
+  System.out.println(pFieldWidth);
+  System.out.println(pFieldHeight);
   size(960, 720);
   frameRate(60);
   background(64, 71, 71); //gray
@@ -35,10 +39,10 @@ void setup() {
   rectMode(CENTER);
   stroke(255); //black borders
   strokeWeight(2);
-  rect(width * 0.50, height * 0.55, width * 0.33, height * 0.75); //looks closest to the actual game, by my eye
+  rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
   
   //Lines box
-  rect(width * 0.50, height * 0.10, width * 0.33, height * 0.10); //magic numbers galore!
+  rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
   
   //Score box 
   rect(width * 0.83, height * 0.20, width * 0.20, width * 0.16);
