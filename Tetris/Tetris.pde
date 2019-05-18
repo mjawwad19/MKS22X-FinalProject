@@ -24,6 +24,18 @@ class Block {
   }
 }
 
+void frameCounter() { //top left
+  //To clear text
+  fill(64, 67, 71); 
+  stroke(64, 67, 71);
+  rect(40, 30, 60, 60);
+  
+  textFont(font28);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  text(String.format("%02d", frame % 60), 40, 30); //2 digits
+}
+
 void setup() {
   size(960, 720);
   frameRate(60);
@@ -50,4 +62,6 @@ void setup() {
 
 void draw() {
   ++frame; //unless you have the program running a year in a row, this is never overflowing
+  ++lines; //those 2 are just to show the numbers changing
+  ++score;
 }
