@@ -20,6 +20,13 @@ void setup() {
   frameRate(60);
   background(64, 71, 71); //gray
   font28 = createFont("PressStart2P-Regular.ttf", 28);
+  
+  //Playing field
+  fill(0);
+  rectMode(CENTER);
+  stroke(255); //black borders
+  strokeWeight(2);
+  rect(width / 2, height * 0.55, width/3, height * 0.75); //looks closest to the actual game, by my eye
 }
 
 void draw() {
