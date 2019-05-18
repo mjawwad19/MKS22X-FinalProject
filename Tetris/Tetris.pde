@@ -1,14 +1,13 @@
 //Useful globally
-PFont font28; //NES font, size 28
+PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
-final int lineHeight = height / 20; //useful constant possibly
+int lineHeight; //useful constant possibly
 
 //For the counters
 int level, lines = 0, score = 0;
 int speed; //not shown on-screen but calculated from the level via a switch statement
 
-float pFieldWidth = width * 0.33;
-float pFieldHeight = height * 0.75;
+float pFieldWidth, pFieldHeight;
 
 Block[][] pField = new Block[20][10];
 
@@ -31,15 +30,14 @@ class Block {
 }
 
 void setup() {
-  System.out.println(width);
-  System.out.println(pFieldWidth);
-  System.out.println(pFieldHeight);
   size(960, 720);
   frameRate(60);
   background(64, 71, 71); //gray
-  font28 = createFont("PressStart2P-Regular.ttf", 28);
+  font = createFont("PressStart2P-Regular.ttf", 28);
   
   //Playing field
+  pFieldWidth = width * 0.33;
+  pFieldHeight = height * 0.75;
   fill(0);
   rectMode(CENTER);
   stroke(255); //black borders

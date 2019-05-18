@@ -1,5 +1,5 @@
 void textFormatting() {
-  textFont(font28);
+  textFont(font);
   textAlign(CENTER, CENTER);
   fill(255);
 }
