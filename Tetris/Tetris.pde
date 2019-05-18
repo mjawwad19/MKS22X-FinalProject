@@ -8,26 +8,14 @@ int level, lines = 0, score = 0;
 int speed; //not shown on-screen but calculated from the level via a switch statement
 
 float pFieldWidth, pFieldHeight;
-
 Block[][] pField = new Block[20][10];
+/*Piece[] pieces = new Piece[7]; //seven diff type of pieces
+Piece nextP;
 
-class Block {
-  float x,y;
-  color c;
-  
-  Block(float posX, float posY, int r, int g, int b) {
-    x = posX;
-    y = posY;
-    c = color(r, g, b);
-  }
-  
-  void display() {
-    rectMode(CENTER);
-    fill(c);
-    stroke(255); //border
-    rect(x, y, pFieldWidth/10, pFieldHeight/20);
-  }
-}
+Piece chooseN() {
+  int index = (int) random(7);
+  return pieces[index];
+}*/
 
 void setup() {
   size(960, 720);
