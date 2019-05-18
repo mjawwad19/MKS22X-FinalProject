@@ -1,4 +1,8 @@
-PShape tPiece;
+PShape IPiece, OPiece, JPiece, LPiece, SPiece, ZPiece, TPiece;
+
+IPiece = IPiece.createShape();
+IPiece.beginShape();
+IPiece.fill(IPieceTurqoise);
 
 class Pieces {
   PShape piece;

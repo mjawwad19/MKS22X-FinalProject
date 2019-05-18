@@ -9,6 +9,15 @@ int speed; //not shown on-screen but calculated from the level via a switch stat
 
 float pFieldWidth, pFieldHeight;
 
+//Piece colors
+color IPieceTurqoise = color(0, 255, 255);
+color OPieceYellow = color(255, 255, 0);
+color JPieceBlue = color(0, 0, 204);
+color LPieceOrange = color(255, 153, 0);
+color SPieceGreen = color(0, 255, 0);
+color ZPieceRed = color(255, 0, 0);
+color TPiecePurple = color(204, 51, 255);
+
 Block[][] pField = new Block[20][10];
 
 class Block {
