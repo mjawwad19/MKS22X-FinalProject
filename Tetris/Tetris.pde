@@ -10,6 +10,8 @@ int speed; //not shown on-screen but calculated from the level via a switch stat
 float pFieldWidth = width * 0.33;
 float pFieldHeight = height * 0.75;
 
+Block[][] pField = new Block[10][20];
+
 class Block {
   int x;
   int y;
@@ -19,9 +21,13 @@ class Block {
     x = posX;
     y = posY;
     c = color(r, g, b);
+  }
+  
+  void display() {
     rectMode(CENTER);
     fill(c);
-    rect(x, y, 10, 10);
+    stroke(255); //border
+    rect(x, y, pFieldWidth/10, pFieldHeight/20);
   }
 }
 
