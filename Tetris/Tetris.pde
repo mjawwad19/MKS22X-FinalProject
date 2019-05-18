@@ -9,18 +9,23 @@ int speed; //not shown on-screen but calculated from the level via a switch stat
 
 float pFieldWidth, pFieldHeight;
 
+Block[][] pField = new Block[20][10];
+
 class Block {
-  int x;
-  int y;
+  float x,y;
   color c;
   
-  Block(int posX, int posY, int r, int g, int b) {
+  Block(float posX, float posY, int r, int g, int b) {
     x = posX;
     y = posY;
     c = color(r, g, b);
+  }
+  
+  void display() {
     rectMode(CENTER);
     fill(c);
-    rect(x, y, 10, 10);
+    stroke(255); //border
+    rect(x, y, pFieldWidth/10, pFieldHeight/20);
   }
 }
 
@@ -38,7 +43,19 @@ void setup() {
   stroke(255); //black borders
   strokeWeight(2);
   rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
-  
+  //pushMatrix();
+  //translate(width * .5, height * .55);
+  float xB = pFieldWidth/20;
+  float yB = pFieldHeight/40;
+  for (int r = 0; r < 20; r++) {
+    for (int c = 0; c < 10; c++) {
+      pField[r][c] = new Block(xB, yB, 0, 0, 0);
+      xB += pFieldWidth/10;
+    }
+    xB = pFieldWidth/20;
+    yB += pFieldHeight/20;
+  }
+  //popMatrix();
   //Lines box
   rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
   
@@ -52,7 +69,14 @@ void draw() {
   ++frame; //unless you have the program running a year in a row, this is never overflowing
   ++lines; //those 2 are just to show the numbers changing
   ++score;
-  
+  pushMatrix();
+  translate(pFieldWidth * 1.015, height * .175);
+  for (int r = 0; r < 20; r++) {
+    for (int c = 0; c < 10; c++) {
+      pField[r][c].display();
+    }
+  }
+  popMatrix();
   frameCounter();
   lineCounter();
   scoreCounter();
