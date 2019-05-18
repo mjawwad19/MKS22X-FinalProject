@@ -27,6 +27,16 @@ void setup() {
   stroke(255); //black borders
   strokeWeight(2);
   rect(width / 2, height * 0.55, width/3, height * 0.75); //looks closest to the actual game, by my eye
+  
+  //Lines box
+  rect(width/2, height * 0.1, width/3, height * 0.1); //magic numbers galore!
+  
+  //Score box 
+  rect(width * (13.3/16), height * 0.2, width/5, width/6);
+  textFont(font28);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  text("SCORE", width * (13.3/16), height * 0.16);
 }
 
 void draw() {
