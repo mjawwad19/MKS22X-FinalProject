@@ -49,8 +49,9 @@ void setup() {
     for (int c = 0; c < 10; c++) {
       pField[r][c] = new Block(xB, yB, 255, 0, 0);
       xB += pFieldWidth/10;
-      yB += pFieldHeight/20;
     }
+    xB = pFieldWidth/20;
+    yB += pFieldHeight/20;
   }
   //Lines box
   rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
