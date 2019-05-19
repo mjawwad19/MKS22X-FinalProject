@@ -1,11 +1,7 @@
 //Useful globally
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
-float lineHeight; //useful constant possibly
-
-//For the counters
-int level, lines = 0, score = 0;
-int speed; //not shown on-screen but calculated from the level via a switch statement
+color backgroundGray = color(64, 71, 71);
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -16,32 +12,48 @@ color SPieceGreen = color(0, 255, 0);
 color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
+//Constants
 float pFieldWidth, pFieldHeight;
+float lineHeight;
+
+//For the counters
+int level, lines, score = 0;
+int speed; //not shown on-screen but calculated from the level via a switch statement
+
 Block[][] pField = new Block[20][10];
-/*Piece[] pieces = new Piece[7]; //seven diff type of pieces
+float pieceY = height * 0.10; //random number for now just for testing
+
+/*
+Piece[] pieces = new Piece[7]; //seven diff type of pieces
 Piece nextP;
 Piece chooseN() {
   int index = (int) random(7);
   return pieces[index];
-}*/
+}
+*/
 
-float pieceY = height * 0.10;
-
-void setup() {
-  size(960, 720);
-  frameRate(60);
-  background(64, 71, 71); //gray
-  font = createFont("PressStart2P-Regular.ttf", 28);
-
-  //Playing field
-  pFieldWidth = width * 0.33;
-  pFieldHeight = height * 0.75;
-  lineHeight = pFieldHeight/20;
+//Seems like this isn't even used
+void playingFieldBox() {
   fill(0);
   rectMode(CENTER);
   stroke(255); //black borders
   strokeWeight(2);
   rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
+}
+
+void setup() {
+  size(960, 720);
+  frameRate(60); //believe this is by default but whatever
+  background(backgroundGray);
+  font = createFont("PressStart2P-Regular.ttf", 28);
+
+  //Assign playing field constants
+  pFieldWidth = width * 0.33;
+  pFieldHeight = height * 0.75;
+  lineHeight = pFieldHeight/20;
+
+  createPieces(); //Assign Pieces.pde shapes
+
   //pushMatrix();
   //translate(width * .5, height * .55);
   float xB = pFieldWidth/20;
@@ -55,15 +67,6 @@ void setup() {
     yB += pFieldHeight/20;
   }
   //popMatrix();
-  //Lines box
-  rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
-
-  //Score box
-  rect(width * 0.83, height * 0.20, width * 0.20, width * 0.16);
-  textFormatting();
-  text("SCORE", width * 0.83, height * 0.16);
-
-  createPieces();
 }
 
 void draw() {
@@ -73,15 +76,6 @@ void draw() {
   ++lines; //those 2 are just to show the numbers changing
   ++score;
 
-  //Playing field
-  pFieldWidth = width * 0.33;
-  pFieldHeight = height * 0.75;
-  lineHeight = pFieldHeight/20;
-  fill(0);
-  rectMode(CENTER);
-  stroke(255); //black borders
-  strokeWeight(2);
-  rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
   //pushMatrix();
   //translate(width * .5, height * .55);
   float xB = pFieldWidth/20;
@@ -95,13 +89,6 @@ void draw() {
     yB += pFieldHeight/20;
   }
   //popMatrix();
-  //Lines box
-  rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
-
-  //Score box
-  rect(width * 0.83, height * 0.20, width * 0.20, width * 0.16);
-  textFormatting();
-  text("SCORE", width * 0.83, height * 0.16);
 
   //Playing field
   pushMatrix();
