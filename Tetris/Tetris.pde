@@ -25,6 +25,8 @@ Piece chooseN() {
   return pieces[index];
 }*/
 
+float pieceY = height * 0.10;
+
 void setup() {
   size(960, 720);
   frameRate(60);
@@ -62,19 +64,46 @@ void setup() {
   text("SCORE", width * 0.83, height * 0.16);
 
   createPieces();
-  shape(IPiece, width * 0.20, height * 0.00);
-  shape(OPiece, width * 0.20, height * 0.20);
-  shape(JPiece, width * 0.20, height * 0.30);
-  shape(LPiece, width * 0.20, height * 0.40);
-  shape(SPiece, width * 0.20, height * 0.50);
-  shape(ZPiece, width * 0.20, height * 0.60);
-  shape(LPiece, width * 0.20, height * 0.70);
 }
 
 void draw() {
+  background(64, 71, 71); //clear screen
+
   ++frame; //unless you have the program running a year in a row, this is never overflowing
   ++lines; //those 2 are just to show the numbers changing
   ++score;
+
+  //Playing field
+  pFieldWidth = width * 0.33;
+  pFieldHeight = height * 0.75;
+  lineHeight = pFieldHeight/20;
+  fill(0);
+  rectMode(CENTER);
+  stroke(255); //black borders
+  strokeWeight(2);
+  rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
+  //pushMatrix();
+  //translate(width * .5, height * .55);
+  float xB = pFieldWidth/20;
+  float yB = pFieldHeight/40;
+  for (int r = 0; r < 20; r++) {
+    for (int c = 0; c < 10; c++) {
+      pField[r][c] = new Block(xB, yB, 0, 0, 0);
+      xB += pFieldWidth/10;
+    }
+    xB = pFieldWidth/20;
+    yB += pFieldHeight/20;
+  }
+  //popMatrix();
+  //Lines box
+  rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
+
+  //Score box
+  rect(width * 0.83, height * 0.20, width * 0.20, width * 0.16);
+  textFormatting();
+  text("SCORE", width * 0.83, height * 0.16);
+
+  //Playing field
   pushMatrix();
   translate(pFieldWidth * 1.015, height * .175);
   for (int r = 0; r < 20; r++) {
@@ -83,7 +112,13 @@ void draw() {
     }
   }
   popMatrix();
+
   frameCounter();
   lineCounter();
   scoreCounter();
+
+  shape(LPiece, width * 0.20, pieceY);
+  if (frame % 48 == 0) {
+    pieceY += lineHeight;
+  }
 }
