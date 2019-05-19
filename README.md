@@ -19,3 +19,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     
 [Day 2] 5/19/19:
   - Jawwad after evaluating Kevin's changes, suggested a Piece interface (currently all the pieces are created OUTSIDE the piece class...)
+  - Jawwad rescinds his comment, because PShapes are proving to be tricky with referencing. (Trying to randomly generate a piece instead of calling just one causes nullPointer...)
+  - Jawwad experiments and pushes through PShape Hell and tries to get a working piece. big sad no workie.
+  - all work and no play makes jawwad a crazy man.
+  - Jawwad figured out an easier way to create the pieces using PShape and children --- in line with how the the grid and blocks are formatted.
