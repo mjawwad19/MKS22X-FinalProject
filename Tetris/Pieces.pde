@@ -10,6 +10,16 @@ void createPieces() {
   IPiece.vertex(lineHeight, lineHeight * 4);
   IPiece.vertex(lineHeight, 0);
   IPiece.endShape(CLOSE);
+  
+  //Create O piece shape
+  OPiece = createShape();
+  OPiece.beginShape();
+  OPiece.fill(IPieceTurqoise);
+  OPiece.vertex(0, 0);
+  OPiece.vertex(0, lineHeight * 2);
+  OPiece.vertex(lineHeight * 2, lineHeight * 2);
+  OPiece.vertex(lineHeight * 2, 0);
+  OPiece.endShape(CLOSE);
 }
 
 class Pieces {
