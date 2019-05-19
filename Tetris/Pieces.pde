@@ -32,6 +32,18 @@ void createPieces() {
   JPiece.vertex(lineHeight * 3, lineHeight * 2);
   JPiece.vertex(lineHeight * 3, 0);
   JPiece.endShape(CLOSE);
+  
+  //Create L piece shape
+  LPiece = createShape();
+  LPiece.beginShape();
+  LPiece.fill(LPieceOrange);
+  LPiece.vertex(0, 0);
+  LPiece.vertex(lineHeight * 3, 0);
+  LPiece.vertex(lineHeight * 3, lineHeight * 1);
+  LPiece.vertex(lineHeight * 1, lineHeight * 1);
+  LPiece.vertex(lineHeight * 1, lineHeight * 2);
+  LPiece.vertex(0, lineHeight * 2);
+  LPiece.endShape(CLOSE);
 }
 
 class Pieces {
