@@ -80,6 +80,8 @@ void setup() {
   shape(JPiece, width * 0.20, height * 0.30);
   shape(LPiece, width * 0.20, height * 0.20);
   shape(SPiece, width * 0.20, height * 0.10);
+  shape(ZPiece, width * 0.80, height * 0.40);
+  shape(TPiece, width * 0.80, height * 0.50);
 }
 
 void draw() {
