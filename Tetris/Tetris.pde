@@ -1,13 +1,11 @@
 //Useful globally
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
+float lineHeight; //useful constant possibly
 
 //For the counters
 int level, lines = 0, score = 0;
 int speed; //not shown on-screen but calculated from the level via a switch statement
-
-float pFieldWidth, pFieldHeight;
-float lineHeight; //useful constant possibly
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -18,25 +16,14 @@ color SPieceGreen = color(0, 255, 0);
 color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
+float pFieldWidth, pFieldHeight;
 Block[][] pField = new Block[20][10];
-
-class Block {
-  float x,y;
-  color c;
-  
-  Block(float posX, float posY, int r, int g, int b) {
-    x = posX;
-    y = posY;
-    c = color(r, g, b);
-  }
-  
-  void display() {
-    rectMode(CENTER);
-    fill(c);
-    stroke(255); //border
-    rect(x, y, pFieldWidth/10, pFieldHeight/20);
-  }
-}
+/*Piece[] pieces = new Piece[7]; //seven diff type of pieces
+Piece nextP;
+Piece chooseN() {
+  int index = (int) random(7);
+  return pieces[index];
+}*/
 
 void setup() {
   size(960, 720);
@@ -47,7 +34,7 @@ void setup() {
   //Playing field
   pFieldWidth = width * 0.33;
   pFieldHeight = height * 0.75;
-  lineHeight = pFieldHeight / 20;
+  lineHeight = pFieldHeight/20;
   fill(0);
   rectMode(CENTER);
   stroke(255); //black borders
