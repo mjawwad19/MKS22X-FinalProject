@@ -9,6 +9,16 @@ int speed; //not shown on-screen but calculated from the level via a switch stat
 
 float pFieldWidth, pFieldHeight;
 Block[][] pField = new Block[20][10];
+
+//Piece colors
+color IPieceTurqoise = color(0, 255, 255);
+color OPieceYellow = color(255, 255, 0);
+color JPieceBlue = color(0, 0, 255);
+color LPieceOrange = color(255, 153, 51);
+color SPieceGreen = color(0, 255, 0);
+color ZPieceRed = color(255, 0, 0);
+color TPiecePurple = color(204, 51, 255);
+
 /*Piece[] pieces = new Piece[7]; //seven diff type of pieces
 Piece nextP;
 
@@ -51,6 +61,15 @@ void setup() {
   rect(width * 0.83, height * 0.20, width * 0.20, width * 0.16);
   textFormatting();
   text("SCORE", width * 0.83, height * 0.16);
+  
+  createPieces();
+  shape(IPiece, width * 0.20, height * 0.10);
+  shape(OPiece, width * 0.20, height * 0.20);
+  shape(JPiece, width * 0.20, height * 0.30);
+  shape(LPiece, width * 0.20, height * 0.40);
+  shape(SPiece, width * 0.20, height * 0.50);
+  shape(ZPiece, width * 0.20, height * 0.60);
+  shape(LPiece, width * 0.20, height * 0.70);
 }
 
 void draw() {
