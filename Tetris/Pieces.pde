@@ -58,6 +58,20 @@ void createPieces() {
   SPiece.vertex(lineHeight * 2, lineHeight * 1);
   SPiece.vertex(lineHeight * 3, lineHeight * 1);
   SPiece.endShape(CLOSE);
+  
+  //Create Z piece shape
+  ZPiece = createShape();
+  ZPiece.beginShape();
+  ZPiece.fill(ZPieceRed);
+  ZPiece.vertex(0, 0);
+  ZPiece.vertex(lineHeight * 2, 0);
+  ZPiece.vertex(lineHeight * 2, lineHeight * 1);
+  ZPiece.vertex(lineHeight * 3, lineHeight * 1);
+  ZPiece.vertex(lineHeight * 3, lineHeight * 2);
+  ZPiece.vertex(lineHeight * 1, lineHeight * 2);
+  ZPiece.vertex(lineHeight * 1, lineHeight * 1);
+  ZPiece.vertex(0, lineHeight * 1);
+  ZPiece.endShape(CLOSE);
 }
 
 class Pieces {
