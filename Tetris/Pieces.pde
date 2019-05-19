@@ -44,6 +44,20 @@ void createPieces() {
   LPiece.vertex(lineHeight * 1, lineHeight * 2);
   LPiece.vertex(0, lineHeight * 2);
   LPiece.endShape(CLOSE);
+  
+  //Create S piece shape
+  SPiece = createShape();
+  SPiece.beginShape();
+  SPiece.fill(SPieceGreen);
+  SPiece.vertex(lineHeight * 3, 0);
+  SPiece.vertex(lineHeight * 1, 0);
+  SPiece.vertex(lineHeight * 1, lineHeight * 1);
+  SPiece.vertex(0, lineHeight * 1);
+  SPiece.vertex(0, lineHeight * 2);
+  SPiece.vertex(lineHeight * 2, lineHeight * 2);
+  SPiece.vertex(lineHeight * 2, lineHeight * 1);
+  SPiece.vertex(lineHeight * 3, lineHeight * 1);
+  SPiece.endShape(CLOSE);
 }
 
 class Pieces {

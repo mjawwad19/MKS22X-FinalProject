@@ -79,6 +79,7 @@ void setup() {
   shape(OPiece, width * 0.20, height * 0.40);
   shape(JPiece, width * 0.20, height * 0.30);
   shape(LPiece, width * 0.20, height * 0.20);
+  shape(SPiece, width * 0.20, height * 0.10);
 }
 
 void draw() {
