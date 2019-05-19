@@ -1,13 +1,13 @@
 //Useful globally
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
-float lineHeight; //useful constant possibly
 
 //For the counters
 int level, lines = 0, score = 0;
 int speed; //not shown on-screen but calculated from the level via a switch statement
 
 float pFieldWidth, pFieldHeight;
+float lineHeight; //useful constant possibly
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -43,13 +43,10 @@ void setup() {
   frameRate(60);
   background(64, 71, 71); //gray
   font = createFont("PressStart2P-Regular.ttf", 28);
-  createPieces();
   
   //Playing field
   pFieldWidth = width * 0.33;
   pFieldHeight = height * 0.75;
-  System.out.println(pFieldWidth);
-  System.out.println(pFieldHeight);
   lineHeight = pFieldHeight / 20;
   fill(0);
   rectMode(CENTER);
@@ -77,6 +74,7 @@ void setup() {
   textFormatting();
   text("SCORE", width * 0.83, height * 0.16);
   
+  createPieces();
   shape(IPiece, width * 0.20, height * 0.50);
 }
 
