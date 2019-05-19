@@ -3,6 +3,7 @@ PShape IPiece, OPiece, JPiece, LPiece, SPiece, ZPiece, TPiece;
 void createPieces() {
   //Create I piece shape
   IPiece = createShape();
+  strokeWeight(2);
   IPiece.beginShape();
   IPiece.fill(IPieceTurqoise);
   IPiece.vertex(0, 0);

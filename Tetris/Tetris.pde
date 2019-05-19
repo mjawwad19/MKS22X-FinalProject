@@ -13,15 +13,18 @@ color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
 //Constants
-float pFieldWidth, pFieldHeight;
-float lineHeight;
+float lineHeight = 27.0;
+float pFieldWidth = lineHeight * 10;
+float pFieldHeight = lineHeight * 20;
+float pFieldLeftX;
+float pFieldTopY;
 
 //For the counters
 int level, lines, score = 0;
 int speed; //not shown on-screen but calculated from the level via a switch statement
 
 Block[][] pField = new Block[20][10];
-float pieceY = height * 0.10; //random number for now just for testing
+float pieceY;
 
 /*
 Piece[] pieces = new Piece[7]; //seven diff type of pieces
@@ -32,15 +35,6 @@ Piece chooseN() {
 }
 */
 
-//Seems like this isn't even used
-void playingFieldBox() {
-  fill(0);
-  rectMode(CENTER);
-  stroke(255); //black borders
-  strokeWeight(2);
-  rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
-}
-
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -48,12 +42,12 @@ void setup() {
   font = createFont("PressStart2P-Regular.ttf", 28);
 
   //Assign playing field constants
-  pFieldWidth = width * 0.33;
-  pFieldHeight = height * 0.75;
-  lineHeight = pFieldHeight/20;
-
+  pFieldLeftX = pFieldWidth * 1.275; //this is the x location, just felt a need to differentiate from pFieldWidth which is the size
+  pFieldTopY = height * 0.190;
+  pieceY = pFieldTopY;
   createPieces(); //Assign Pieces.pde shapes
 
+  /* This isn't needed - Kevin
   //pushMatrix();
   //translate(width * .5, height * .55);
   float xB = pFieldWidth/20;
@@ -67,13 +61,15 @@ void setup() {
     yB += pFieldHeight/20;
   }
   //popMatrix();
+  */
 }
 
 void draw() {
-  background(64, 71, 71); //clear screen
+  background(backgroundGray); //clear screen
 
+  //Those are just to show counter updating works
   ++frame; //unless you have the program running a year in a row, this is never overflowing
-  ++lines; //those 2 are just to show the numbers changing
+  ++lines;
   ++score;
 
   //pushMatrix();
@@ -92,7 +88,7 @@ void draw() {
 
   //Playing field
   pushMatrix();
-  translate(pFieldWidth * 1.015, height * .175);
+  translate(pFieldWidth * 1.275, height * 0.190);
   for (int r = 0; r < 20; r++) {
     for (int c = 0; c < 10; c++) {
       pField[r][c].display();
@@ -104,7 +100,8 @@ void draw() {
   lineCounter();
   scoreCounter();
 
-  shape(LPiece, width * 0.20, pieceY);
+  //Falling piece
+  shape(LPiece, pFieldLeftX + lineHeight * 4, pieceY);
   if (frame % 48 == 0) {
     pieceY += lineHeight;
   }
