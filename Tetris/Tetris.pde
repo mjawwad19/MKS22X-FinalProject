@@ -1,27 +1,25 @@
 //Useful globally
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
-int lineHeight; //useful constant possibly
+float lineHeight; //useful constant possibly
 
 //For the counters
 int level, lines = 0, score = 0;
 int speed; //not shown on-screen but calculated from the level via a switch statement
 
-float pFieldWidth, pFieldHeight;
-Block[][] pField = new Block[20][10];
-
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
 color OPieceYellow = color(255, 255, 0);
-color JPieceBlue = color(0, 0, 255);
-color LPieceOrange = color(255, 153, 51);
+color JPieceBlue = color(0, 0, 204);
+color LPieceOrange = color(255, 153, 0);
 color SPieceGreen = color(0, 255, 0);
 color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
+float pFieldWidth, pFieldHeight;
+Block[][] pField = new Block[20][10];
 /*Piece[] pieces = new Piece[7]; //seven diff type of pieces
 Piece nextP;
-
 Piece chooseN() {
   int index = (int) random(7);
   return pieces[index];
@@ -32,10 +30,11 @@ void setup() {
   frameRate(60);
   background(64, 71, 71); //gray
   font = createFont("PressStart2P-Regular.ttf", 28);
-  
+
   //Playing field
   pFieldWidth = width * 0.33;
   pFieldHeight = height * 0.75;
+  lineHeight = pFieldHeight/20;
   fill(0);
   rectMode(CENTER);
   stroke(255); //black borders
@@ -56,14 +55,14 @@ void setup() {
   //popMatrix();
   //Lines box
   rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10); //magic numbers galore!
-  
-  //Score box 
+
+  //Score box
   rect(width * 0.83, height * 0.20, width * 0.20, width * 0.16);
   textFormatting();
   text("SCORE", width * 0.83, height * 0.16);
-  
+
   createPieces();
-  shape(IPiece, width * 0.20, height * 0.10);
+  shape(IPiece, width * 0.20, height * 0.00);
   shape(OPiece, width * 0.20, height * 0.20);
   shape(JPiece, width * 0.20, height * 0.30);
   shape(LPiece, width * 0.20, height * 0.40);
