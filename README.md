@@ -12,7 +12,10 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
   
 [Day 1] 5/18/19:
   - Kevin created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
-  - Kevin created PShapes for all 7 tetrominoes (colored appropriately). 
+  - Kevin created PShapes for all 7 tetrominoes (colored appropriately). (He wanted to solo this)
   
   - Jawwad, after some experimenting with numbers, was able to create a double array of blocks centered on top of the playing field.
     - In the future, the piece lock feature will feed blocks into this array!
+    
+[Day 2] 5/19/19:
+  - Jawwad after evaluating Kevin's changes, suggested a Piece interface (currently all the pieces are created OUTSIDE the piece class...)
