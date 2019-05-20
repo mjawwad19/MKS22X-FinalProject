@@ -30,19 +30,32 @@ PShape currPiece;
 void setup() {
   size(500, 500);
   fill(255);
+  currPiece = createI(0);
+}
+
+boolean rotateKeyLock = false;
+
+void keyReleased() {
+  rotateKeyLock = false;
 }
 
 void draw() {
   background(204);
-  currPiece = determine();
   shape(currPiece);
-  if (mousePressed) {
-   curr = (int) random(7);
-   currPiece = determine();
-   }
-  if (keyPressed) {
-    if (key == 'a') currPiece = rotateLeft();
-    if (key == 'd') currPiece = rotateRight();
+  //if (mousePressed) {
+   //curr = (int) random(7);
+   //currPiece = determine();
+  //}
+  if (keyPressed && !rotateKeyLock) {
+    if (key == 'a') {
+    currPiece = rotateLeft();
+    rotateKeyLock = true;
+    }
+
+    if (key == 'd') {
+      currPiece = rotateRight();
+      rotateKeyLock = true;
+    }
   }
   //System.out.println(rotation);
 }
