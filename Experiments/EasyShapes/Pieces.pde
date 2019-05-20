@@ -40,7 +40,7 @@ PShape createI(int r) {
     x3 = width/2; 
     y3 = height/2 + lineHeight; 
     x4 = width/2; 
-    y4 = height/2 + 2* lineHeight; 
+    y4 = height/2 + 2* lineHeight;
   } else {
     x1 = width/2 - 2*lineHeight; 
     y1 = height/2 - lineHeight;
@@ -51,7 +51,7 @@ PShape createI(int r) {
     x4 = width/2 + lineHeight; 
     y4 = height/2 - lineHeight;
   }
-  return createPiece(x1, y1, x2, y2, x3, y3, x4, y4, I); //putting this here does not work
+  return createPiece(x1, y1, x2, y2, x3, y3, x4, y4, I);
 }
 
 PShape createJ() {
@@ -72,16 +72,16 @@ PShape createS() {
   maxRotation = 2;
   c = SPieceGreen;
   return createPiece(width/2 - lineHeight, height/2, width/2, height/2, 
-    width/2 - lineHeight, height/2 - lineHeight, 
-    width/2 -(2* lineHeight), height/2 -lineHeight, S);
+    width/2, height/2 - lineHeight,
+    width/2 + lineHeight, height/2 - lineHeight,S);
 }
 
 PShape createZ() {
   maxRotation = 2;
   c = ZPieceRed;
-  return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
-    width/2 + lineHeight, height/2 - lineHeight, 
-    width/2 +(2* lineHeight), height/2 -lineHeight, Z);
+  return createPiece(width/2 - lineHeight, height/2 -lineHeight, width/2, height/2 - lineHeight,
+    width/2, height/2, 
+    width/2 + lineHeight, height/2, Z);
 }
 
 PShape createO() {

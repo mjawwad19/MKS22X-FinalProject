@@ -14,10 +14,9 @@ color SPieceGreen = color(0, 255, 0);
 color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
-/*
 int curr = (int) random(7);
 PShape determine() {
-  if (curr == 0) return createI0();
+  if (curr == 0) return createI(0);
   else if (curr == 1) return createO();
   else if (curr == 2) return createJ();
   else if (curr == 3) return createL();
@@ -25,27 +24,22 @@ PShape determine() {
   else if (curr == 5) return createZ();
   else return createT();
 }
-*/
 
 
 PShape currPiece;
 void setup() {
   size(500, 500);
   fill(255);
-  currPiece = createI(rotation);
-  maxRotation = 2;
 }
 
 void draw() {
   background(204);
-  //currPiece = determine();
+  currPiece = determine();
   shape(currPiece);
-  /*if (mousePressed) {
+  if (mousePressed) {
    curr = (int) random(7);
    currPiece = determine();
-   current.remove(0);
-   current.add(currPiece);
-   }*/
+   }
   if (keyPressed) {
     if (key == 'a') currPiece = rotateLeft();
     if (key == 'd') currPiece = rotateRight();
