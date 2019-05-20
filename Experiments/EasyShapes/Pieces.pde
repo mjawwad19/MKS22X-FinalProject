@@ -1,111 +1,64 @@
+PShape createPiece(float x1, float y1, float x2, float y2, float x3, float y3, 
+  float x4, float y4, color col, PShape temp ) {
+  fill(col);
+  stroke(255);
+  temp = createShape(GROUP);
+  rectMode(CENTER);
+  b1 = createShape(RECT, x1, y1, lineHeight, lineHeight);
+  b2 = createShape(RECT, x2, y2, lineHeight, lineHeight); 
+  b3 = createShape(RECT, x3, y3, lineHeight, lineHeight);
+  b4 = createShape(RECT, x4, y4, lineHeight, lineHeight); 
+  temp.addChild(b1);
+  temp.addChild(b2);
+  temp.addChild(b3);
+  temp.addChild(b4);
+  return temp;
+}
+
+
+
 PShape createI() {
-  fill(IPieceTurqoise);
-  stroke(255);
-  I = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2, height/2 - lineHeight, lineHeight, lineHeight);
-  b2 = createShape(RECT, width/2, height/2, lineHeight, lineHeight);
-  b3 = createShape(RECT, width/2, height/2 + lineHeight, lineHeight, lineHeight);
-  b4 = createShape(RECT, width/2, height/2 + 2 *lineHeight, lineHeight, lineHeight);
-  I.addChild(b1);
-  I.addChild(b2);
-  I.addChild(b3);
-  I.addChild(b4);
-  return I;
+  return createPiece(width/2, height/2 - lineHeight, width/2, height/2, 
+              width/2, height/2 + lineHeight, width/2, height/2 + 2* lineHeight,
+              IPieceTurqoise, I);
 }
 
- PShape createJ() {
-  fill(JPieceBlue);
-  stroke(255);
-  J = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2, height/2 - lineHeight, lineHeight, lineHeight);
-  b2 = createShape(RECT, width/2, height/2, lineHeight, lineHeight);
-  b3 = createShape(RECT, width/2, height/2 + lineHeight, lineHeight, lineHeight);
-  b4 = createShape(RECT, width/2 - lineHeight, height/2 + lineHeight, lineHeight, lineHeight);
-  J.addChild(b1);
-  J.addChild(b2);
-  J.addChild(b3);
-  J.addChild(b4);
-  return J;
+PShape createJ() {
+  return createPiece(width/2, height/2 - lineHeight, width/2, height/2, 
+              width/2, height/2 + lineHeight, width/2 - lineHeight, height/2 + lineHeight,
+              JPieceBlue, J);
 }
 
- PShape createL() {
-  fill(LPieceOrange);
-  stroke(255);
-  L = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2, height/2 - lineHeight, lineHeight, lineHeight);
-  b2 = createShape(RECT, width/2, height/2, lineHeight, lineHeight);
-  b3 = createShape(RECT, width/2, height/2 + lineHeight, lineHeight, lineHeight);
-  b4 = createShape(RECT, width/2 + lineHeight, height/2 + lineHeight, lineHeight, lineHeight);
-  L.addChild(b1);
-  L.addChild(b2);
-  L.addChild(b3);
-  L.addChild(b4);
-  return L;
+PShape createL() {
+  return createPiece(width/2, height/2 - lineHeight, width/2, height/2, 
+              width/2, height/2 + lineHeight, width/2 + lineHeight, height/2 +lineHeight,
+              LPieceOrange, L);
 }
 
- PShape createS() {
-  fill(SPieceGreen);
-  stroke(255);
-  S = createShape(GROUP);
-  rectMode(CENTER);
-  b2 = createShape(RECT, width/2 - lineHeight, height/2, lineHeight, lineHeight);
-  b1 = createShape(RECT, width/2, height/2, lineHeight, lineHeight);
-  b3 = createShape(RECT, width/2 - lineHeight, height/2 - lineHeight, lineHeight, lineHeight);
-  b4 = createShape(RECT, width/2 -(2*lineHeight), height/2 - lineHeight, lineHeight, lineHeight);
-  S.addChild(b1);
-  S.addChild(b2);
-  S.addChild(b3);
-  S.addChild(b4);
-  return S;
+PShape createS() {
+  return createPiece(width/2 - lineHeight, height/2, width/2, height/2, 
+              width/2 - lineHeight, height/2 - lineHeight, 
+              width/2 -(2* lineHeight), height/2 -lineHeight,
+              SPieceGreen, S);
 }
 
- PShape createZ() {
-  fill(ZPieceRed);
-  stroke(255);
-  Z = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2, height/2, lineHeight, lineHeight);
-  b2 = createShape(RECT, width/2 +lineHeight, height/2, lineHeight, lineHeight);
-  b3 = createShape(RECT, width/2 +lineHeight, height/2 - lineHeight, lineHeight, lineHeight);
-  b4 = createShape(RECT, width/2 + (2*lineHeight), height/2 - lineHeight, lineHeight, lineHeight);
-  Z.addChild(b1);
-  Z.addChild(b2);
-  Z.addChild(b3);
-  Z.addChild(b4);
-  return Z;
+PShape createZ() {
+    return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
+              width/2 + lineHeight, height/2 - lineHeight, 
+              width/2 +(2* lineHeight), height/2 -lineHeight,
+              ZPieceRed, Z);
 }
 
- PShape createO() {
-  fill(OPieceYellow);
-  stroke(255);
-  O = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2, height/2, lineHeight, lineHeight);
-  b2 = createShape(RECT, width/2 + lineHeight, height/2, lineHeight, lineHeight);
-  b3 = createShape(RECT, width/2, height/2 - lineHeight, lineHeight, lineHeight);
-  b4 = createShape(RECT, width/2 + lineHeight, height/2 - lineHeight, lineHeight, lineHeight);
-  O.addChild(b1);
-  O.addChild(b2);
-  O.addChild(b3);
-  O.addChild(b4);
-  return O;
+PShape createO() {
+    return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
+              width/2, height/2 + lineHeight, 
+              width/2 +lineHeight, height/2 +lineHeight,
+              OPieceYellow, O);
 }
 
 PShape createT() {
-  fill(TPiecePurple);
-  stroke(255);
-  T = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2 - lineHeight, height/2, lineHeight, lineHeight);
-  b2 = createShape(RECT, width/2, height/2, lineHeight, lineHeight);
-  b3 = createShape(RECT, width/2 + lineHeight, height/2, lineHeight, lineHeight);
-  b4 = createShape(RECT, width/2, height/2 +lineHeight, lineHeight, lineHeight);
-  T.addChild(b1);
-  T.addChild(b2);
-  T.addChild(b3);
-  T.addChild(b4);
-  return T;
+    return createPiece(width/2 - lineHeight, height/2, width/2, height/2, 
+              width/2 + lineHeight, height/2, 
+              width/2, height/2 +lineHeight,
+              TPiecePurple, T);
 }
