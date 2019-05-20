@@ -24,28 +24,35 @@ PShape createPiece(float x1c, float y1c, float x2c, float y2c, float x3c, float 
   return temp;
 }
 
-color getCol(){
+color getCol() {
   return c;
 }
 
-PShape createI0() {
+PShape createI(int r) {
   maxRotation = 2;
   rotation = rotation % maxRotation;
   c = IPieceTurqoise;
-    x1 = width/2; y1 = height/2 - lineHeight; 
-    x2 = width/2; y2 = height/2;
-    x3 = width/2; y3 = height/2 + lineHeight; 
-    x4 = width/2; y4 = height/2 + 2* lineHeight; 
-  return createPiece(x1, y1, x2, y2, x3, y3, x4, y4, I);
-}
-PShape createI1() {
-    x1 = width/2 - 2*lineHeight; y1 = height/2 - lineHeight;
-    x2 = width/2 - lineHeight; y2 = height/2 - lineHeight;
-    x3 = width/2; y1 = height/2 - lineHeight;
-    x4 = width/2 + lineHeight; y1 = height/2 - lineHeight;
-    return createPiece(x1, y1, x2, y1, x3, y1, x4, y1, I);
+  if (r == 0) {
+    x1 = width/2; 
+    y1 = height/2 - lineHeight; 
+    x2 = width/2; 
+    y2 = height/2;
+    x3 = width/2; 
+    y3 = height/2 + lineHeight; 
+    x4 = width/2; 
+    y4 = height/2 + 2* lineHeight; 
+  } else {
+    x1 = width/2 - 2*lineHeight; 
+    y1 = height/2 - lineHeight;
+    x2 = width/2 - lineHeight; 
+    y2 = height/2 - lineHeight;
+    x3 = width/2; 
+    y3 = height/2 - lineHeight;
+    x4 = width/2 + lineHeight; 
+    y4 = height/2 - lineHeight;
   }
-  
+  return createPiece(x1, y1, x2, y2, x3, y3, x4, y4, I); //putting this here does not work
+}
 
 PShape createJ() {
   maxRotation = 4;
@@ -82,7 +89,7 @@ PShape createO() {
   c = OPieceYellow;
   return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
     width/2, height/2 + lineHeight, 
-    width/2 +lineHeight, height/2 +lineHeight,O);
+    width/2 +lineHeight, height/2 +lineHeight, O);
 }
 
 PShape createT() {
@@ -90,5 +97,5 @@ PShape createT() {
   c = TPiecePurple;
   return createPiece(width/2 - lineHeight, height/2, width/2, height/2, 
     width/2 + lineHeight, height/2, 
-    width/2, height/2 +lineHeight,T);
+    width/2, height/2 +lineHeight, T);
 }

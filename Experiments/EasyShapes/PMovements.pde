@@ -1,14 +1,11 @@
 PShape rotateLeft() {
   //all of these will clear the original pShape drawn and redraw modifying certain x's and y'svoid rotateLeft() {
   rotation = Math.abs(rotation -1) % maxRotation;
-  //System.out.println(rotation);
-  if (rotation == 0) return createI0();
-  else return createI1();
+  return createI(rotation);
 }
 PShape rotateRight() {
   rotation = Math.abs((rotation + 1)%maxRotation);
-  if (rotation ==  0) return createI0();
-  else return createI1();
+  return createI(rotation);
 }
 void moveDown() {
   createPiece(x1, y1 + lineHeight, x2, y2 + lineHeight, 

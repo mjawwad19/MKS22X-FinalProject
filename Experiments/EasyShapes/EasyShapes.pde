@@ -32,7 +32,8 @@ PShape currPiece;
 void setup() {
   size(500, 500);
   fill(255);
-  currPiece = createI0();
+  currPiece = createI(rotation);
+  maxRotation = 2;
 }
 
 void draw() {
