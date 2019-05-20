@@ -18,8 +18,9 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - In the future, the piece lock feature will feed blocks into this array!
     
 [Day 2] 5/19/19:
-  - Jawwad after evaluating Kevin's changes, suggested a Piece interface (currently all the pieces are created OUTSIDE the piece class...)
-  - Jawwad rescinds his comment, because PShapes are proving to be tricky with referencing. (Trying to randomly generate a piece instead of calling just one causes nullPointer...)
-  - Jawwad experiments and pushes through PShape Hell and tries to get a working piece. big sad no workie.
-  - all work and no play makes jawwad a crazy man.
+  - Jawwad considered making the individual pieces implement a peice class... but nah.
+    - Jawwad experiments and pushes through PShape Hell and tries to get a working piece with movement, or just not moving when not allowed
+    - all work and no play makes jawwad a crazy man.
   - Jawwad figured out an easier way to create the pieces using PShape and children --- in line with how the the grid and blocks are formatted.
+    - This can be seen on the Experiments directory under EasyShapes: we will not be using it till we confirm for certain it can move and rotate correctly. 
+  - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's.x and y. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
