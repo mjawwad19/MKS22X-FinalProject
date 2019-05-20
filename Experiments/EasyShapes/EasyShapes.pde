@@ -35,5 +35,10 @@ void setup() {
 
 void draw() {
   background(204);
+  currPiece = determine();
   shape(currPiece);
+  if (mousePressed) {
+    curr = (int) random(7);
+    currPiece = determine();
+  }
 }
