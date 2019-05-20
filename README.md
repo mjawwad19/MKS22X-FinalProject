@@ -23,6 +23,11 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - all work and no play makes jawwad a crazy man.
   - Jawwad figured out an easier way to create the pieces using PShape and children --- in line with how the the grid and blocks are formatted.
     - This can be seen on the Experiments directory under EasyShapes: we will not be using it till we confirm for certain it can move and rotate correctly. 
+    - Huzzah Jawwad stayed up and figured out how to make rotate work: 
+      - hard code in x1, y1, x2, y2, x3, y3, x4, y4 for each rotation in a piece 'constructor'
+      - make rotate return this constructor after modifying the rotation value
+      - set currpiece = the result of rotate
+      - button presses after that :p
   - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's.x and y. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
   
   - Kevin: Code reorganization
