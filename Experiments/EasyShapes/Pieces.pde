@@ -18,47 +18,54 @@ PShape createPiece(float x1, float y1, float x2, float y2, float x3, float y3,
 
 
 PShape createI() {
+  maxRotation = 2;
   return createPiece(width/2, height/2 - lineHeight, width/2, height/2, 
-              width/2, height/2 + lineHeight, width/2, height/2 + 2* lineHeight,
-              IPieceTurqoise, I);
+    width/2, height/2 + lineHeight, width/2, height/2 + 2* lineHeight, 
+    IPieceTurqoise, I);
 }
 
 PShape createJ() {
+  maxRotation = 4;
   return createPiece(width/2, height/2 - lineHeight, width/2, height/2, 
-              width/2, height/2 + lineHeight, width/2 - lineHeight, height/2 + lineHeight,
-              JPieceBlue, J);
+    width/2, height/2 + lineHeight, width/2 - lineHeight, height/2 + lineHeight, 
+    JPieceBlue, J);
 }
 
 PShape createL() {
+  maxRotation = 4;
   return createPiece(width/2, height/2 - lineHeight, width/2, height/2, 
-              width/2, height/2 + lineHeight, width/2 + lineHeight, height/2 +lineHeight,
-              LPieceOrange, L);
+    width/2, height/2 + lineHeight, width/2 + lineHeight, height/2 +lineHeight, 
+    LPieceOrange, L);
 }
 
 PShape createS() {
+  maxRotation = 2;
   return createPiece(width/2 - lineHeight, height/2, width/2, height/2, 
-              width/2 - lineHeight, height/2 - lineHeight, 
-              width/2 -(2* lineHeight), height/2 -lineHeight,
-              SPieceGreen, S);
+    width/2 - lineHeight, height/2 - lineHeight, 
+    width/2 -(2* lineHeight), height/2 -lineHeight, 
+    SPieceGreen, S);
 }
 
 PShape createZ() {
-    return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
-              width/2 + lineHeight, height/2 - lineHeight, 
-              width/2 +(2* lineHeight), height/2 -lineHeight,
-              ZPieceRed, Z);
+  maxRotation = 2;
+  return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
+    width/2 + lineHeight, height/2 - lineHeight, 
+    width/2 +(2* lineHeight), height/2 -lineHeight, 
+    ZPieceRed, Z);
 }
 
 PShape createO() {
-    return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
-              width/2, height/2 + lineHeight, 
-              width/2 +lineHeight, height/2 +lineHeight,
-              OPieceYellow, O);
+  maxRotation = 1;
+  return createPiece(width/2, height/2, width/2 + lineHeight, height/2, 
+    width/2, height/2 + lineHeight, 
+    width/2 +lineHeight, height/2 +lineHeight, 
+    OPieceYellow, O);
 }
 
 PShape createT() {
-    return createPiece(width/2 - lineHeight, height/2, width/2, height/2, 
-              width/2 + lineHeight, height/2, 
-              width/2, height/2 +lineHeight,
-              TPiecePurple, T);
+  maxRotation = 4;
+  return createPiece(width/2 - lineHeight, height/2, width/2, height/2, 
+    width/2 + lineHeight, height/2, 
+    width/2, height/2 +lineHeight, 
+    TPiecePurple, T);
 }

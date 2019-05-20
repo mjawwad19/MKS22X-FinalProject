@@ -2,6 +2,9 @@ PShape b1, b2, b3, b4;
 float x1, x2, x3, x4, y1, y2, y3, y4;
 PShape I, O, J, L, S, Z, T;
 float lineHeight = 27.0;
+int rotation = 1;
+int maxRotation;
+
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
 color OPieceYellow = color(255, 255, 0);
