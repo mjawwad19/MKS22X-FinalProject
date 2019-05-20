@@ -1,47 +1,43 @@
-class EasyShapes {
-}
 PShape b1, b2, b3, b4;
 PShape I, O, J, L, S, Z, T;
+float lineHeight = 27.0;
+//Piece colors
+color IPieceTurqoise = color(0, 255, 255);
+color OPieceYellow = color(255, 255, 0);
+color JPieceBlue = color(0, 0, 204);
+color LPieceOrange = color(255, 153, 0);
+color SPieceGreen = color(0, 255, 0);
+color ZPieceRed = color(255, 0, 0);
+color TPiecePurple = color(204, 51, 255);
 
-PShape createI() {
-  I = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2, height/2 - 100, 100, 100);
-  b2 = createShape(RECT, width/2, height/2, 100, 100);
-  b3 = createShape(RECT, width/2, height/2 + 100, 100, 100);
-  b4 = createShape(RECT, width/2, height/2 + 200, 100, 100);
-  I.addChild(b1);
-  I.addChild(b2);
-  I.addChild(b3);
-  I.addChild(b4);
 
-  return I;
+int curr = (int) random(7);
+PShape determine() {
+  if (curr == 0) return createI();
+  else if (curr == 1) return createO();
+  else if (curr == 2) return createJ();
+  else if (curr == 3) return createL();
+  else if (curr == 4) return createS();
+  else if (curr == 5) return createZ();
+  else return createT();
 }
 
-void createJ() {
-  J = createShape(GROUP);
-  rectMode(CENTER);
-  b1 = createShape(RECT, width/2, height/2 - 100, 100, 100);
-  b2 = createShape(RECT, width/2, height/2, 100, 100);
-  b3 = createShape(RECT, width/2, height/2 + 100, 100, 100);
-  b4 = createShape(RECT, width/2 - 100, height/2 + 100, 100, 100);
-  J.addChild(b1);
-  J.addChild(b2);
-  J.addChild(b3);
-  J.addChild(b4);
-}
+PShape currPiece;
 
 void setup() {
   size(500, 500);
   fill(255);
-  createI();
-  //A.createI();
-  /*fill(0);
-   createJ();*/
+  currPiece = determine();
 }
 
 void draw() {
   background(204);
-  shape(createI());
-  //shape(J);
+  /*shape(createI());
+  shape(createO());
+  shape(createJ());
+  shape(createL());
+  shape(createS());
+  shape(createZ());
+  shape(createT());*/
+  shape(currPiece);
 }
