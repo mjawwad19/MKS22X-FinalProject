@@ -57,8 +57,9 @@ void setup() {
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2; 
   pFieldTopX = pFieldWidth * 1.275 + lh/2 +5 *lh;
-  currPiece = determine();
-  nextPiece = determine();
+  currPiece = createL(0);//determine();
+  //nextPiece changes t the second it is initialized which may screw over redrawing currPiece as it moves
+  //nextPiece = determine();//createJ(0);//determine();
 }
 
 void draw() {
@@ -99,9 +100,9 @@ void draw() {
 
   //Falling piece
    shape(currPiece);
-  if (frame % 20 == 0) {
+  if (frame % 10 == 0) {
     currPiece = moveDown();
-    currPiece = rotateLeft();
+    currPiece = rotateRight();
   }
   if (keyPressed) {
       if (key == 'a')currPiece = rotateLeft();

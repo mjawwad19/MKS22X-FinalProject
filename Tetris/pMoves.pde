@@ -1,9 +1,11 @@
 PShape rotateLeft() {
   //all of these will clear the original pShape drawn and redraw modifying certain x's and y'svoid rotateLeft() {
-  rotation = Math.abs(rotation -1) % maxRotations;
+  fixR();
+    rotation = Math.abs(rotation -1) % maxRotations;
   return which();
 }
 PShape rotateRight() {
+  fixR();
   rotation = Math.abs((rotation + 1)%maxRotations);
   return which();
 }
@@ -29,4 +31,9 @@ PShape which() {
   else if (t == 'Z') return createZ(rotation);
   else if (t == 'T') return createT(rotation);
   else return createO();
+}
+
+
+void fixR() {
+  if (rotation < 0) rotation = Math.abs(maxRotations - rotation) % maxRotations;
 }
