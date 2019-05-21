@@ -214,10 +214,47 @@ PShape createO() {
   return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, O);
 }
 
-PShape createT() {
+PShape createT(int r) {
   maxRotations = 4;
   c = TPiecePurple;
-  return createPiece(width/2 - lineHeight, height/2, width/2, height/2,
-    width/2 + lineHeight, height/2,
-    width/2, height/2 +lineHeight, T);
+  t = 'T';
+  if (r == 0) {
+    nx1 =pFieldTopX - lh+ dx * lh;
+    nx2 =pFieldTopX+ dx * lh;
+    nx3 = pFieldTopX + lh+ dx * lh;
+    nx4 =pFieldTopX + dx * lh;
+    ny1 =pFieldTopY + dy *lh;
+    ny2 =pFieldTopY + dy *lh;
+    ny3 =pFieldTopY + dy *lh;
+    ny4 =pFieldTopY + lh + dy *lh;
+  } else if (r == 1) {
+    nx1 =pFieldTopX - lh+ dx * lh;
+    nx2 =pFieldTopX - lh+ dx * lh;
+    nx3 =pFieldTopX -lh+ dx * lh;
+    nx4 =pFieldTopX+ dx * lh;
+    ny1 =pFieldTopY + dy *lh;
+    ny2 =pFieldTopY +lh + dy *lh;
+    ny3 =pFieldTopY + 2*lh + dy *lh;
+    ny4 =pFieldTopY + lh + dy *lh;
+  } else if (r == 2) {
+    nx1 =pFieldTopX -lh+ dx * lh;
+    nx2 =pFieldTopX+ dx * lh;
+    nx3 =pFieldTopX + lh+ dx * lh;
+    nx4 =pFieldTopX+ dx * lh;
+    ny1 =pFieldTopY + lh + dy *lh;
+    ny2 =pFieldTopY + lh + dy *lh;
+    ny3 =pFieldTopY + lh + dy *lh;
+    ny4 =pFieldTopY + dy *lh;
+  } else {
+    nx1 =pFieldTopX + lh+ dx * lh;
+    nx2 =pFieldTopX + lh+ dx * lh;
+    nx3 =pFieldTopX + lh+ dx * lh;
+    nx4 =pFieldTopX+ dx * lh;
+    ny1 =pFieldTopY + dy *lh;
+    ny2 =pFieldTopY + lh + dy *lh;
+    ny3 =pFieldTopY + 2*lh + dy *lh;
+    ny4 =pFieldTopY + lh + dy *lh;
+  }
+
+  return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, T);
 }

@@ -37,6 +37,7 @@ float pieceY;
 
 int curr = (int) random(7);
 PShape currPiece, nextPiece;
+//generates a random piece in it's non rotated state.
 PShape determine() {
   if (curr == 0) return createI(0);
   else if (curr == 1) return createO(); //square has no new rotation so no point
@@ -44,7 +45,7 @@ PShape determine() {
   else if (curr == 3) return createL(0);
   else if (curr == 4) return createS(0);
   else if (curr == 5) return createZ(0);
-  else return createT();
+  else return createT(0);
 }
 
 void setup() {
