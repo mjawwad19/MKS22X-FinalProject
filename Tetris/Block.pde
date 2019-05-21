@@ -14,7 +14,7 @@ class Block {
 
     //It looks better blending in imo - Kevin
     stroke(0); //border
-    rect(x, y, pFieldWidth/10, pFieldHeight/20);
+    rect(x, y, lh, lh);
   }
 
   color gColor() {

@@ -9,7 +9,9 @@ float x1, x2, x3, x4, y1, y2, y3, y4;
 float nx1, nx2, nx3, nx4, ny1, ny2, ny3, ny4; //useful for checking bounds
 PShape I, O, J, L, S, Z, T;
 int rotation = 0;
-int maxRotation;
+int maxRotations;
+int dx = 0;
+int dy = 0;
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
 color OPieceYellow = color(255, 255, 0);
@@ -20,26 +22,31 @@ color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
 //Constants
-float lineHeight = 27.0;
-float pFieldWidth = lineHeight * 10;
-float pFieldHeight = lineHeight * 20;
-float pFieldLeftX;
+float lh = 27.0;
+float pFieldWidth = lh * 10;
+float pFieldHeight = lh * 20;
+float pFieldTopX;
 float pFieldTopY;
 
 //For the counters
 int level, lines, score = 0;
 
-Block[][] pField = new Block[20][10];
-float pieceY;
 
-/*
-Piece[] pieces = new Piece[7]; //seven diff type of pieces
-Piece nextP;
-Piece chooseN() {
-  int index = (int) random(7);
-  return pieces[index];
+Block[][] pField = new Block[20][10];
+
+
+int curr = (int) random(7);
+PShape currPiece, nextPiece;
+//generates a random piece in it's non rotated state.
+PShape determine() {
+  if (curr == 0) return createI(0);
+  else if (curr == 1) return createO(); //square has no new rotation so no point
+  else if (curr == 2) return createJ(0);
+  else if (curr == 3) return createL(0);
+  else if (curr == 4) return createS(0);
+  else if (curr == 5) return createZ(0);
+  else return createT(0);
 }
-*/
 
 //Returns how many frames it takes a piece to fall down 1 line (e.g. 48 on level 0)
 int getSpeed() {
@@ -114,26 +121,11 @@ void setup() {
   font = createFont("PressStart2P-Regular.ttf", 28);
 
   //Assign playing field constants
-  pFieldLeftX = pFieldWidth * 1.275; //this is the x location, just felt a need to differentiate from pFieldWidth which is the size
-  pFieldTopY = height * 0.190;
-  pieceY = pFieldTopY;
-  createPieces(); //Assign Pieces.pde shapes
-
-  /* This isn't needed - Kevin
-  //pushMatrix();
-  //translate(width * .5, height * .55);
-  float xB = pFieldWidth/20;
-  float yB = pFieldHeight/40;
-  for (int r = 0; r < 20; r++) {
-    for (int c = 0; c < 10; c++) {
-      pField[r][c] = new Block(xB, yB, 0, 0, 0);
-      xB += pFieldWidth/10;
-    }
-    xB = pFieldWidth/20;
-    yB += pFieldHeight/20;
-  }
-  //popMatrix();
-  */
+  pFieldTopY = height * 0.190 + lh/2;
+  pFieldTopX = pFieldWidth * 1.275 + lh/2 +5 *lh;
+  currPiece = determine();
+  //nextPiece changes t the second it is initialized which may screw over redrawing currPiece as it moves
+  //nextPiece = determine();//createJ(0);//determine();
 }
 
 void draw() {
@@ -175,10 +167,18 @@ void draw() {
   levelCounter();
 
   //Falling piece
-  shape(LPiece, pFieldLeftX + lineHeight * 4, pieceY);
+   shape(currPiece);
   if (frame % getSpeed() == 0) {
-    pieceY += lineHeight;
+    currPiece = moveDown();
+    //currPiece = rotateLeft();
+  //if (rotation == 0) delay(100000);
   }
+  if (keyPressed) {
+      if (key == 'a')currPiece = rotateLeft();
+      if (key == 'd')currPiece = rotateRight();
+      if (key == 'z') currPiece = moveLeft();
+      if (key =='x') currPiece = moveRight();
+    }
 }
 
 void keyPressed() {
