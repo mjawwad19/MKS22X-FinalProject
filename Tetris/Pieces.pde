@@ -202,9 +202,16 @@ PShape createZ(int r) {
 PShape createO() {
   maxRotations = 1;
   c = OPieceYellow;
-  return createPiece(width/2, height/2, width/2 + lineHeight, height/2,
-    width/2, height/2 + lineHeight,
-    width/2 +lineHeight, height/2 +lineHeight, O);
+  t = 'O';
+  nx1 = pFieldTopX+ dx * lh;
+  nx2 = pFieldTopX + lh+ dx * lh;
+  nx3 = pFieldTopX+ dx * lh;
+  nx4 = pFieldTopX + lh+ dx * lh;
+  ny1 = pFieldTopY + dy *lh;
+  ny2 = pFieldTopY + dy *lh;
+  ny3 = pFieldTopY + lh + dy *lh;
+  ny4 = pFieldTopY + lh + dy *lh;
+  return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, O);
 }
 
 PShape createT() {

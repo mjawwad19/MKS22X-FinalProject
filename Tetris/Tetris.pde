@@ -39,7 +39,7 @@ int curr = (int) random(7);
 PShape currPiece, nextPiece;
 PShape determine() {
   if (curr == 0) return createI(0);
-  else if (curr == 1) return createO(); //squars 
+  else if (curr == 1) return createO(); //square has no new rotation so no point
   else if (curr == 2) return createJ(0);
   else if (curr == 3) return createL(0);
   else if (curr == 4) return createS(0);
