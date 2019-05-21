@@ -7,6 +7,7 @@ boolean keyLock = false;
 Block[][] pField = new Block[20][10];
 int curr = (int) random(7); //generates a random piece's index in its non rotated state.
 PShape currPiece, nextPiece;
+boolean pieceLocked = false;
 
 PShape b1, b2, b3, b4; //the 4 blocks of a tetromino
 float x1, x2, x3, x4, y1, y2, y3, y4; //the corresponding coordinates
@@ -141,8 +142,15 @@ void draw() {
   levelCounter();
 
   //Falling piece
-   shape(currPiece);
+  shape(currPiece);
   if (frame % getSpeed() == 0) {
+    if (pieceLocked) {
+      dx = 0;
+      dy = 0;
+      currPiece = determinePiece();
+      pieceLocked = false;
+    }
+
     currPiece = moveDown();
   }
 }

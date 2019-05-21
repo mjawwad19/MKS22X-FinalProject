@@ -15,6 +15,9 @@ PShape moveDown() {
   if (dy < 18)
     dy++;
 
+  else
+    pieceLocked = true;
+
   return which();
 }
 
