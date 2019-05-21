@@ -38,6 +38,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - found a way to not cause epilepsy when rotating a piece YAY
     - helped Jawwad find 3 crucial typos in his piece creation
     - was a great rubber ducky to Jawwad and found his stupid mistakes and bugs and oversights.
+    - speed system demo: press the plus or minus keys to increase or decrease the levels which increase or decrease the speed of the pieces falling down respectively. 
 
   - Jawwad: demoed in class to Mr.K/Kevin the rotation --- it's an epilepsy warning, as well as how to create individual pieces by children to Kevin
     - ported rotation (Right and Left) to his working branch!
