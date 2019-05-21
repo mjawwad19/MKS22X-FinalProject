@@ -174,27 +174,45 @@ void draw() {
     //currPiece = rotateLeft();
   //if (rotation == 0) delay(100000);
   }
-  if (keyPressed) {
-      if (key == 'a')currPiece = rotateLeft();
-      if (key == 'd')currPiece = rotateRight();
-      if (key == 'z') currPiece = moveLeft();
-      if (key =='x') currPiece = moveRight();
-    }
 }
 
 void keyPressed() {
   if (!keyLock) {
     switch (key) {
+      case 'a':
+        currPiece = moveLeft();
+        keyLock = true;
+        break;
+
+      case 'd':
+        currPiece = moveRight();
+        keyLock = true;
+        break;
+
+      case 's':
+        currPiece = moveDown();
+        keyLock = true;
+        break;
+
       case '-': //proof of concept: decrease level/speed
         if (level > 0) --level;
         keyLock = true;
+        break;
 
       case '=':
         ++level;
         keyLock = true;
+        break;
 
       case 'j':
-        currPiece = rotateRight()
+        currPiece = rotateRight();
+        keyLock = true;
+        break;
+
+      case 'k':
+      currPiece = rotateLeft();
+      keyLock = true;
+      break;
     }
   }
 }
