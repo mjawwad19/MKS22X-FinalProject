@@ -42,7 +42,7 @@ PShape determine() {
   else if (curr == 1) return createO(); //squars 
   else if (curr == 2) return createJ(0);
   else if (curr == 3) return createL(0);
-  else if (curr == 4) return createS();
+  else if (curr == 4) return createS(0);
   else if (curr == 5) return createZ();
   else return createT();
 }
