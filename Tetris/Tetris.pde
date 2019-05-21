@@ -100,9 +100,10 @@ void draw() {
 
   //Falling piece
    shape(currPiece);
-  if (frame % 10 == 0) {
+  if (frame % 30 == 0) {
     currPiece = moveDown();
-    currPiece = rotateRight();
+    currPiece = rotateLeft();
+  //if (rotation == 0) delay(100000);
   }
   if (keyPressed) {
       if (key == 'a')currPiece = rotateLeft();
