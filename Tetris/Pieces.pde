@@ -1,14 +1,15 @@
 color c;
-PShape createPiece(float x1c, float y1c, float x2c, float y2c, float x3c, float y3c,
+char t;
+PShape createPiece(float x1c, float y1c, float x2c, float y2c, float x3c, float y3c, 
   float x4c, float y4c, PShape temp) {
   fill(c);
   stroke(255);
   temp = createShape(GROUP);
   rectMode(CENTER);
-  b1 = createShape(RECT, x1c, y1c, lineHeight, lineHeight);
-  b2 = createShape(RECT, x2c, y2c, lineHeight, lineHeight);
-  b3 = createShape(RECT, x3c, y3c, lineHeight, lineHeight);
-  b4 = createShape(RECT, x4c, y4c, lineHeight, lineHeight);
+  b1 = createShape(RECT, x1c, y1c, lh, lh);
+  b2 = createShape(RECT, x2c, y2c, lh, lh); 
+  b3 = createShape(RECT, x3c, y3c, lh, lh);
+  b4 = createShape(RECT, x4c, y4c, lh, lh); 
   temp.addChild(b1);
   temp.addChild(b2);
   temp.addChild(b3);
@@ -30,35 +31,73 @@ color getCol() {
 
 PShape createI(int r) {
   maxRotations = 2;
-  rotation = rotation % maxRotations;
   c = IPieceTurqoise;
+  t = 'I';
   if (r == 0) {
-    x1 = width/2;
-    y1 = height/2 - lineHeight;
-    x2 = width/2;
-    y2 = height/2;
-    x3 = width/2;
-    y3 = height/2 + lineHeight;
-    x4 = width/2;
-    y4 = height/2 + 2* lineHeight;
+    nx1 = pFieldTopX + dx * lh;
+    ny1 = pFieldTopY + dy *lh; 
+    nx2 = pFieldTopX+ dx * lh;
+    ny2 = pFieldTopY + lh + dy *lh;
+    nx3 = pFieldTopX+ dx * lh; 
+    ny3 = pFieldTopY + 2*lh + dy *lh;
+    nx4 = pFieldTopX+ dx * lh; 
+    ny4 = pFieldTopY + 3*lh + dy *lh;
   } else {
-    x1 = width/2 - 2*lineHeight;
-    y1 = height/2 - lineHeight;
-    x2 = width/2 - lineHeight;
-    y2 = height/2 - lineHeight;
-    x3 = width/2;
-    y3 = height/2 - lineHeight;
-    x4 = width/2 + lineHeight;
-    y4 = height/2 - lineHeight;
+    nx1 = pFieldTopX - 2*lh+ dx * lh; 
+    ny1 = pFieldTopY + dy *lh;
+    nx2 = pFieldTopX - lh+ dx * lh; 
+    ny2 = pFieldTopY + dy *lh;
+    nx3 = pFieldTopX+ dx * lh; 
+    ny3 = pFieldTopY + dy *lh;
+    nx4 = pFieldTopX + lh+ dx * lh; 
+    ny4 = pFieldTopY + dy *lh;
   }
-  return createPiece(x1, y1, x2, y2, x3, y3, x4, y4, I);
+
+  return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, I);
 }
 
-PShape createJ() {
+PShape createJ(int r) {
   maxRotations = 4;
   c = JPieceBlue;
-  return createPiece(width/2, height/2 - lineHeight, width/2, height/2,
-    width/2, height/2 + lineHeight, width/2 - lineHeight, height/2 + lineHeight, J);
+  t = 'J';
+  if (r == 0) {
+    nx1 = pFieldTopX+ dx * lh; 
+    nx2 = pFieldTopX+ dx * lh; 
+    nx3 = pFieldTopX+ dx * lh; 
+    nx4 = pFieldTopX - lh+ dx * lh;
+    ny1 = pFieldTopY + dy *lh; 
+    ny2 = pFieldTopY + lh + dy *lh; 
+    ny3 = pFieldTopY + 2*lh + dy *lh; 
+    ny4 = pFieldTopY + 2*lh + dy *lh;
+  } else if (r == 1) {
+    nx1 = pFieldTopX - lh+ dx * lh; 
+    nx2 = pFieldTopX+ dx * lh; 
+    nx3 = pFieldTopX + lh+ dx * lh; 
+    nx4 = pFieldTopX + lh+ dx * lh;
+    ny1 = pFieldTopY + dy *lh; 
+    y2 = pFieldTopY + dy *lh; 
+    ny3 = pFieldTopY + dy *lh; 
+    ny4 = pFieldTopY + lh + dy *lh;
+  } else if (r == 2) {
+    nx1 = pFieldTopX - lh+ dx * lh; 
+    nx2 = pFieldTopX - lh+ dx * lh; 
+    nx3 = pFieldTopY - lh+ dx * lh; 
+    nx4 = pFieldTopX+ dx * lh;
+    ny1 = pFieldTopY + 2*lh + dy *lh; 
+    ny2 = pFieldTopY + lh + dy *lh; 
+    ny3 = pFieldTopY + dy *lh; 
+    ny4 = pFieldTopY + dy *lh;
+  } else {
+    nx1 = pFieldTopX + lh+ dx * lh; 
+    nx2 = pFieldTopX+ dx * lh; 
+    nx3 = pFieldTopX - lh+ dx * lh; 
+    nx4 = pFieldTopX -lh+ dx * lh;
+    ny1 = pFieldTopY + lh + dy *lh; 
+    ny2 = pFieldTopY + lh + dy *lh; 
+    ny3 = pFieldTopY + lh + dy *lh; 
+    ny4 = pFieldTopY + dy *lh;
+  }
+  return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, J);
 }
 
 PShape createL() {

@@ -8,6 +8,8 @@ float nx1, nx2, nx3, nx4, ny1, ny2, ny3, ny4; //useful for checking bounds
 PShape I, O, J, L, S, Z, T;
 int rotation = 0;
 int maxRotations;
+int dx = 0;
+int dy = 0;
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
 color OPieceYellow = color(255, 255, 0);
@@ -18,10 +20,10 @@ color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
 //Constants
-float lineHeight = 27.0;
-float pFieldWidth = lineHeight * 10;
-float pFieldHeight = lineHeight * 20;
-float pFieldLeftX;
+float lh = 27.0;
+float pFieldWidth = lh * 10;
+float pFieldHeight = lh * 20;
+float pFieldTopX;
 float pFieldTopY;
 
 //For the counters
@@ -38,7 +40,7 @@ PShape currPiece, nextPiece;
 PShape determine() {
   if (curr == 0) return createI(0);
   else if (curr == 1) return createO(); //squars 
-  else if (curr == 2) return createJ();
+  else if (curr == 2) return createJ(0);
   else if (curr == 3) return createL();
   else if (curr == 4) return createS();
   else if (curr == 5) return createZ();
@@ -52,9 +54,8 @@ void setup() {
   font = createFont("PressStart2P-Regular.ttf", 28);
 
   //Assign playing field constants
-  pFieldLeftX = pFieldWidth * 1.275; //this is the x location, just felt a need to differentiate from pFieldWidth which is the size
-  pFieldTopY = height * 0.190;
-  pieceY = pFieldTopY;
+  pFieldTopY = height * 0.190 + lh/2; 
+  pFieldTopX = pFieldWidth * 1.275 + lh/2 +5 *lh;
   currPiece = determine();
   nextPiece = determine();
 }
