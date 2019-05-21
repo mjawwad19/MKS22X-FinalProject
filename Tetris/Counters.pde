@@ -33,13 +33,21 @@ void scoreCounter() {
   text(String.format("%06d", score), width * 0.83, height * 0.25);
 }
 
-void levelCounter() {
+void nextPieceCounter() {
   boxFormatting();
-  rect(width * 0.83, height * 0.60, width * 0.20, height * 0.12);
+  rect(width * 0.805, height * 0.43, width * 0.15, height * 0.20);
 
   textFormatting();
-  text("LEVEL", width * 0.83, height * 0.58);
-  text(String.format("%02d", level), width * 0.83, height * 0.63);
+  text("NEXT", width * 0.805, height * 0.39);
+}
+
+void levelCounter() {
+  boxFormatting();
+  rect(width * 0.82, height * 0.62, width * 0.18, height * 0.12);
+
+  textFormatting();
+  text("LEVEL", width * 0.82, height * 0.60);
+  text(String.format("%02d", level), width * 0.83, height * 0.65);
 }
 
 //Seems like this isn't even used, and yeah I know this isn't a counter

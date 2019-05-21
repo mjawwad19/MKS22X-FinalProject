@@ -165,6 +165,7 @@ void draw() {
   frameCounter();
   lineCounter();
   scoreCounter();
+  nextPieceCounter();
   levelCounter();
 
   //Falling piece
