@@ -102,10 +102,10 @@ void draw() {
   if (frame % 20 == 0) {
     currPiece = moveDown();
   }
-  /*if (keyPressed) {
+  if (keyPressed) {
       if (key == 'a')currPiece = rotateLeft();
       if (key == 'd')currPiece = rotateRight();
       if (key == 'z') currPiece = moveLeft();
       if (key =='x') currPiece = moveRight();
-    }*/
+    }
 }
