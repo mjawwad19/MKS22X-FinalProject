@@ -181,17 +181,14 @@ void keyPressed() {
     switch (key) {
       case 'a':
         currPiece = moveLeft();
-        keyLock = true;
         break;
 
       case 'd':
         currPiece = moveRight();
-        keyLock = true;
         break;
 
       case 's':
         currPiece = moveDown();
-        keyLock = true;
         break;
 
       case '-': //proof of concept: decrease level/speed
@@ -210,13 +207,13 @@ void keyPressed() {
         break;
 
       case 'k':
-      currPiece = rotateLeft();
-      keyLock = true;
-      break;
+        currPiece = rotateLeft();
+        keyLock = true;
+        break;
     }
   }
 }
 
-  void keyReleased() {
-    keyLock = false;
-  }
+void keyReleased() {
+  keyLock = false;
+}
