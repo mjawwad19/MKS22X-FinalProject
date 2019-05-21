@@ -30,7 +30,16 @@ void scoreCounter() {
 
   textFormatting();
   text("SCORE", width * 0.83, height * 0.16);
-  text(String.format("%06d", score), width * (0.83), height * 0.25);
+  text(String.format("%06d", score), width * 0.83, height * 0.25);
+}
+
+void levelCounter() {
+  boxFormatting();
+  rect(width * 0.83, height * 0.60, width * 0.20, height * 0.12);
+
+  textFormatting();
+  text("LEVEL", width * 0.83, height * 0.58);
+  text(String.format("%02d", level), width * 0.83, height * 0.63);
 }
 
 //Seems like this isn't even used, and yeah I know this isn't a counter

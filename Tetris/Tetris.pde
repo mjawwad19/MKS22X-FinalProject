@@ -2,6 +2,7 @@
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
+boolean keyLock = false;
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -21,7 +22,6 @@ float pFieldTopY;
 
 //For the counters
 int level, lines, score = 0;
-int speed; //not shown on-screen but calculated from the level via a switch statement
 
 Block[][] pField = new Block[20][10];
 float pieceY;
@@ -34,6 +34,17 @@ Piece chooseN() {
   return pieces[index];
 }
 */
+
+//Returns how many frames it takes a piece to fall down 1 line (e.g. 48 on level 0)
+int getSpeed() {
+  switch (level) {
+    case 0:
+      return 48;
+
+    default:
+      return 1;
+  }
+}
 
 void setup() {
   size(960, 720);
@@ -99,10 +110,29 @@ void draw() {
   frameCounter();
   lineCounter();
   scoreCounter();
+  levelCounter();
 
   //Falling piece
   shape(LPiece, pFieldLeftX + lineHeight * 4, pieceY);
-  if (frame % 48 == 0) {
+  if (frame % getSpeed() == 0) {
     pieceY += lineHeight;
   }
 }
+
+void keyPressed() {
+  if (!keyLock) {
+    if (key == '0') {
+      --level;
+      keyLock = true;
+    }
+
+    if (key == '1') {
+      ++level;
+      keyLock = true;
+    }
+  }
+}
+
+  void keyReleased() {
+    keyLock = false;
+  }
