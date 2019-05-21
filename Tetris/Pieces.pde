@@ -101,7 +101,7 @@ PShape createJ(int r) {
 }
 
 PShape createL(int r) {
-  maxRotation = 4;
+  maxRotations = 4;
   t = 'L';
   c = LPieceOrange;
   if (r==0) {
@@ -171,13 +171,33 @@ PShape createS(int r) {
   }
   return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, S);
 }
-PShape createZ() {
+
+PShape createZ(int r) {
   maxRotations = 2;
   c = ZPieceRed;
-  return createPiece(width/2 - lineHeight, height/2 -lineHeight, width/2, height/2 - lineHeight,
-    width/2, height/2,
-    width/2 + lineHeight, height/2, Z);
+  t = 'Z';
+  if (r == 0) {
+    nx1 =pFieldTopX - lh+ dx * lh;
+    nx2 =pFieldTopX+ dx * lh;
+    nx3 =pFieldTopX+ dx * lh;
+    nx4 =pFieldTopX + lh+ dx * lh;
+    ny1 =pFieldTopY + dy *lh;
+    ny2 =pFieldTopY + dy *lh;
+    ny3 =pFieldTopY + lh + dy *lh;
+    ny4 =pFieldTopY + lh + dy *lh;
+  } else {
+    nx1 =pFieldTopX - lh+ dx * lh;
+    nx2 =pFieldTopX - lh+ dx * lh;
+    nx3 =pFieldTopX+ dx * lh;
+    nx4 =pFieldTopX+ dx * lh;
+    ny1 =pFieldTopY + 2*lh + dy *lh;
+    ny2 =pFieldTopY + lh + dy *lh;
+    ny3 =pFieldTopY + lh + dy *lh;
+    ny4 =pFieldTopY + dy *lh;
+  }
+  return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, Z);
 }
+
 
 PShape createO() {
   maxRotations = 1;
