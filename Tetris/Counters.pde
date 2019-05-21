@@ -30,7 +30,24 @@ void scoreCounter() {
 
   textFormatting();
   text("SCORE", width * 0.83, height * 0.16);
-  text(String.format("%06d", score), width * (0.83), height * 0.25);
+  text(String.format("%06d", score), width * 0.83, height * 0.25);
+}
+
+void nextPieceCounter() {
+  boxFormatting();
+  rect(width * 0.805, height * 0.43, width * 0.15, height * 0.20);
+
+  textFormatting();
+  text("NEXT", width * 0.805, height * 0.39);
+}
+
+void levelCounter() {
+  boxFormatting();
+  rect(width * 0.82, height * 0.62, width * 0.18, height * 0.12);
+
+  textFormatting();
+  text("LEVEL", width * 0.82, height * 0.60);
+  text(String.format("%02d", level), width * 0.83, height * 0.65);
 }
 
 //Seems like this isn't even used, and yeah I know this isn't a counter
