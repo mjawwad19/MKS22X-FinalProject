@@ -1,119 +1,101 @@
-PShape IPiece, OPiece, JPiece, LPiece, SPiece, ZPiece, TPiece;
-
-void createPieces() {
-  //Create I piece shape
-  IPiece = createShape();
-  strokeWeight(2);
-  IPiece.beginShape();
-  IPiece.fill(IPieceTurqoise);
-  IPiece.vertex(0, 0);
-  IPiece.vertex(0, lineHeight * 4);
-  IPiece.vertex(lineHeight, lineHeight * 4);
-  IPiece.vertex(lineHeight, 0);
-  IPiece.endShape(CLOSE);
-
-  //Create O piece shape
-  OPiece = createShape();
-  OPiece.beginShape();
-  OPiece.fill(OPieceYellow);
-  OPiece.vertex(0, 0);
-  OPiece.vertex(0, lineHeight * 2);
-  OPiece.vertex(lineHeight * 2, lineHeight * 2);
-  OPiece.vertex(lineHeight * 2, 0);
-  OPiece.endShape(CLOSE);
-
-  //Create J piece shape
-  JPiece = createShape();
-  JPiece.beginShape();
-  JPiece.fill(JPieceBlue);
-  JPiece.vertex(0, 0);
-  JPiece.vertex(0, lineHeight * 1);
-  JPiece.vertex(lineHeight * 2, lineHeight * 1);
-  JPiece.vertex(lineHeight * 2, lineHeight * 2);
-  JPiece.vertex(lineHeight * 3, lineHeight * 2);
-  JPiece.vertex(lineHeight * 3, 0);
-  JPiece.endShape(CLOSE);
-
-  //Create L piece shape
-  LPiece = createShape();
-  LPiece.beginShape();
-  LPiece.fill(LPieceOrange);
-  LPiece.vertex(0, 0);
-  LPiece.vertex(lineHeight * 3, 0);
-  LPiece.vertex(lineHeight * 3, lineHeight * 1);
-  LPiece.vertex(lineHeight * 1, lineHeight * 1);
-  LPiece.vertex(lineHeight * 1, lineHeight * 2);
-  LPiece.vertex(0, lineHeight * 2);
-  LPiece.endShape(CLOSE);
-
-  //Create S piece shape
-  SPiece = createShape();
-  SPiece.beginShape();
-  SPiece.fill(SPieceGreen);
-  SPiece.vertex(lineHeight * 3, 0);
-  SPiece.vertex(lineHeight * 1, 0);
-  SPiece.vertex(lineHeight * 1, lineHeight * 1);
-  SPiece.vertex(0, lineHeight * 1);
-  SPiece.vertex(0, lineHeight * 2);
-  SPiece.vertex(lineHeight * 2, lineHeight * 2);
-  SPiece.vertex(lineHeight * 2, lineHeight * 1);
-  SPiece.vertex(lineHeight * 3, lineHeight * 1);
-  SPiece.endShape(CLOSE);
-
-  //Create Z piece shape
-  ZPiece = createShape();
-  ZPiece.beginShape();
-  ZPiece.fill(ZPieceRed);
-  ZPiece.vertex(0, 0);
-  ZPiece.vertex(lineHeight * 2, 0);
-  ZPiece.vertex(lineHeight * 2, lineHeight * 1);
-  ZPiece.vertex(lineHeight * 3, lineHeight * 1);
-  ZPiece.vertex(lineHeight * 3, lineHeight * 2);
-  ZPiece.vertex(lineHeight * 1, lineHeight * 2);
-  ZPiece.vertex(lineHeight * 1, lineHeight * 1);
-  ZPiece.vertex(0, lineHeight * 1);
-  ZPiece.endShape(CLOSE);
-
-  //Create T piece shape
-  TPiece = createShape();
-  TPiece.beginShape();
-  TPiece.fill(TPiecePurple);
-  TPiece.vertex(0, lineHeight * 1);
-  TPiece.vertex(lineHeight * 1, lineHeight * 1);
-  TPiece.vertex(lineHeight * 1, 0);
-  TPiece.vertex(lineHeight * 2, 0);
-  TPiece.vertex(lineHeight * 2, lineHeight * 1);
-  TPiece.vertex(lineHeight * 3, lineHeight * 1);
-  TPiece.vertex(lineHeight * 3, lineHeight * 2);
-  TPiece.vertex(0, lineHeight * 2);
-  TPiece.endShape(CLOSE);
+color c;
+PShape createPiece(float x1c, float y1c, float x2c, float y2c, float x3c, float y3c,
+  float x4c, float y4c, PShape temp) {
+  fill(c);
+  stroke(255);
+  temp = createShape(GROUP);
+  rectMode(CENTER);
+  b1 = createShape(RECT, x1c, y1c, lineHeight, lineHeight);
+  b2 = createShape(RECT, x2c, y2c, lineHeight, lineHeight);
+  b3 = createShape(RECT, x3c, y3c, lineHeight, lineHeight);
+  b4 = createShape(RECT, x4c, y4c, lineHeight, lineHeight);
+  temp.addChild(b1);
+  temp.addChild(b2);
+  temp.addChild(b3);
+  temp.addChild(b4);
+  x1 = x1c;
+  x2 = x2c;
+  x3 = x3c;
+  x4= x4c;
+  y1 = y1c;
+  y2 = y1c;
+  y3 = y3c;
+  y4 = y4c;
+  return temp;
 }
 
-class Pieces {
-  PShape piece;
-  int rotation = 0; //in degrees
+color getCol() {
+  return c;
+}
 
-  void rotateLeft() {
-
+PShape createI(int r) {
+  maxRotations = 2;
+  rotation = rotation % maxRotations;
+  c = IPieceTurqoise;
+  if (r == 0) {
+    x1 = width/2;
+    y1 = height/2 - lineHeight;
+    x2 = width/2;
+    y2 = height/2;
+    x3 = width/2;
+    y3 = height/2 + lineHeight;
+    x4 = width/2;
+    y4 = height/2 + 2* lineHeight;
+  } else {
+    x1 = width/2 - 2*lineHeight;
+    y1 = height/2 - lineHeight;
+    x2 = width/2 - lineHeight;
+    y2 = height/2 - lineHeight;
+    x3 = width/2;
+    y3 = height/2 - lineHeight;
+    x4 = width/2 + lineHeight;
+    y4 = height/2 - lineHeight;
   }
+  return createPiece(x1, y1, x2, y2, x3, y3, x4, y4, I);
+}
 
-  void rotateRight() {
+PShape createJ() {
+  maxRotations = 4;
+  c = JPieceBlue;
+  return createPiece(width/2, height/2 - lineHeight, width/2, height/2,
+    width/2, height/2 + lineHeight, width/2 - lineHeight, height/2 + lineHeight, J);
+}
 
-  }
+PShape createL() {
+  maxRotations = 4;
+  c = LPieceOrange;
+  return createPiece(width/2, height/2 - lineHeight, width/2, height/2,
+    width/2, height/2 + lineHeight, width/2 + lineHeight, height/2 +lineHeight, L);
+}
 
-  void forceDown() {
+PShape createS() {
+  maxRotations = 2;
+  c = SPieceGreen;
+  return createPiece(width/2 - lineHeight, height/2, width/2, height/2,
+    width/2, height/2 - lineHeight,
+    width/2 + lineHeight, height/2 - lineHeight,S);
+}
 
-  }
+PShape createZ() {
+  maxRotations = 2;
+  c = ZPieceRed;
+  return createPiece(width/2 - lineHeight, height/2 -lineHeight, width/2, height/2 - lineHeight,
+    width/2, height/2,
+    width/2 + lineHeight, height/2, Z);
+}
 
-  void moveLeft() {
+PShape createO() {
+  maxRotations = 1;
+  c = OPieceYellow;
+  return createPiece(width/2, height/2, width/2 + lineHeight, height/2,
+    width/2, height/2 + lineHeight,
+    width/2 +lineHeight, height/2 +lineHeight, O);
+}
 
-  }
-
-  void moveRight() {
-
-  }
-
-  void lock() {
-
-  }
+PShape createT() {
+  maxRotations = 4;
+  c = TPiecePurple;
+  return createPiece(width/2 - lineHeight, height/2, width/2, height/2,
+    width/2 + lineHeight, height/2,
+    width/2, height/2 +lineHeight, T);
 }
