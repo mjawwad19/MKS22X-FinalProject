@@ -100,7 +100,7 @@ void draw() {
   //Falling piece
    shape(currPiece);
   if (frame % 20 == 0) {
-    //currPiece = moveDown();
+    currPiece = moveDown();
   }
   /*if (keyPressed) {
       if (key == 'a')currPiece = rotateLeft();
