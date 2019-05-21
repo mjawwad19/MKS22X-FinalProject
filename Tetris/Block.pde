@@ -2,10 +2,10 @@ class Block {
   float x,y;
   color c;
 
-  Block(float posX, float posY, int r, int g, int b) {
+  Block(float posX, float posY, color c) {
     x = posX;
     y = posY;
-    c = color(r, g, b);
+    this.c = c;
   }
 
   void display() {
