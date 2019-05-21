@@ -29,7 +29,8 @@ float pFieldTopX;
 float pFieldTopY;
 
 //For the counters
-int level, lines, score = 0;
+int lines, score = 0;
+int level = 0;
 
 
 Block[][] pField = new Block[20][10];
@@ -183,16 +184,17 @@ void draw() {
 
 void keyPressed() {
   if (!keyLock) {
-    if (key == '-') {
-      if (level > 0)
-        --level;
+    switch (key) {
+      case '-': //proof of concept: decrease level/speed
+        if (level > 0) --level;
+        keyLock = true;
 
-      keyLock = true;
-    }
+      case '=':
+        ++level;
+        keyLock = true;
 
-    if (key == '=') {
-      ++level;
-      keyLock = true;
+      case 'j':
+        currPiece = rotateRight()
     }
   }
 }
