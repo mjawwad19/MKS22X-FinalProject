@@ -124,7 +124,8 @@ void setup() {
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
   pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
-  currPiece = determinePiece();
+  PShape firstPiece = determinePiece();
+  currPiece = firstPiece;
 
   //nextPiece changes t the second it is initialized which may screw over redrawing currPiece as it moves
   //nextPiece = determine();//createJ(0);//determine();
@@ -142,6 +143,7 @@ void draw() {
   levelCounter();
 
   //Falling piece
+
   shape(currPiece);
   if (frame % getSpeed() == 0) {
     if (pieceLocked) {
