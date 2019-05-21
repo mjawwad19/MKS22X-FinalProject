@@ -12,17 +12,23 @@ PShape rotateRight() {
 }
 
 PShape moveDown() {
-  dy++;
+  if (dy < 18)
+    dy++;
+
   return which();
 }
 
 PShape moveLeft() {
-  dx--;
+  if (dx > -4)
+    dx--;
+
   return which();
 }
 
 PShape moveRight() {
-  dx++;
+  if (dx < 3)
+    dx++;
+
   return which();
 }
 
