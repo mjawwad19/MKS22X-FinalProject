@@ -3,6 +3,12 @@ PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
 
+PShape b1, b2, b3, b4;
+float x1, x2, x3, x4, y1, y2, y3, y4;
+float nx1, nx2, nx3, nx4, ny1, ny2, ny3, ny4; //useful for checking bounds
+PShape I, O, J, L, S, Z, T;
+int rotation = 0;
+int maxRotation;
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
 color OPieceYellow = color(255, 255, 0);
