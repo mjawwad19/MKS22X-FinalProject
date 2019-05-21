@@ -101,6 +101,7 @@ void draw() {
    shape(currPiece);
   if (frame % 20 == 0) {
     currPiece = moveDown();
+    currPiece = rotateLeft();
   }
   if (keyPressed) {
       if (key == 'a')currPiece = rotateLeft();
