@@ -183,7 +183,7 @@ void draw() {
   if (frame % getSpeed() == 0) {
     if (pieceLocked) {
       dx = 0;
-      dy = 0;
+      dy = -1;
       currPiece = nextPiece;
       next = (int) random(7);
       nextPiece = determinePiece(next);
