@@ -23,6 +23,6 @@ class Block {
 
   //changes color to black. Useful for "deleting" a block
   void cColor() {
-    this.c = color(0,0,0);
+    this.c = black;
   }
 }

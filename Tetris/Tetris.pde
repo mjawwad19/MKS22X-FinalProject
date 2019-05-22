@@ -143,18 +143,19 @@ void draw() {
   levelCounter();
 
   //Falling piece
-
-  shape(currPiece);
   if (frame % getSpeed() == 0) {
     if (pieceLocked) {
       dx = 0;
       dy = 0;
+      curr = (int) random(7);
       currPiece = determinePiece();
       pieceLocked = false;
     }
 
     currPiece = moveDown();
   }
+
+  shape(currPiece);
 }
 
 void keyPressed() {
@@ -162,10 +163,12 @@ void keyPressed() {
     switch (key) {
       case 'a':
         currPiece = moveLeft();
+        keyLock = true;
         break;
 
       case 'd':
         currPiece = moveRight();
+        keyLock = true;
         break;
 
       case 's':
