@@ -61,7 +61,7 @@ PShape createJ(int r) {
   c = JPieceBlue;
   t = 'J';
   switch(r) {
-  case 0:
+  case 3:
     nx1 = pFieldTopX+ dx * lh;
     nx2 = pFieldTopX+ dx * lh;
     nx3 = pFieldTopX+ dx * lh;
@@ -71,7 +71,7 @@ PShape createJ(int r) {
     ny3 = pFieldTopY + 2*lh + dy *lh;
     ny4 = pFieldTopY + 2*lh + dy *lh;
     break;
-  case 1:
+  case 2:
     nx1 = pFieldTopX - lh+ dx * lh;
     nx2 = pFieldTopX+ dx * lh;
     nx3 = pFieldTopX + lh+ dx * lh;
@@ -81,7 +81,7 @@ PShape createJ(int r) {
     ny3 = pFieldTopY + dy *lh;
     ny4 = pFieldTopY + lh + dy *lh;
     break;
-  case 2:
+  case 1:
     nx1 = pFieldTopX - lh+ dx * lh;
     nx2 = pFieldTopX - lh+ dx * lh;
     nx3 = pFieldTopX - lh+ dx * lh;
@@ -91,7 +91,7 @@ PShape createJ(int r) {
     ny3 = pFieldTopY + dy *lh;
     ny4 = pFieldTopY + dy *lh;
     break;
-  case 3:
+  case 0:
     nx1 = pFieldTopX + lh+ dx * lh;
     nx2 = pFieldTopX+ dx * lh;
     nx3 = pFieldTopX - lh+ dx * lh;
@@ -110,7 +110,7 @@ PShape createL(int r) {
   t = 'L';
   c = LPieceOrange;
   switch(r) {
-  case 0:
+  case 3:
     nx1 =pFieldTopX+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX+ dx * lh;
@@ -120,7 +120,7 @@ PShape createL(int r) {
     ny3 =pFieldTopY + 2*lh + dy *lh;
     ny4 =pFieldTopY + 2*lh + dy *lh;
     break;//this is correct but is never displayed
-  case 1:
+  case 2:
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX + lh+ dx * lh;
@@ -130,7 +130,7 @@ PShape createL(int r) {
     ny3 =pFieldTopY + lh + dy *lh;
     ny4 =pFieldTopY + dy *lh;
     break;
-  case 2:
+  case 1:
     nx1 =pFieldTopX+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX+ dx * lh;
@@ -140,7 +140,7 @@ PShape createL(int r) {
     ny3 =pFieldTopY + dy *lh;
     ny4 =pFieldTopY + dy *lh;
     break;
-  case 3:
+  case 0:
     nx1 =pFieldTopX + lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX - lh+ dx * lh;
