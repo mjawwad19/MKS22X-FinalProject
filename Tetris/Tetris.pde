@@ -41,84 +41,77 @@ color black = color(0, 0, 0);
 int lines, score, level = 0;
 
 PShape determinePiece(int curr) {
-  //switch (curr) {
-  //case 0: 
-    if (curr == 0)return createI(0);
-  //case 1: 
-    else if (curr == 1)return createO(); //square can't rotate so no point
-  //case 2: 
-    else if (curr == 2)return createJ(0);
-  //case 3: 
-     else if (curr == 3)return createL(0);
-  //case 4: 
-     else if (curr == 4) return createS(0);
-  //case 5: 
-     else if (curr == 5)return createZ(0);
-  //default: 
-    else return createT(0); //case 6: the T piece
- // }
+  switch (curr) {
+    case 0: return createI(0);
+    case 1: return createO(); //square can't rotate so no point
+    case 2: return createJ(0);
+    case 3: return createL(0);
+    case 4: return createS(0);
+    case 5: return createZ(0);
+    default: return createT(0); //case 6: the T piece
+  }
 }
 
 //Returns how many frames it takes a piece to fall down 1 line (e.g. 48 on level 0)
 int getSpeed() {
   switch (level) {
-  case 0: 
+  case 0:
     return 48;
-  case 1: 
+  case 1:
     return 43;
-  case 2: 
+  case 2:
     return 38;
-  case 3: 
+  case 3:
     return 33;
-  case 4: 
+  case 4:
     return 28;
-  case 5: 
+  case 5:
     return 23;
-  case 6: 
+  case 6:
     return 18;
-  case 7: 
+  case 7:
     return 13;
-  case 8: 
+  case 8:
     return 8;
-  case 9: 
+  case 9:
     return 6;
-  case 10: 
+  case 10:
     return 5;
-  case 11: 
+  case 11:
     return 5;
-  case 12: 
+  case 12:
     return 5;
-  case 13: 
+  case 13:
     return 4;
-  case 14: 
+  case 14:
     return 4;
-  case 15: 
+  case 15:
     return 4;
-  case 16: 
+  case 16:
     return 3;
-  case 17: 
+  case 17:
     return 3;
-  case 18: 
+  case 18:
     return 3;
-  case 19: 
+  case 19:
     return 2;
-  case 20: 
+  case 20:
     return 2;
-  case 21: 
+  case 21:
     return 2;
-  case 22: 
+  case 22:
     return 2;
-  case 23: 
+  case 23:
     return 2;
-  case 24: 
+  case 24:
     return 2;
-  case 25: 
+  case 25:
     return 2;
-  case 26: 
+  case 26:
     return 2;
-  case 27: 
+  case 27:
     return 2;
-  case 28: 
+  case 28:
     return 2;
   default: //Level 29 and above: the kill screen
     return 1;
@@ -177,6 +170,7 @@ void draw() {
   scoreCounter();
   nextPieceCounter();
   levelCounter();
+  debug();
   //nextPiece = determinePiece();
 
   //Falling piece
@@ -199,44 +193,41 @@ void draw() {
 void keyPressed() {
   if (!keyLock) {
     switch (key) {
-    case '-': //proof of concept: decrease level/speed
-      if (level > 0) --level;
-      keyLock = true;
-      break;
+      case '-': //proof of concept: decrease level/speed
+        if (level > 0) --level;
+        keyLock = true;
+        break;
 
-    case '=':
-      ++level;
-      keyLock = true;
-      break;
+      case '=':
+        ++level;
+        keyLock = true;
+        break;
 
-    case 'z':
-      currPiece = rotateRight();
-      keyLock = true;
-      break;
+      case 'j':
+        currPiece = rotateRight();
+        keyLock = true;
+        break;
 
-    case 'x':
-      currPiece = rotateLeft();
-      keyLock = true;
-      break;
-   // }
-       //   if (key == CODED) {
-       // switch (keyCode) {
-        case 'a':
-          currPiece = moveLeft();
-          keyLock = true;
-          break;
+      case 'k':
+        currPiece = rotateLeft();
+        keyLock = true;
+        break;
 
-          //case RIGHT:
-        case 'd':
-          currPiece = moveRight();
-          keyLock = true;
-          break;
+      case 'a':
+        currPiece = moveLeft();
+        keyLock = true;
+        break;
 
-        case 's':
-          currPiece = moveDown();
-          break;
-        }
+      case 'd':
+        currPiece = moveRight();
+        keyLock = true;
+        break;
+
+      case 's':
+        currPiece = moveDown();
+        break;
       }
+    }
   }
 
 void keyReleased() {
