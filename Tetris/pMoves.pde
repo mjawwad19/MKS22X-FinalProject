@@ -12,7 +12,7 @@ PShape rotateRight() {
 }
 
 PShape moveDown() {
-  if (dy < 18)
+  if (dy < 19)
     dy++;
 
   else

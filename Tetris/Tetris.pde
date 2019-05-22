@@ -40,50 +40,86 @@ int lines, score, level = 0;
 
 PShape determinePiece() {
   switch (curr) {
-    case 0: return createI(0);
-    case 1: return createO(); //square can't rotate so no point
-    case 2: return createJ(0);
-    case 3: return createL(0);
-    case 4: return createS(0);
-    case 5: return createZ(0);
-    default: return createT(0); //case 6: the T piece
+  case 0: 
+    return createI(0);
+  case 1: 
+    return createO(); //square can't rotate so no point
+  case 2: 
+    return createJ(0);
+  case 3: 
+    return createL(0);
+  case 4: 
+    return createS(0);
+  case 5: 
+    return createZ(0);
+  default: 
+    return createT(0); //case 6: the T piece
   }
 }
 
 //Returns how many frames it takes a piece to fall down 1 line (e.g. 48 on level 0)
 int getSpeed() {
   switch (level) {
-    case 0: return 48;
-    case 1: return 43;
-    case 2: return 38;
-    case 3: return 33;
-    case 4: return 28;
-    case 5: return 23;
-    case 6: return 18;
-    case 7: return 13;
-    case 8: return 8;
-    case 9: return 6;
-    case 10: return 5;
-    case 11: return 5;
-    case 12: return 5;
-    case 13: return 4;
-    case 14: return 4;
-    case 15: return 4;
-    case 16: return 3;
-    case 17: return 3;
-    case 18: return 3;
-    case 19: return 2;
-    case 20: return 2;
-    case 21: return 2;
-    case 22: return 2;
-    case 23: return 2;
-    case 24: return 2;
-    case 25: return 2;
-    case 26: return 2;
-    case 27: return 2;
-    case 28: return 2;
-    default: //Level 29 and above: the kill screen
-      return 1;
+  case 0: 
+    return 48;
+  case 1: 
+    return 43;
+  case 2: 
+    return 38;
+  case 3: 
+    return 33;
+  case 4: 
+    return 28;
+  case 5: 
+    return 23;
+  case 6: 
+    return 18;
+  case 7: 
+    return 13;
+  case 8: 
+    return 8;
+  case 9: 
+    return 6;
+  case 10: 
+    return 5;
+  case 11: 
+    return 5;
+  case 12: 
+    return 5;
+  case 13: 
+    return 4;
+  case 14: 
+    return 4;
+  case 15: 
+    return 4;
+  case 16: 
+    return 3;
+  case 17: 
+    return 3;
+  case 18: 
+    return 3;
+  case 19: 
+    return 2;
+  case 20: 
+    return 2;
+  case 21: 
+    return 2;
+  case 22: 
+    return 2;
+  case 23: 
+    return 2;
+  case 24: 
+    return 2;
+  case 25: 
+    return 2;
+  case 26: 
+    return 2;
+  case 27: 
+    return 2;
+  case 28: 
+    return 2;
+  default: //Level 29 and above: the kill screen
+    return 1;
   }
 }
 
@@ -126,10 +162,13 @@ void setup() {
   pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
   PShape firstPiece = determinePiece();
   currPiece = firstPiece;
+  PShape secondPiece = determinePiece();
+  nextPiece = secondPiece;
 
   //nextPiece changes t the second it is initialized which may screw over redrawing currPiece as it moves
   //nextPiece = determine();//createJ(0);//determine();
 }
+
 
 void draw() {
   background(backgroundGray); //clear screen
@@ -148,7 +187,8 @@ void draw() {
       dx = 0;
       dy = 0;
       curr = (int) random(7);
-      currPiece = determinePiece();
+      currPiece = nextPiece;
+      nextPiece = determinePiece();
       pieceLocked = false;
     }
 
@@ -161,40 +201,44 @@ void draw() {
 void keyPressed() {
   if (!keyLock) {
     switch (key) {
-      case 'a':
-        currPiece = moveLeft();
-        keyLock = true;
-        break;
+    case '-': //proof of concept: decrease level/speed
+      if (level > 0) --level;
+      keyLock = true;
+      break;
 
-      case 'd':
-        currPiece = moveRight();
-        keyLock = true;
-        break;
+    case '=':
+      ++level;
+      keyLock = true;
+      break;
 
-      case 's':
-        currPiece = moveDown();
-        break;
+    case 'z':
+      currPiece = rotateRight();
+      keyLock = true;
+      break;
 
-      case '-': //proof of concept: decrease level/speed
-        if (level > 0) --level;
-        keyLock = true;
-        break;
-
-      case '=':
-        ++level;
-        keyLock = true;
-        break;
-
-      case 'j':
-        currPiece = rotateRight();
-        keyLock = true;
-        break;
-
-      case 'k':
-        currPiece = rotateLeft();
-        keyLock = true;
-        break;
+    case 'x':
+      currPiece = rotateLeft();
+      keyLock = true;
+      break;
     }
+          if (key == CODED) {
+        switch (keyCode) {
+        case LEFT:
+          currPiece = moveLeft();
+          keyLock = true;
+          break;
+
+          //case RIGHT:
+        case RIGHT:
+          currPiece = moveRight();
+          keyLock = true;
+          break;
+
+        case DOWN:
+          currPiece = moveDown();
+          break;
+        }
+      }
   }
 }
 
