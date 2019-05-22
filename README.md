@@ -38,11 +38,25 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - found a way to not cause epilepsy when rotating a piece YAY
     - helped Jawwad find 3 crucial typos in his piece creation
     - was a great rubber ducky to Jawwad and found his stupid mistakes and bugs and oversights.
-    - speed system demo: press the plus or minus keys to increase or decrease the levels which increase or decrease the speed of the pieces falling down respectively. 
+    - speed system demo: press the plus or minus keys to increase or decrease the levels which increase or decrease the speed of the pieces falling down respectively.
 
   - Jawwad: demoed in class to Mr.K/Kevin the rotation --- it's an epilepsy warning, as well as how to create individual pieces by children to Kevin
     - ported rotation (Right and Left) to his working branch!
     - fixed a rotation oversight that Kevin pointed out
     - ported ---spent the whole day drawing diagrams so he could figure out ALL of the x and y positions of each children of each rotation of each piece, and got them working and correct like a boss on his working branch!
     - added moving down/left/right (though without bounds) to his working branch
-    - **Needs to calm the hell down jesus.** 
+    - **Needs to calm the hell down jesus.**
+
+[Day 4] 5/21/19:
+  - merged all the movement stuff from Jawwad's branch in class
+  - Kevin:
+    -placed x bounds for pieces for moveleft and Right
+    - keybindings (though these may be subject to change, Jawwad and Reddit thinks this ain't a great combo of keys)
+    - level/speed increaser (this is just for visualization, in final version they will be impacted by score)
+    - converting repetitive if else statements to switches
+  - Jawwad:
+    - fixed bug that caused J's to generate to Ls and Os to Ts
+    - fixed bug where currPiece immediately converted to nextPiece after 1 moveDown (with the simplest dumbest way possible after long thought)
+    - fixed bug where nextPiece generation happened 1 below where it should have (with the simplest dumbest way possible after long thought)
+    - Fixed YBound restrictions on piece movement/rotation. This will be further expanded upon to check for any 'collision' with pieces already fed into the array.
+    
