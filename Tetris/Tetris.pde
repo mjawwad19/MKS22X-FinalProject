@@ -75,6 +75,7 @@ int getSpeed() {
     return 8;
   case 9:
     return 6;
+
   case 10:
     return 5;
   case 11:

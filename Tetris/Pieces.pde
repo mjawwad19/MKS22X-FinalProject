@@ -34,15 +34,6 @@ PShape createI(int r) {
   c = IPieceTurqoise;
   t = 'I';
   if (r == 0) {
-    nx1 = pFieldTopX + dx * lh;
-    ny1 = pFieldTopY + dy *lh;
-    nx2 = pFieldTopX+ dx * lh;
-    ny2 = pFieldTopY + lh + dy *lh;
-    nx3 = pFieldTopX+ dx * lh;
-    ny3 = pFieldTopY + 2*lh + dy *lh;
-    nx4 = pFieldTopX+ dx * lh;
-    ny4 = pFieldTopY + 3*lh + dy *lh;
-  } else {
     nx1 = pFieldTopX - 2*lh+ dx * lh;
     ny1 = pFieldTopY + dy *lh;
     nx2 = pFieldTopX - lh+ dx * lh;
@@ -51,6 +42,15 @@ PShape createI(int r) {
     ny3 = pFieldTopY + dy *lh;
     nx4 = pFieldTopX + lh+ dx * lh;
     ny4 = pFieldTopY + dy *lh;
+  } else {
+    nx1 = pFieldTopX + dx * lh;
+    ny1 = pFieldTopY + dy *lh;
+    nx2 = pFieldTopX+ dx * lh;
+    ny2 = pFieldTopY + lh + dy *lh;
+    nx3 = pFieldTopX+ dx * lh;
+    ny3 = pFieldTopY + 2*lh + dy *lh;
+    nx4 = pFieldTopX+ dx * lh;
+    ny4 = pFieldTopY + 3*lh + dy *lh;
   }
 
   return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, I);
