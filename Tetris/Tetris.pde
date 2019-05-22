@@ -1,3 +1,4 @@
+import java.util.*;
 //Useful globally
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
@@ -6,6 +7,7 @@ boolean keyLock = false;
 
 Block[][] pField = new Block[20][10];
 int curr = (int) random(7); //generates a random piece's index in its non rotated state.
+int next = (int) random(7);
 PShape currPiece, nextPiece;
 boolean pieceLocked = false;
 
@@ -38,23 +40,23 @@ color black = color(0, 0, 0);
 //For the counters
 int lines, score, level = 0;
 
-PShape determinePiece() {
-  switch (curr) {
-  case 0: 
-    return createI(0);
-  case 1: 
-    return createO(); //square can't rotate so no point
-  case 2: 
-    return createJ(0);
-  case 3: 
-    return createL(0);
-  case 4: 
-    return createS(0);
-  case 5: 
-    return createZ(0);
-  default: 
-    return createT(0); //case 6: the T piece
-  }
+PShape determinePiece(int curr) {
+  //switch (curr) {
+  //case 0: 
+    if (curr == 0)return createI(0);
+  //case 1: 
+    else if (curr == 1)return createO(); //square can't rotate so no point
+  //case 2: 
+    else if (curr == 2)return createJ(0);
+  //case 3: 
+     else if (curr == 3)return createL(0);
+  //case 4: 
+     else if (curr == 4) return createS(0);
+  //case 5: 
+     else if (curr == 5)return createZ(0);
+  //default: 
+    else return createT(0); //case 6: the T piece
+ // }
 }
 
 //Returns how many frames it takes a piece to fall down 1 line (e.g. 48 on level 0)
@@ -160,13 +162,8 @@ void setup() {
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
   pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
-  PShape firstPiece = determinePiece();
-  currPiece = firstPiece;
-  PShape secondPiece = determinePiece();
-  nextPiece = secondPiece;
-
-  //nextPiece changes t the second it is initialized which may screw over redrawing currPiece as it moves
-  //nextPiece = determine();//createJ(0);//determine();
+  currPiece = determinePiece(curr);
+  nextPiece = determinePiece(curr);
 }
 
 
@@ -180,15 +177,16 @@ void draw() {
   scoreCounter();
   nextPieceCounter();
   levelCounter();
+  //nextPiece = determinePiece();
 
   //Falling piece
   if (frame % getSpeed() == 0) {
     if (pieceLocked) {
       dx = 0;
       dy = 0;
-      curr = (int) random(7);
       currPiece = nextPiece;
-      nextPiece = determinePiece();
+      next = (int) random(7);
+      nextPiece = determinePiece(next);
       pieceLocked = false;
     }
 
@@ -220,27 +218,26 @@ void keyPressed() {
       currPiece = rotateLeft();
       keyLock = true;
       break;
-    }
-          if (key == CODED) {
-        switch (keyCode) {
-        case LEFT:
+   // }
+       //   if (key == CODED) {
+       // switch (keyCode) {
+        case 'a':
           currPiece = moveLeft();
           keyLock = true;
           break;
 
           //case RIGHT:
-        case RIGHT:
+        case 'd':
           currPiece = moveRight();
           keyLock = true;
           break;
 
-        case DOWN:
+        case 's':
           currPiece = moveDown();
           break;
         }
       }
   }
-}
 
 void keyReleased() {
   keyLock = false;
