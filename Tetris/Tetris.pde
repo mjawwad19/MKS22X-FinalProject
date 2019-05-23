@@ -196,16 +196,16 @@ int convertY(float ypos) {
 void feedIntoPField() {
   for (int i = 0; i < 20; ++i) { //20 rows
     for (int j = 0; j < 10; ++j) { //10 columns
-      if (convertY(y1) == i && convertX(x1) == j )
+      if (convertY(ny1) == i && convertX(nx1) == j )
         pField[i][j].cColor(c);
 
-      if (convertY(y2) == i && convertX(x2)== j )
+      if (convertY(ny2) == i && convertX(nx2)== j )
         pField[i][j].cColor(c);
 
-      if (convertY(y3)== i && convertX(x3)== j )
+      if (convertY(ny3)== i && convertX(nx3)== j )
         pField[i][j].cColor(c);
 
-      if (convertY(y4)== i && convertX(x4) == j )
+      if (convertY(ny4)== i && convertX(nx4) == j )
         pField[i][j].cColor(c);
     }
   }
@@ -253,7 +253,6 @@ void draw() {
   nextPieceCounter();
   levelCounter();
   debug();
-  //nextPiece = determinePiece();
 
   shape(currPiece);
 }
