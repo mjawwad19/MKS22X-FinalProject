@@ -16,7 +16,7 @@ PShape b1, b2, b3, b4; //the 4 blocks of a tetromino
 float x1, x2, x3, x4, y1, y2, y3, y4; //the corresponding coordinates
 float nx1, nx2, nx3, nx4, ny1, ny2, ny3, ny4; //useful for checking bounds
 PShape I, O, J, L, S, Z, T;
-int rotation = 0;
+int rotation = 24;
 int maxRotations;
 int dx = 0;
 int dy = 0;
