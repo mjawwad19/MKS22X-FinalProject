@@ -159,7 +159,7 @@ int getSpeed() {
   }
 }
 
-void drawPlayingField() {
+void setField() {
   float xB = pFieldWidth/20; //what do the 'B's mean? - Kevin
   float yB = pFieldHeight/40;
 
@@ -173,7 +173,9 @@ void drawPlayingField() {
     xB = pFieldWidth/20;
     yB += pFieldHeight/20;
   }
+}
 
+void displayField() {
   //Fill in the empty blocks with their actual values
   pushMatrix();
 
@@ -223,6 +225,8 @@ void setup() {
 
   currPiece = determinePiece(curr);
   nextPiece = determinePiece(curr);
+
+  setField();
 }
 
 
@@ -242,11 +246,11 @@ void draw() {
     }
 
     currPiece = moveDown();
-    feedIntoPField();
+    //feedIntoPField();
     println(printPFieldColors());
   }
 
-  drawPlayingField();
+  displayField();
 
   lineCounter();
   scoreCounter();
