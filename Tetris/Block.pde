@@ -22,7 +22,7 @@ class Block {
   }
 
   //changes color to black. Useful for "deleting" a block
-  void cColor() {
-    this.c = black;
+  void cColor(color col) {
+    this.c = col;
   }
 }

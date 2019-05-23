@@ -51,7 +51,7 @@ PShape determinePiece(int curr) {
     default: return createT(0); //case 6: the T piece
   }
 }
-
+//debug
 String printPFieldColors() {
   String output = "";
   for (int i = 0; i < 20; ++i) {
@@ -84,7 +84,7 @@ String printPFieldColors() {
       }
 
       else
-        output += "Blac ";
+        output += "____ ";
     }
 
     output += "\n";
@@ -187,20 +187,26 @@ void drawPlayingField() {
   popMatrix();
 }
 
+int convertX(float xpos) {
+  return (int) ((xpos - 350)/27);
+}
+int convertY(float ypos) {
+  return (int) ((ypos -150)/27);
+}
 void feedIntoPField() {
   for (int i = 0; i < 20; ++i) { //20 rows
     for (int j = 0; j < 10; ++j) { //10 columns
-      if ( (int)((y1 - 150) / 27) == i && (int)((x1 - 350) / 27) == j )
-        pField[i][j] = new Block(x1, y1, c);
+      if (convertY(y1) == i && convertX(x1) == j )
+        pField[i][j].cColor(c);
 
-      if ( (int)((y2 - 150) / 27) == i && (int)((x2 - 350) / 27) == j )
-        pField[i][j] = new Block(x2, y2, c);
+      if (convertY(y2) == i && convertX(x2)== j )
+        pField[i][j].cColor(c);
 
-      if ( (int)((y3 - 150) / 27) == i && (int)((nx3 - 350) / 27) == j )
-        pField[i][j] = new Block(x3, y3, c);
+      if (convertY(y3)== i && convertX(x3)== j )
+        pField[i][j].cColor(c);
 
-      if ( (int)((y4 - 150) / 27) == i && (int)((x4 - 350) / 27) == j )
-        pField[i][j] = new Block(x4, y4, c);
+      if (convertY(y4)== i && convertX(x4) == j )
+        pField[i][j].cColor(c);
     }
   }
 }
