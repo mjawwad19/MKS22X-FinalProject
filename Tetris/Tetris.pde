@@ -242,11 +242,12 @@ void draw() {
     }
 
     currPiece = moveDown();
-    feedIntoPField();
+    //feedIntoPField();
+    feed();
     println(printPFieldColors());
   }
 
-  drawPlayingField();
+  //drawPlayingField();
 
   lineCounter();
   scoreCounter();
