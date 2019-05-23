@@ -58,38 +58,38 @@ String printPFieldColors() {
     for (int j = 0; j < 10; ++j) {
       if (pField[i][j].gColor() == IPieceTurqoise)
         output += "Turq ";
-        
+
       else if (pField[i][j].gColor() == OPieceYellow) {
         output += "Yell ";
       }
-      
+
       else if (pField[i][j].gColor() == JPieceBlue) {
         output += "Blue ";
       }
-      
+
       else if (pField[i][j].gColor() == LPieceOrange) {
         output += "Oran ";
       }
-      
+
       else if (pField[i][j].gColor() == SPieceGreen) {
         output += "Gree ";
       }
-      
+
       else if (pField[i][j].gColor() == ZPieceRed) {
         output += "Redd ";
       }
-      
+
       else if (pField[i][j].gColor() == TPiecePurple) {
         output += "Purp ";
       }
-      
+
       else
         output += "Blac ";
     }
-      
+
     output += "\n";
   }
-  
+
   return output;
 }
 
