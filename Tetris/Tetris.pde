@@ -7,8 +7,7 @@ boolean keyLock = false;
 boolean paused = false;
 
 Block[][] pField = new Block[20][10];
-int curr = (int) random(7); //generates a random piece's index in its non rotated state.
-int next = (int) random(7);
+int curr = (int) random(7); //generates a random piece's index in its non rotated state (for setup)
 PShape currPiece, nextPiece;
 boolean pieceLocked = false;
 
@@ -76,7 +75,6 @@ int getSpeed() {
     return 8;
   case 9:
     return 6;
-
   case 10:
     return 5;
   case 11:
@@ -148,6 +146,24 @@ void drawPlayingField() {
   popMatrix();
 }
 
+void feedIntoPField() {
+  for (int i = 0; i < 20; ++i) { //20 rows
+    for (int j = 0; j < 10; ++j) { //10 columns
+      if ( (int)((y1 - 150) / 27) == i && (int)((x1 - 350) / 27) == j )
+        pField[i][j] = new Block(x1, y1, c);
+
+      if ( (int)((y1 - 150) / 27) == i && (int)((x2 - 350) / 27) == j )
+        pField[i][j] = new Block(x2, y2, c);
+
+      if ( (int)((y1 - 150) / 27) == i && (int)((x3 - 350) / 27) == j )
+        pField[i][j] = new Block(x3, y3, c);
+
+      if ( (int)((y1 - 150) / 27) == i && (int)((x4 - 350) / 27) == j )
+        pField[i][j] = new Block(x4, y4, c);
+    }
+  }
+}
+
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -157,6 +173,7 @@ void setup() {
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
   pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
+
   currPiece = determinePiece(curr);
   nextPiece = determinePiece(curr);
 }
@@ -181,11 +198,12 @@ void draw() {
       dx = 0;
       dy = -1;
       currPiece = nextPiece;
-      next = (int) random(7);
+      int next = (int) random(7);
       nextPiece = determinePiece(next);
       pieceLocked = false;
     }
 
+    feedIntoPField();
     currPiece = moveDown();
   }
 
@@ -195,7 +213,7 @@ void draw() {
 void keyPressed() {
   if (!keyLock) {
     switch (key) {
-      case 'p': //pause function
+      case (char)10: //pause function - this is the enter key
         if (looping) noLoop();
         else loop();
 

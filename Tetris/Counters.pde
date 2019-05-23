@@ -55,22 +55,22 @@ void debug() {
   //rect(width * 0.20, height * 0.50, width * 0.18, height * 0.12);
 
   textFormatting();
-  text("x1: " + x1, width * 0.20, height * 0.05);
-  text("y1: " + y1, width * 0.20, height * 0.10);
-  text("x2: " + x2, width * 0.20, height * 0.15);
-  text("y2: " + y2, width * 0.20, height * 0.20);
-  text("x3: " + x3, width * 0.20, height * 0.25);
-  text("y3: " + y3, width * 0.20, height * 0.30);
-  text("x4: " + x4, width * 0.20, height * 0.35);
-  text("y4: " + y4, width * 0.20, height * 0.40);
-  text("nx1 :" + nx1, width * 0.20, height * 0.45);
-  text("ny1 :" + ny1, width * 0.20, height * 0.50);
-  text("nx2 :" + nx2, width * 0.20, height * 0.55);
-  text("ny2 :" + ny2, width * 0.20, height * 0.60);
-  text("nx3 :" + nx3, width * 0.20, height * 0.65);
-  text("ny3 :" + ny3, width * 0.20, height * 0.70);
-  text("nx4 :" + nx4, width * 0.20, height * 0.75);
-  text("ny4 :" + ny4, width * 0.20, height * 0.80);
+  text("x1: " + x1, width * 0.18, height * 0.10);
+  text("y1: " + y1, width * 0.18, height * 0.15);
+  text("x2: " + x2, width * 0.18, height * 0.20);
+  text("y2: " + y2, width * 0.18, height * 0.25);
+  text("x3: " + x3, width * 0.18, height * 0.30);
+  text("y3: " + y3, width * 0.18, height * 0.35);
+  text("x4: " + x4, width * 0.18, height * 0.40);
+  text("y4: " + y4, width * 0.18, height * 0.45);
+  text("nx1 :" + nx1, width * 0.18, height * 0.50);
+  text("ny1 :" + ny1, width * 0.18, height * 0.55);
+  text("nx2 :" + nx2, width * 0.18, height * 0.60);
+  text("ny2 :" + ny2, width * 0.18, height * 0.65);
+  text("nx3 :" + nx3, width * 0.18, height * 0.70);
+  text("ny3 :" + ny3, width * 0.18, height * 0.75);
+  text("nx4 :" + nx4, width * 0.18, height * 0.80);
+  text("ny4 :" + ny4, width * 0.18, height * 0.85);
 }
 
 //Seems like this isn't even used, and yeah I know this isn't a counter
