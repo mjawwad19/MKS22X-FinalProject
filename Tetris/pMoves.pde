@@ -69,6 +69,5 @@ void feed() {
     pField[convertY(ny2)][convertX(nx2)].cColor(c);
     pField[convertY(ny3)][convertX(nx3)].cColor(c);
     pField[convertY(ny4)][convertX(nx4)].cColor(c);
-    pieceLocked = false;
   }
 }
