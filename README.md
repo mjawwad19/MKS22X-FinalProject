@@ -1,7 +1,7 @@
 # Classic Tetris in Processing
 This is the final project of AP Computer Science for the term of Spring 2019, and is a faithful recreation of NES Tetris, done in Processing-Java.
 
-Authors: Mohammad Jawwad (you want your actual name here?) and Kevin Li
+Authors: Mohammad Jawwad and Kevin Li
 
 Classic Tetris is different from more modern Tetris versions in that the gameplay may look slow due to the fact that there is no instant drop-down, holding pieces, and multiple piece preview. It requires a different way of thinking - you must make sure you build your stack to accommodate any piece that may be thrown at you (all of the pieces are not guaranteed to be dropped at least once every 12 pieces like modern Tetris). At some point, the hardest part of the game may be your ability to move pieces fast enough to a desired location.
 
@@ -9,16 +9,17 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 
 [Day 0] 5/17/19:
   - Jawwad created the repo and began the Block class.
+    - x, y, color, accesor and mutator for color.
 
 [Day 1] 5/18/19:
   - Kevin created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
-  - Kevin created PShapes for all 7 tetrominoes (colored appropriately). (He wanted to solo this)
+  - Kevin created PShapes for all 7 tetrominoes (colored appropriately). (He wanted to solo this) using vertices.
 
   - Jawwad, after some experimenting with numbers, was able to create a double array of blocks centered on top of the playing field.
     - In the future, the piece lock feature will feed blocks into this array!
 
 [Day 2] 5/19/19:
-  - Jawwad considered making the individual pieces implement a piece class... but nah.
+  - Jawwad considered making the individual pieces implement a piece class... but nah. Proved harder than it was worth.
     - Jawwad experiments and pushes through PShape Hell and tries to get a working piece with movement, or just not moving when not allowed
     - all work and no play makes jawwad a crazy man.
   - Jawwad figured out an easier way to create the pieces using PShape and children --- in line with how the the grid and blocks are formatted.
@@ -31,6 +32,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
   - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's.x and y. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
 
   - Kevin: Code reorganization
+    - removed black rectangle underneath pField because not needed.
 
 
 [Day 3] 5/20/19:
@@ -55,10 +57,12 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - level/speed increaser (this is just for visualization, in final version they will be impacted by score)
     - converting repetitive if else statements to switches
   - Jawwad:
-    - fixed bug that caused J's to generate to Ls and Os to Ts
-    - fixed bug where currPiece immediately converted to nextPiece after 1 moveDown (with the simplest dumbest way possible after long thought)
+    - fixed bug that caused J's to generate to Ls and Os to Ts ---typos from Kevin reorganizing switch statements
+    - fixed bug where currPiece immediately converted to nextPiece after 1 moveDown (with the simplest dumbest way possible after long thought
+      - have currPiece and 1st nextPiece be the same so immediate conversion won't change the shape! Then nextPiece updates as it randomly should
     - fixed bug where nextPiece generation happened 1 below where it should have (with the simplest dumbest way possible after long thought)
-    - Fixed YBound restrictions on piece movement/rotation. This will be further expanded upon to check for any 'collision' with pieces already fed into the array.
+      - this was fixed by setting dy to -1 instead of 0.
+    - Fixed YBound restrictions on piece movement/rotation. This will be further expanded upon to check for any 'collision' with pieces already fed into the array
     
 [Day 5] 5/22/19:
   - Both:
@@ -71,9 +75,12 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
   - Jawwad:
     - dying sick :/ so working out math/ making Kevin do stuff via Driver/Mapper relationship
      - research on noLoop and loop for pause
-    - cleaned up printing of the grid to be less jarring
+    - cleaned up printing of the grid to be less jarring to look at (don't display black!)
     - fixed bug at one child of pshape not converting into the array.
-    - [hopefully] fixed rotation left freeze bug when user rotates left too many times by changing rotation to a) 24 [multiple of 2, 4 and 1 maxRotations] and having the rotate functions store a local equivalent of rotation % maxRotation.
+      - the usage of ncoor vs coor is crucial here as some children will not show when rotated because they aren't updated in time
+    - [hopefully] fixed rotation left freeze bug when user rotates left too many times
+      - by changing rotation to 24 [multiple of 2, 4 and 1 maxRotations] 
+      - having the rotate functions store a local equivalent of rotation % maxRotation.
     
     Things to do now/Try to figure out:
       - lock a piece down by feeding into the array, and more importantly, keep it in the array.
