@@ -32,8 +32,9 @@ color getCol() {
 PShape createI(int r) {
   maxRotations = 2;
   c = IPieceTurqoise;
+  int tempR = r%maxRotations;
   t = 'I';
-  if (r == 0) {
+  if (tempR == 0) {
     nx1 = pFieldTopX - 2*lh+ dx * lh;
     ny1 = pFieldTopY + dy *lh;
     nx2 = pFieldTopX - lh+ dx * lh;
@@ -60,7 +61,8 @@ PShape createJ(int r) {
   maxRotations = 4;
   c = JPieceBlue;
   t = 'J';
-  switch(r) {
+  int tempR = r%maxRotations;
+  switch(tempR) {
   case 3:
     nx1 = pFieldTopX+ dx * lh;
     nx2 = pFieldTopX+ dx * lh;
@@ -109,7 +111,8 @@ PShape createL(int r) {
   maxRotations = 4;
   t = 'L';
   c = LPieceOrange;
-  switch(r) {
+  int tempR = r%maxRotations;
+  switch(tempR) {
   case 3:
     nx1 =pFieldTopX+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
@@ -158,7 +161,8 @@ PShape createS(int r) {
   maxRotations = 2;
   c = SPieceGreen;
   t = 'S';
-  if (r == 0) {
+  int tempR = r%maxRotations;
+  if (tempR == 0) {
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX+ dx * lh;
@@ -184,7 +188,8 @@ PShape createZ(int r) {
   maxRotations = 2;
   c = ZPieceRed;
   t = 'Z';
-  if (r == 0) {
+  int tempR = r%maxRotations;
+  if (tempR == 0) {
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX+ dx * lh;
@@ -226,7 +231,8 @@ PShape createT(int r) {
   maxRotations = 4;
   c = TPiecePurple;
   t = 'T';
-  if (r == 0) {
+  int tempR = r%maxRotations;
+  if (tempR == 0) {
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 = pFieldTopX + lh+ dx * lh;
@@ -235,7 +241,7 @@ PShape createT(int r) {
     ny2 =pFieldTopY + dy *lh;
     ny3 =pFieldTopY + dy *lh;
     ny4 =pFieldTopY + lh + dy *lh;
-  } else if (r == 1) {
+  } else if (tempR == 1) {
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX - lh+ dx * lh;
     nx3 =pFieldTopX -lh+ dx * lh;
@@ -244,7 +250,7 @@ PShape createT(int r) {
     ny2 =pFieldTopY +lh + dy *lh;
     ny3 =pFieldTopY + 2*lh + dy *lh;
     ny4 =pFieldTopY + lh + dy *lh;
-  } else if (r == 2) {
+  } else if (tempR == 2) {
     nx1 =pFieldTopX -lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX + lh+ dx * lh;
