@@ -52,6 +52,47 @@ PShape determinePiece(int curr) {
   }
 }
 
+String printPFieldColors() {
+  String output = "";
+  for (int i = 0; i < 20; ++i) {
+    for (int j = 0; j < 10; ++j) {
+      if (pField[i][j].gColor() == IPieceTurqoise)
+        output += "Turq ";
+        
+      else if (pField[i][j].gColor() == OPieceYellow) {
+        output += "Yell ";
+      }
+      
+      else if (pField[i][j].gColor() == JPieceBlue) {
+        output += "Blue ";
+      }
+      
+      else if (pField[i][j].gColor() == LPieceOrange) {
+        output += "Oran ";
+      }
+      
+      else if (pField[i][j].gColor() == SPieceGreen) {
+        output += "Gree ";
+      }
+      
+      else if (pField[i][j].gColor() == ZPieceRed) {
+        output += "Redd ";
+      }
+      
+      else if (pField[i][j].gColor() == TPiecePurple) {
+        output += "Purp ";
+      }
+      
+      else
+        output += "Blac ";
+    }
+      
+    output += "\n";
+  }
+  
+  return output;
+}
+
 //Returns how many frames it takes a piece to fall down 1 line (e.g. 48 on level 0)
 int getSpeed() {
   switch (level) {
@@ -183,15 +224,6 @@ void draw() {
   background(backgroundGray); //clear screen
   ++frame; //unless you have the program running a year in a row, this is never overflowing
 
-  drawPlayingField();
-
-  lineCounter();
-  scoreCounter();
-  nextPieceCounter();
-  levelCounter();
-  debug();
-  //nextPiece = determinePiece();
-
   //Falling piece
   if (frame % getSpeed() == 0) {
     if (pieceLocked) {
@@ -204,8 +236,18 @@ void draw() {
     }
 
     feedIntoPField();
+    println(printPFieldColors());
     currPiece = moveDown();
   }
+
+  drawPlayingField();
+
+  lineCounter();
+  scoreCounter();
+  nextPieceCounter();
+  levelCounter();
+  debug();
+  //nextPiece = determinePiece();
 
   shape(currPiece);
 }
