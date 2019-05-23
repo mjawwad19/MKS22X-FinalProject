@@ -13,7 +13,7 @@ class Block {
     fill(c);
 
     //It looks better blending in imo - Kevin
-    stroke(0); //border
+    stroke(255); //border
     rect(x, y, lh, lh);
   }
 

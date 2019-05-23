@@ -18,6 +18,7 @@ PShape rotateRight() {
 PShape moveDown() {
   if (Possible())
     dy++;
+
   else
     pieceLocked = true;
 

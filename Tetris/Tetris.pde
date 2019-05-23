@@ -190,16 +190,16 @@ void drawPlayingField() {
 void feedIntoPField() {
   for (int i = 0; i < 20; ++i) { //20 rows
     for (int j = 0; j < 10; ++j) { //10 columns
-      if ( (int)((ny1 - 150) / 27) == i && (int)((nx1 - 350) / 27) == j )
+      if ( (int)((y1 - 150) / 27) == i && (int)((x1 - 350) / 27) == j )
         pField[i][j] = new Block(x1, y1, c);
 
-      if ( (int)((ny2 - 150) / 27) == i && (int)((nx2 - 350) / 27) == j )
+      if ( (int)((y2 - 150) / 27) == i && (int)((x2 - 350) / 27) == j )
         pField[i][j] = new Block(x2, y2, c);
 
-      if ( (int)((ny3 - 150) / 27) == i && (int)((nx3 - 350) / 27) == j )
+      if ( (int)((y3 - 150) / 27) == i && (int)((nx3 - 350) / 27) == j )
         pField[i][j] = new Block(x3, y3, c);
 
-      if ( (int)((ny4 - 150) / 27) == i && (int)((x4 - 350) / 27) == j )
+      if ( (int)((y4 - 150) / 27) == i && (int)((x4 - 350) / 27) == j )
         pField[i][j] = new Block(x4, y4, c);
     }
   }
@@ -235,9 +235,9 @@ void draw() {
       pieceLocked = false;
     }
 
+    currPiece = moveDown();
     feedIntoPField();
     println(printPFieldColors());
-    currPiece = moveDown();
   }
 
   drawPlayingField();
