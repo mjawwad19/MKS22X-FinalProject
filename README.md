@@ -60,3 +60,24 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - fixed bug where nextPiece generation happened 1 below where it should have (with the simplest dumbest way possible after long thought)
     - Fixed YBound restrictions on piece movement/rotation. This will be further expanded upon to check for any 'collision' with pieces already fed into the array.
     
+[Day 5] 5/22/19:
+  - Both:
+    - debugging: print the grid 
+    - debugging: print all relevant info (xcorrds, y coords, ny coords, nx coords)
+  - Kevin:
+    - added pauser (press enter) using loop and noLoop
+    - conversion of x and y to array positions math
+    - fixed bug that caused I's to be constructed like | instead of __
+  - Jawwad:
+    - dying sick :/ so working out math/ making Kevin do stuff via Driver/Mapper relationship
+     - research on noLoop and loop for pause
+    - cleaned up printing of the grid to be less jarring
+    - fixed bug at one child of pshape not converting into the array.
+    - [hopefully] fixed rotation left freeze bug when user rotates left too many times by changing rotation to a) 24 [multiple of 2, 4 and 1 maxRotations] and having the rotate functions store a local equivalent of rotation % maxRotation.
+    
+    Things to do now/Try to figure out:
+      - lock a piece down by feeding into the array, and more importantly, keep it in the array.
+        - currently the issue is that currPiece gets locked when YBound is hit, fed into the array, and then changes to nextPiece. But nextpiece is not locked so the feeding of the array is now lost.
+     - "delete" a row/line and shift everything above it down
+      - score update when this happens
+      - display Next piece in box 
