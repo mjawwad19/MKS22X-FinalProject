@@ -18,7 +18,7 @@ float nx1, nx2, nx3, nx4, ny1, ny2, ny3, ny4; //useful for checking bounds
 PShape I, O, J, L, S, Z, T;
 int rotation = 24;
 int maxRotations;
-int dx = 0;
+int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
 
 //Piece colors
