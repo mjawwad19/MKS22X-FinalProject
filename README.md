@@ -9,7 +9,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 
 [Day 0] 5/17/19:
   - Jawwad created the repo and began the Block class.
-    - x, y, color, accesor and mutator for color.
+    - x, y, color, accessor, and mutator methods for color.
 
 [Day 1] 5/18/19:
   - Kevin created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
@@ -19,20 +19,19 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - In the future, the piece lock feature will feed blocks into this array!
 
 [Day 2] 5/19/19:
-  - Jawwad considered making the individual pieces implement a piece class... but nah. Proved harder than it was worth.
-    - Jawwad experiments and pushes through PShape Hell and tries to get a working piece with movement, or just not moving when not allowed
-    - all work and no play makes jawwad a crazy man.
-  - Jawwad figured out an easier way to create the pieces using PShape and children --- in line with how the the grid and blocks are formatted.
-    - This can be seen on the Experiments directory under EasyShapes: we will not be using it till we confirm for certain it can move and rotate correctly.
+  - Jawwad considered making the individual pieces implement a Piece class...but nah. Proved harder than it was worth.
+    - Jawwad experiments and pushes through PShape hell and tries to get a working piece with movement, or just not moving when not allowed
+    - All work and no play makes Jawwad a crazy man.
+  - Jawwad figured out an easier way to create the pieces using PShape and children, in line with how the the grid and blocks are formatted.
+    - This can be seen in the Experiments directory under EasyShapes: we will not be using it till we confirm for certain it can move and rotate correctly.
     - Huzzah Jawwad stayed up and figured out how to make rotate work:
       - hard code in x1, y1, x2, y2, x3, y3, x4, y4 for each rotation in a piece 'constructor'
       - make rotate return this constructor after modifying the rotation value
-      - set currpiece = the result of rotate
+      - set currPiece to the result of rotate
       - button presses after that :p
-  - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's.x and y. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
+  - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's x and y values. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
 
-  - Kevin: Code reorganization
-    - removed black rectangle underneath pField because not needed.
+  - Kevin: Code reorganization, removed black rectangle underneath pField because not needed, level system (can play with speeds using levels)
 
 
 [Day 3] 5/20/19:
@@ -50,7 +49,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - **Needs to calm the hell down jesus.**
 
 [Day 4] 5/21/19:
-  - merged all the movement stuff from Jawwad's branch in class
+  - mMrged all the movement stuff from Jawwad's branch in class
   - Kevin:
     -placed x bounds for pieces for moveleft and Right
     - keybindings (though these may be subject to change, Jawwad and Reddit thinks this ain't a great combo of keys)
@@ -69,7 +68,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - debugging: print the grid
     - debugging: print all relevant info (xcorrds, y coords, ny coords, nx coords)
   - Kevin:
-    - added pauser (press enter) using loop and noLoop
+    - added pause function (press enter) using loop and noLoop
     - conversion of x and y to array positions math
     - fixed bug that caused I's to be constructed like | instead of __
   - Jawwad:
