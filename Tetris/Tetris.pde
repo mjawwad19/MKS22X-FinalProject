@@ -260,6 +260,7 @@ void draw() {
 
   if (gameOver) {
     noLoop();
+    gameOverScreen();
   }
 }
 

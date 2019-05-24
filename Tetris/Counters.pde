@@ -74,7 +74,9 @@ void debug() {
 }
 
 //Seems like this isn't even used, and yeah I know this isn't a counter
-void playingFieldBox() {
+void gameOverScreen() {
   boxFormatting();
-  rect(width * 0.50, height * 0.55, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
+  rect(width * 0.50, height * 0.565, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
+  textFormatting();
+  text("GG!", width * 0.50, height * 0.565);
 }
