@@ -199,7 +199,6 @@ void feedIntoPField() {
   for (int i = 0; i < 20; ++i) { //20 rows
     for (int j = 0; j < 10; ++j) { //10 columns
       if (convertY(ny1) == i && convertX(nx1) == j )
-        pField[i][j].cColor(c);
 
       if (convertY(ny2) == i && convertX(nx2)== j )
         pField[i][j].cColor(c);
@@ -228,7 +227,6 @@ void setup() {
 
   setField();
 }
-
 
 void draw() {
   background(backgroundGray); //clear screen

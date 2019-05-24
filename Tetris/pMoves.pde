@@ -22,6 +22,9 @@ PShape moveDown() {
   else
     pieceLocked = true;
 
+  if (dy < 0)
+    delay(100000);
+
   return which();
 }
 
@@ -42,19 +45,19 @@ PShape moveRight() {
 //For when you read this: I'm still not sure what t does.
 PShape which() {
   switch (t) {
-  case 'I': 
+  case 'I':
     return createI(rotation);
-  case 'J': 
+  case 'J':
     return createJ(rotation);
-  case 'L': 
+  case 'L':
     return createL(rotation);
-  case 'S': 
+  case 'S':
     return createS(rotation);
-  case 'Z': 
+  case 'Z':
     return createZ(rotation);
-  case 'O': 
+  case 'O':
     return createO();
-  default: 
+  default:
     return createT(rotation); //case 'T'
   }
 }
