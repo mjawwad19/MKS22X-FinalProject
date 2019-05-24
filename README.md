@@ -104,5 +104,5 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
         - Issue #3: similar to Issue #3 and #0, a piece rotating last second may also cause the piece to generate the next piece without locking.
         - freaks out if the top is reached/ 1 away from the top because the piece locks and immediately generates out.
         -we need to code in a game over when this occurs to prevent this.
-    - Kevin:
-      - separated displaying/construction of field to keep a locked piece in the field instead of redrawing a clean board every frame. This allows locking to feed into the field array and be saved.
+  - Kevin:
+    - separated displaying/construction of field to keep a locked piece in the field instead of redrawing a clean board every frame. This allows locking to feed into the field array and be saved.
