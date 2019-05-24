@@ -5,6 +5,7 @@ int frame = 0; //helpful to keep track of as the speed of the game is based on 6
 color backgroundGray = color(64, 71, 71);
 boolean keyLock = false;
 boolean paused = false;
+boolean gameOver = false;
 
 Block[][] pField = new Block[20][10];
 int curr = (int) random(7); //generates a random piece's index in its non rotated state (for setup)
@@ -256,6 +257,10 @@ void draw() {
   debug();
 
   shape(currPiece);
+
+  if (gameOver) {
+    noLoop();
+  }
 }
 
 void keyPressed() {

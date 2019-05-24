@@ -23,7 +23,7 @@ PShape moveDown() {
     pieceLocked = true;
 
   if (dy < 0)
-    delay(100000);
+    gameOver = true;
 
   return which();
 }
