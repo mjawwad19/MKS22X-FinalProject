@@ -91,18 +91,18 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 
 
  [Day 6] 5/23/19
-    - Jawwad:
-      - made a rudimentary lock that needs to be improved upon
+  - Jawwad:
+    - made a rudimentary lock that needs to be improved upon
         - only works on the bottom layer and semi works on top of other pieces:
-          - Issue #0: calling moveDown() manually by the S Key on a piece right above any Y bound/collision will cause the piece to not get locked at all, but instead generate the next piece.
-            - we want it to lock regardless if moveDown() is also called manually.
-          - Issue #1: a piece may be able to rotate outside of the grid by x/when it is not rotated, is bound 1 away from the edges of the grid.
-            - specifically piece I on the left side for rotation.
-            - In both the right and left, I isn't able to be at the rightmost or left most edge when in | rotation. O is not allowed either. Neighter is Z when upright, J upright, L upright etc. This may have to do with using dx/dy when we should be using convertX/convertY
-            - The intended behavior is to not allow rotation at all at these areas if the piece will be outside the board, but also to allow a piece to move as far right/left as possible in it's current rotation;
-          - Issue #2: similar to Issue #1, a piece may rotate last second onTOP of a piece that has been locked in place, instead of restricting that rotation.
-          - Issue #3: similar to Issue #3 and #0, a piece rotating last second may also cause the piece to generate the next piece without locking.
+        - Issue #0: calling moveDown() manually by the S Key on a piece right above any Y bound/collision will cause the piece to not get locked at all, but instead generate the next piece.
+          - we want it to lock regardless if moveDown() is also called manually.
+        - Issue #1: a piece may be able to rotate outside of the grid by x/when it is not rotated, is bound 1 away from the edges of the grid.
+          - specifically piece I on the left side for rotation.
+          - In both the right and left, I isn't able to be at the rightmost or left most edge when in | rotation. O is not allowed either. Neighter is Z when upright, J upright, L upright etc. This may have to do with using dx/dy when we should be using convertX/convertY
+          - The intended behavior is to not allow rotation at all at these areas if the piece will be outside the board, but also to allow a piece to move as far right/left as possible in it's current rotation;
+        - Issue #2: similar to Issue #1, a piece may rotate last second onTOP of a piece that has been locked in place, instead of restricting that rotation.
+        - Issue #3: similar to Issue #3 and #0, a piece rotating last second may also cause the piece to generate the next piece without locking.
         - freaks out if the top is reached/ 1 away from the top because the piece locks and immediately generates out.
-          -we need to code in a game over when this occurs to prevent this.
+        -we need to code in a game over when this occurs to prevent this.
     - Kevin:
       - separated displaying/construction of field to keep a locked piece in the field instead of redrawing a clean board every frame. This allows locking to feed into the field array and be saved.
