@@ -63,10 +63,10 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - fixed bug where nextPiece generation happened 1 below where it should have (with the simplest dumbest way possible after long thought)
       - this was fixed by setting dy to -1 instead of 0.
     - Fixed YBound restrictions on piece movement/rotation. This will be further expanded upon to check for any 'collision' with pieces already fed into the array
-    
+
 [Day 5] 5/22/19:
   - Both:
-    - debugging: print the grid 
+    - debugging: print the grid
     - debugging: print all relevant info (xcorrds, y coords, ny coords, nx coords)
   - Kevin:
     - added pauser (press enter) using loop and noLoop
@@ -79,12 +79,30 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - fixed bug at one child of pshape not converting into the array.
       - the usage of ncoor vs coor is crucial here as some children will not show when rotated because they aren't updated in time
     - [hopefully] fixed rotation left freeze bug when user rotates left too many times
-      - by changing rotation to 24 [multiple of 2, 4 and 1 maxRotations] 
+      - by changing rotation to 24 [multiple of 2, 4 and 1 maxRotations]
       - having the rotate functions store a local equivalent of rotation % maxRotation.
-    
+
     Things to do now/Try to figure out:
       - lock a piece down by feeding into the array, and more importantly, keep it in the array.
         - currently the issue is that currPiece gets locked when YBound is hit, fed into the array, and then changes to nextPiece. But nextpiece is not locked so the feeding of the array is now lost.
      - "delete" a row/line and shift everything above it down
       - score update when this happens
-      - display Next piece in box 
+      - display Next piece in box
+
+
+ [Day 6] 5/23/19
+    - Jawwad:
+      - made a rudimentary lock that needs to be improved upon
+        - only works on the bottom layer and semi works on top of other pieces:
+          - Issue #0: calling moveDown() manually by the S Key on a piece right above any Y bound/collision will cause the piece to not get locked at all, but instead generate the next piece.
+            - we want it to lock regardless if moveDown() is also called manually.
+          - Issue #1: a piece may be able to rotate outside of the grid by x/when it is not rotated, is bound 1 away from the edges of the grid.
+            - specifically piece I on the left side for rotation.
+            - In both the right and left, I isn't able to be at the rightmost or left most edge when in | rotation. O is not allowed either. Neighter is Z when upright, J upright, L upright etc. This may have to do with using dx/dy when we should be using convertX/convertY
+            - The intended behavior is to not allow rotation at all at these areas if the piece will be outside the board, but also to allow a piece to move as far right/left as possible in it's current rotation;
+          - Issue #2: similar to Issue #1, a piece may rotate last second onTOP of a piece that has been locked in place, instead of restricting that rotation.
+          - Issue #3: similar to Issue #3 and #0, a piece rotating last second may also cause the piece to generate the next piece without locking.
+        - freaks out if the top is reached/ 1 away from the top because the piece locks and immediately generates out.
+          -we need to code in a game over when this occurs to prevent this.
+    - Kevin:
+      - separated displaying/construction of field to keep a locked piece in the field instead of redrawing a clean board every frame. This allows locking to feed into the field array and be saved.
