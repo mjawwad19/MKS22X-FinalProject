@@ -167,7 +167,7 @@ int getSpeed() {
 }
 
 void setField() {
-  float xB = pFieldWidth/20; //what do the 'B's mean? - Kevin
+  float xB = pFieldWidth/20;
   float yB = pFieldHeight/40;
 
   //Draw the empty playing field (everything is a block)
@@ -222,6 +222,39 @@ void feedIntoPField() {
   }
 }
 
+void userControls() {
+  if (aPressed) ++framesAPressed;
+  if (dPressed) ++framesDPressed;
+  if (sPressed) ++framesSPressed;
+
+  if (framesAPressed == 1) //if you wish to tap instead of using the auto-shift
+    currPiece = moveLeft();
+
+  /*
+  The exact mechanics of DAS in NES Tetris:
+  - Wait 16 frames after the first initial movement
+  - Every subsequent movement takes 6 frames
+  */
+  else if (framesAPressed == 16) {
+    currPiece = moveLeft();
+    framesAPressed = 10;
+  }
+
+  if (framesDPressed == 1)
+    currPiece = moveRight();
+
+  else if (framesDPressed == 16) {
+    currPiece = moveRight();
+    framesDPressed = 10;
+  }
+
+  //forceDown a piece. Go down a line every 2 frames S is held down.
+  if (framesSPressed == 2) {
+    currPiece = moveDown();
+    framesSPressed = 0;
+  }
+}
+
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -251,38 +284,13 @@ void draw() {
       int next = (int) random(7);
       nextPiece = determinePiece(next);
       pieceLocked = false;
-      println(printPFieldColors());
     }
 
     currPiece = moveDown();
     feed();
   }
 
-  if (aPressed) ++framesAPressed;
-  if (dPressed) ++framesDPressed;
-  if (sPressed) ++framesSPressed;
-
-  if (framesAPressed == 1)
-    currPiece = moveLeft();
-
-  else if (framesAPressed == 16) {
-    currPiece = moveLeft();
-    framesAPressed = 10;
-  }
-
-  if (framesDPressed == 1)
-    currPiece = moveRight();
-
-  else if (framesDPressed == 16) {
-    currPiece = moveRight();
-    framesDPressed = 10;
-  }
-
-  if (framesSPressed == 2) {
-    currPiece = moveDown();
-    framesSPressed = 0;
-  }
-
+  userControls();
   displayField();
   lineCounter();
   scoreCounter();
@@ -292,9 +300,11 @@ void draw() {
 
   shape(currPiece);
 
+  //For debugging purposes: check frames a key has been held down (DAS)
   textFormatting();
-  text(framesAPressed, width - 70, height - 70);
-  text(framesDPressed, width - 70, height - 40);
+  text("A: " + framesAPressed, width - 70, height - 150);
+  text("D: " + framesDPressed, width - 70, height - 120);
+  text("S: " + framesSPressed, width - 70, height - 90);
 
   if (gameOver) {
     noLoop();
@@ -322,20 +332,20 @@ void keyPressed() {
       }
 
       break;
-    case 'a':
+    case 'a': //left
       aPressed = true;
       break;
-    case 'd':
+    case 'd': //right
       dPressed = true;
       break;
-    case 's':
+    case 's': //down
       sPressed = true;
       break;
-    case 'j':
+    case 'j': //rotate counterclockwise
       jPressed = true;
       currPiece = rotateLeft();
       break;
-    case 'k':
+    case 'k': //rotate clockwise
       kPressed = true;
       currPiece = rotateRight();
       break;
