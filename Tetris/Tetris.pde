@@ -333,9 +333,11 @@ void keyPressed() {
       break;
     case 'j':
       jPressed = true;
+      currPiece = rotateLeft();
       break;
     case 'k':
       kPressed = true;
+      currPiece = rotateRight();
       break;
   }
 }
