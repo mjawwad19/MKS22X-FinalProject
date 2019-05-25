@@ -108,8 +108,9 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     
  [Day 8] 5/25/19
  - Kevin:
-  - Implemented fluid movement so that movement registers the frame after a key is registered (overhauled key handling per Mr. K's suggestions in class), includes forcing down a piece and rotations
-  - Implemented the DAS movement style down to the frame
-  - Fixed a bug where the rotation saved so that a new block spawned isn't in the default rotation, also small rotation fixes
-  - Piece lock delay to mimic NES Tetris (this could be causing an issue with pieces being fed in multiple times, not sure yet)
-  - A game over ANIMATION
+    - Implemented fluid movement so that movement registers the frame after a key is registered (overhauled key handling per Mr. K's suggestions in class), includes forcing down a piece and rotations
+    - Implemented the DAS movement style down to the frame
+    - Next piece counter now works
+    - Fixed a bug where the rotation saved so that a new block spawned isn't in the default rotation, also small rotation fixes
+    - Piece lock delay to mimic NES Tetris (this could be causing an issue with pieces being fed in multiple times, not sure yet)
+    - A game over ANIMATION
