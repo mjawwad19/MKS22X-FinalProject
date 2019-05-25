@@ -1,6 +1,6 @@
 float YBound = pFieldTopY + 24*lh; //20 from just pfield but then another 4 because of the lowest a piece child is (rect)
 PShape rotateLeft() {
-  if (Possible() && collision()) {
+  if (collision()) {
     if (rotation == 0) rotation = maxRotations - 1;
     else rotation--; //to ensure looping back to the correct rotation index
   } else pieceLocked = true;
@@ -8,7 +8,7 @@ PShape rotateLeft() {
 }
 
 PShape rotateRight() {
-  if (Possible() && collision()) {
+  if (collision()) {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
   } else pieceLocked = true;
@@ -16,7 +16,7 @@ PShape rotateRight() {
 }
 
 PShape moveDown() {
-  if (Possible() && collision())
+  if (bottomBounds())
     dy++;
 
   else
@@ -29,14 +29,14 @@ PShape moveDown() {
 }
 
 PShape moveLeft() {
-  if (dx > -4)
+  if (leftBounds())
     dx--;
 
   return which();
 }
 
 PShape moveRight() {
-  if (dx < 3)
+  if (rightBounds())
     dx++;
 
   return which();
@@ -65,11 +65,50 @@ boolean Possible() {
   return (ny1 <= YBound && ny2 <= YBound && ny3 <= YBound && ny4 <= YBound);
 }
 
+boolean leftBounds() {
+  try {
+    return (pField[convertY(y1)][convertX(x1) - 1].getColor() == black) &&
+           (pField[convertY(y2)][convertX(x2) - 1].getColor() == black) &&
+           (pField[convertY(y3)][convertX(x3) - 1].getColor() == black) &&
+           (pField[convertY(y4)][convertX(x4) - 1].getColor() == black);
+  }
+
+  catch (ArrayIndexOutOfBoundsException e) {
+    return false;
+  }
+}
+
+boolean rightBounds() {
+  try {
+    return (pField[convertY(y1)][convertX(x1) + 1].getColor() == black) &&
+           (pField[convertY(y2)][convertX(x2) + 1].getColor() == black) &&
+           (pField[convertY(y3)][convertX(x3) + 1].getColor() == black) &&
+           (pField[convertY(y4)][convertX(x4) + 1].getColor() == black);
+  }
+
+  catch (ArrayIndexOutOfBoundsException e) {
+    return false;
+  }
+}
+
+boolean bottomBounds() {
+  try {
+    return (pField[convertY(y1) + 1][convertX(x1)].getColor() == black) &&
+           (pField[convertY(y2) + 1][convertX(x2)].getColor() == black) &&
+           (pField[convertY(y3) + 1][convertX(x3)].getColor() == black) &&
+           (pField[convertY(y4) + 1][convertX(x4)].getColor() == black);
+  }
+
+  catch (ArrayIndexOutOfBoundsException e) {
+    return false;
+  }
+}
+
 boolean collision() {
-    return (pField[convertY(y1) +1][convertX(x1)].getColor() == black &&
-    pField[convertY(y2)+1][convertX(x2)].getColor() == black &&
-    pField[convertY(y3)+1][convertX(x3)].getColor() == black &&
-    pField[convertY(y4)+1][convertX(x4)].getColor() == black);
+    return (pField[convertY(y1) + 1][convertX(x1)].getColor() == black) && //check below
+           (pField[convertY(y2) + 1][convertX(x2)].getColor() == black) &&
+           (pField[convertY(y3) + 1][convertX(x3)].getColor() == black) &&
+           (pField[convertY(y4) + 1][convertX(x4)].getColor() == black);
 }
 
 void feed() {

@@ -296,9 +296,6 @@ void draw() {
     currPiece = moveDown();
   }
 
-  text("locked: " + pieceLocked, width * 0.2, height * 0.5);
-  text("frames: " + framesPieceLocked, width * 0.2, height * 0.53);
-
   userControls();
   displayField();
   lineCounter();
