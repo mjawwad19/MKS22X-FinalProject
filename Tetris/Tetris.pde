@@ -17,6 +17,7 @@ PShape currPiece;
 int curr = (int) random(7); //for setup
 int next = (int) random(7);
 boolean pieceLocked = false;
+int framesPieceLocked = 0;
 
 PShape b1, b2, b3, b4; //the 4 blocks of a tetromino
 float x1, x2, x3, x4, y1, y2, y3, y4; //the corresponding coordinates
@@ -276,10 +277,12 @@ void setup() {
 void draw() {
   background(backgroundGray); //clear screen
   ++frame; //unless you have the program running a year in a row, this is never overflowing
+  if (pieceLocked) ++framesPieceLocked;
 
-  //Falling piece
+  //Controls the speed of the game
   if (frame % getSpeed() == 0) {
-    if (pieceLocked) {
+    //Choose a new piece
+    if (pieceLocked && framesPieceLocked >= 6) {
       dx = 0;
       dy = -1;
       curr = next;
@@ -287,13 +290,14 @@ void draw() {
       next = (int) random(7);
       rotation = 0;
       pieceLocked = false;
+      framesPieceLocked = 0;
     }
 
     currPiece = moveDown();
   }
 
-  text("curr: " + curr, width * 0.2, height * 0.5);
-  text("next: " + next, width * 0.2, height * 0.55);
+  text("locked: " + pieceLocked, width * 0.2, height * 0.5);
+  text("frames: " + framesPieceLocked, width * 0.2, height * 0.53);
 
   userControls();
   displayField();
