@@ -111,6 +111,10 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - Implemented fluid movement so that movement registers the frame after a key is registered (overhauled key handling per Mr. K's suggestions in class), includes forcing down a piece and rotations
     - Implemented the DAS movement style down to the frame
     - Next piece counter now works
-    - Fixed a bug where the rotation saved so that a new block spawned isn't in the default rotation, also small rotation fixes
+    - Fixed a bug where the rotation saved so that a new block spawned isn't in the default rotation
     - Piece lock delay to mimic NES Tetris (this could be causing an issue with pieces being fed in multiple times, not sure yet)
     - A game over ANIMATION
+ - Jawwad is still sick but doesn't want to be complacent
+    - trying to figure out why edge rotation won't work
+      - crazy idea but what if we make the grid 12 by 20 but only have the center 10 be black? That should allow rotation at the "edges"
+    - Fixed centered rotation for S/Z/L pieces after Kevin gave classic NES Tetris videos showing that our hardcoded rotations were shifted down or to the right when they shouldn't have been
