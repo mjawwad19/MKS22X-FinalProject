@@ -1,4 +1,3 @@
-float YBound = pFieldTopY + 24*lh; //20 from just pfield but then another 4 because of the lowest a piece child is (rect)
 PShape rotateLeft() {
   if (leftBounds() && rightBounds()) {
     if (rotation == 0) rotation = maxRotations - 1;
@@ -61,10 +60,6 @@ PShape which() {
   }
 }
 
-boolean Possible() {
-  return (ny1 <= YBound && ny2 <= YBound && ny3 <= YBound && ny4 <= YBound);
-}
-
 boolean leftBounds() {
   try {
     return (pField[convertY(y1)][convertX(x1) - 1].getColor() == black) &&
@@ -102,13 +97,6 @@ boolean bottomBounds() {
   catch (ArrayIndexOutOfBoundsException e) {
     return false;
   }
-}
-
-boolean collision() {
-    return (pField[convertY(y1) + 1][convertX(x1)].getColor() == black) && //check below
-           (pField[convertY(y2) + 1][convertX(x2)].getColor() == black) &&
-           (pField[convertY(y3) + 1][convertX(x3)].getColor() == black) &&
-           (pField[convertY(y4) + 1][convertX(x4)].getColor() == black);
 }
 
 void feed() {
