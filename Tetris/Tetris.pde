@@ -1,11 +1,16 @@
 import java.util.*;
+
 //Useful globally
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
-boolean keyLock = false;
 boolean paused = false;
 boolean gameOver = false;
+
+//Key handling
+boolean keyLock = false; //for keys not directly affecting the game
+boolean aPressed, dPressed, sPressed, jPressed, kPressed = false;
+int framesAPressed, framesDPressed = 0;
 
 Block[][] pField = new Block[20][10];
 int curr = (int) random(7); //generates a random piece's index in its non rotated state (for setup)
@@ -52,7 +57,8 @@ PShape determinePiece(int curr) {
     default: return createT(0); //case 6: the T piece
   }
 }
-//debug
+
+//For debugging purposes
 String printPFieldColors() {
   String output = "";
   for (int i = 0; i < 20; ++i) {
@@ -191,15 +197,18 @@ void displayField() {
 }
 
 int convertX(float xpos) {
-  return (int) ((xpos - 350)/27);
+  return (int) ((xpos - 350) / 27);
 }
+
 int convertY(float ypos) {
-  return (int) ((ypos -150)/27);
+  return (int) ((ypos - 150) / 27);
 }
+
 void feedIntoPField() {
   for (int i = 0; i < 20; ++i) { //20 rows
     for (int j = 0; j < 10; ++j) { //10 columns
       if (convertY(ny1) == i && convertX(nx1) == j )
+        pField[i][j].cColor(c);
 
       if (convertY(ny2) == i && convertX(nx2)== j )
         pField[i][j].cColor(c);
@@ -242,21 +251,44 @@ void draw() {
       int next = (int) random(7);
       nextPiece = determinePiece(next);
       pieceLocked = false;
+      println(printPFieldColors());
     }
 
     currPiece = moveDown();
-    //feedIntoPField();
     feed();
-    println(printPFieldColors());
   }
+
+  if (aPressed) ++framesAPressed;
+  if (dPressed) ++framesDPressed;
+
+  if (framesAPressed == 1)
+    currPiece = moveLeft();
+
+  else if (framesAPressed == 16) {
+    currPiece = moveLeft();
+    framesAPressed = 10;
+  }
+
+  if (framesDPressed == 1)
+    currPiece = moveRight();
+
+  else if (framesDPressed == 16) {
+    currPiece = moveRight();
+    framesDPressed = 10;
+  }
+
   displayField();
   lineCounter();
   scoreCounter();
   nextPieceCounter();
   levelCounter();
-  debug();
+  //debug();
 
   shape(currPiece);
+
+  textFormatting();
+  text(framesAPressed, width - 70, height - 70);
+  text(framesDPressed, width - 70, height - 40);
 
   if (gameOver) {
     noLoop();
@@ -265,51 +297,67 @@ void draw() {
 }
 
 void keyPressed() {
-  if (!keyLock) {
-    switch (key) {
-      case (char)10: //pause function - this is the enter key
-        if (looping) noLoop();
-        else loop();
-
-        break;
-
-      case '-': //proof of concept: decrease level/speed
-        if (level > 0) --level;
+  switch (key) {
+    case (char)10: //pause function - this is the enter key
+      if (looping) noLoop();
+      else loop();
+      break;
+    case '-': //proof of concept: decrease level/speed
+      if (!keyLock && level > 0) {
+        --level;
         keyLock = true;
-        break;
+      }
 
-      case '=':
+      break;
+    case '=':
+      if (!keyLock) {
         ++level;
         keyLock = true;
-        break;
-
-      case 'j':
-        currPiece = rotateRight();
-        keyLock = true;
-        break;
-
-      case 'k':
-        currPiece = rotateLeft();
-        keyLock = true;
-        break;
-
-      case 'a':
-        currPiece = moveLeft();
-        keyLock = true;
-        break;
-
-      case 'd':
-        currPiece = moveRight();
-        keyLock = true;
-        break;
-
-      case 's':
-        currPiece = moveDown();
-        break;
       }
-    }
+
+      break;
+    case 'a':
+      aPressed = true;
+      break;
+    case 'd':
+      dPressed = true;
+      break;
+    case 's':
+      sPressed = true;
+      break;
+    case 'j':
+      jPressed = true;
+      break;
+    case 'k':
+      kPressed = true;
+      break;
   }
+}
 
 void keyReleased() {
-  keyLock = false;
+  switch (key) {
+    case '-':
+      keyLock = false;
+      break;
+    case '=':
+      keyLock = false;
+      break;
+    case 'a':
+      framesAPressed = 0;
+      aPressed = false;
+      break;
+    case 'd':
+      framesDPressed = 0;
+      dPressed = false;
+      break;
+    case 's':
+      sPressed = false;
+      break;
+    case 'j':
+      jPressed = false;
+      break;
+    case 'k':
+      kPressed = false;
+      break;
+  }
 }
