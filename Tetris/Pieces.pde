@@ -32,8 +32,9 @@ color getCol() {
 PShape createI(int r) {
   maxRotations = 2;
   c = IPieceTurqoise;
-  int tempR = r%maxRotations;
+  int tempR = r % maxRotations;
   t = 'I';
+
   if (tempR == 0) {
     nx1 = pFieldTopX - 2*lh+ dx * lh;
     ny1 = pFieldTopY + dy *lh;
@@ -43,7 +44,9 @@ PShape createI(int r) {
     ny3 = pFieldTopY + dy *lh;
     nx4 = pFieldTopX + lh+ dx * lh;
     ny4 = pFieldTopY + dy *lh;
-  } else {
+  }
+
+  else {
     nx1 = pFieldTopX + dx * lh;
     ny1 = pFieldTopY + dy *lh;
     nx2 = pFieldTopX+ dx * lh;
@@ -61,7 +64,7 @@ PShape createJ(int r) {
   maxRotations = 4;
   c = JPieceBlue;
   t = 'J';
-  int tempR = r%maxRotations;
+  int tempR = r % maxRotations;
 
   if (tempR == 0) {
     nx1 = pFieldTopX - lh+ dx * lh;
@@ -114,29 +117,20 @@ PShape createL(int r) {
   maxRotations = 4;
   t = 'L';
   c = LPieceOrange;
-  int tempR = r%maxRotations;
-  switch(tempR) {
-  case 3:
-    nx1 =pFieldTopX+ dx * lh;
+  int tempR = r % maxRotations;
+
+  if (tempR == 0) {
+    nx1 =pFieldTopX + lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
-    nx3 =pFieldTopX+ dx * lh;
-    nx4 =pFieldTopX + lh+ dx * lh;
+    nx3 =pFieldTopX - lh+ dx * lh;
+    nx4 =pFieldTopX - lh+ dx * lh;
     ny1 =pFieldTopY + dy *lh;
-    ny2 =pFieldTopY + lh + dy *lh;
-    ny3 =pFieldTopY + 2*lh + dy *lh;
-    ny4 =pFieldTopY + 2*lh + dy *lh;
-    break;//this is correct but is never displayed
-  case 2:
-    nx1 =pFieldTopX - lh+ dx * lh;
-    nx2 =pFieldTopX+ dx * lh;
-    nx3 =pFieldTopX + lh+ dx * lh;
-    nx4 =pFieldTopX + lh+ dx * lh;
-    ny1 =pFieldTopY + lh + dy *lh;
-    ny2 =pFieldTopY + lh + dy *lh;
-    ny3 =pFieldTopY + lh + dy *lh;
-    ny4 =pFieldTopY + dy *lh;
-    break;
-  case 1:
+    ny2 =pFieldTopY + dy *lh;
+    ny3 =pFieldTopY + dy *lh;
+    ny4 =pFieldTopY + lh + dy *lh;
+  }
+
+  else if (tempR == 1) {
     nx1 =pFieldTopX+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 =pFieldTopX+ dx * lh;
@@ -145,18 +139,30 @@ PShape createL(int r) {
     ny2 =pFieldTopY + lh + dy *lh;
     ny3 =pFieldTopY + dy *lh;
     ny4 =pFieldTopY + dy *lh;
-    break;
-  case 0:
-    nx1 =pFieldTopX + lh+ dx * lh;
-    nx2 =pFieldTopX+ dx * lh;
-    nx3 =pFieldTopX - lh+ dx * lh;
-    nx4 =pFieldTopX - lh+ dx * lh;
-    ny1 =pFieldTopY + dy *lh;
-    ny2 =pFieldTopY + dy *lh;
-    ny3 =pFieldTopY + dy *lh;
-    ny4 =pFieldTopY + lh + dy *lh;//confirmed correct
-    break;
   }
+
+  else if (tempR == 2) {
+    nx1 =pFieldTopX - lh+ dx * lh;
+    nx2 =pFieldTopX+ dx * lh;
+    nx3 =pFieldTopX + lh+ dx * lh;
+    nx4 =pFieldTopX + lh+ dx * lh;
+    ny1 =pFieldTopY + lh + dy *lh;
+    ny2 =pFieldTopY + lh + dy *lh;
+    ny3 =pFieldTopY + lh + dy *lh;
+    ny4 =pFieldTopY + dy *lh;
+  }
+
+  else {
+    nx1 =pFieldTopX+ dx * lh;
+    nx2 =pFieldTopX+ dx * lh;
+    nx3 =pFieldTopX+ dx * lh;
+    nx4 =pFieldTopX + lh+ dx * lh;
+    ny1 =pFieldTopY + dy *lh;
+    ny2 =pFieldTopY + lh + dy *lh;
+    ny3 =pFieldTopY + 2*lh + dy *lh;
+    ny4 =pFieldTopY + 2*lh + dy *lh;
+  }
+
   return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, L);
 }
 
@@ -164,7 +170,7 @@ PShape createS(int r) {
   maxRotations = 2;
   c = SPieceGreen;
   t = 'S';
-  int tempR = r%maxRotations;
+  int tempR = r % maxRotations;
   if (tempR == 0) {
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
@@ -191,7 +197,7 @@ PShape createZ(int r) {
   maxRotations = 2;
   c = ZPieceRed;
   t = 'Z';
-  int tempR = r%maxRotations;
+  int tempR = r % maxRotations;
   if (tempR == 0) {
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
@@ -236,7 +242,7 @@ PShape createT(int r) {
   maxRotations = 4;
   c = TPiecePurple;
   t = 'T';
-  int tempR = r%maxRotations;
+  int tempR = r % maxRotations;
 
   if (tempR == 0) {
     nx1 =pFieldTopX - lh+ dx * lh;

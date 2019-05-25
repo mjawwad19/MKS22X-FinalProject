@@ -38,7 +38,16 @@ void nextPieceCounter() {
   rect(width * 0.805, height * 0.43, width * 0.15, height * 0.20);
 
   textFormatting();
-  text("NEXT", width * 0.805, height * 0.39);
+  text("NEXT", width * 0.805, height * 0.38);
+
+  if (next == 0) //I piece; need those edge cases as they don't fit as snugly into the next box
+    shape(getPieceGraphic(next), width * 0.748, height * 0.44);
+
+  else if (next == 1) //O piece
+    shape(getPieceGraphic(next), width * 0.777, height * 0.425);
+
+  else
+    shape(getPieceGraphic(next), width * 0.762, height * 0.425);
 }
 
 void levelCounter() {

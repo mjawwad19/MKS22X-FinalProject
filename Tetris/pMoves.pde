@@ -42,7 +42,6 @@ PShape moveRight() {
   return which();
 }
 
-//For when you read this: I'm still not sure what t does.
 PShape which() {
   switch (t) {
   case 'I':
@@ -67,17 +66,17 @@ boolean Possible() {
 }
 
 boolean collision() {
-    return (pField[convertY(y1) +1][convertX(x1)].gColor() == black &&
-    pField[convertY(y2)+1][convertX(x2)].gColor() == black &&
-    pField[convertY(y3)+1][convertX(x3)].gColor() == black &&
-    pField[convertY(y4)+1][convertX(x4)].gColor() == black);
+    return (pField[convertY(y1) +1][convertX(x1)].getColor() == black &&
+    pField[convertY(y2)+1][convertX(x2)].getColor() == black &&
+    pField[convertY(y3)+1][convertX(x3)].getColor() == black &&
+    pField[convertY(y4)+1][convertX(x4)].getColor() == black);
 }
 
 void feed() {
   if (pieceLocked) {
-    pField[convertY(ny1)][convertX(nx1)].cColor(c);
-    pField[convertY(ny2)][convertX(nx2)].cColor(c);
-    pField[convertY(ny3)][convertX(nx3)].cColor(c);
-    pField[convertY(ny4)][convertX(nx4)].cColor(c);
+    pField[convertY(ny1)][convertX(nx1)].setColor(c);
+    pField[convertY(ny2)][convertX(nx2)].setColor(c);
+    pField[convertY(ny3)][convertX(nx3)].setColor(c);
+    pField[convertY(ny4)][convertX(nx4)].setColor(c);
   }
 }

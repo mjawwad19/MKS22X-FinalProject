@@ -1,28 +1,25 @@
 class Block {
-  float x,y;
+  float x, y;
   color c;
 
-  Block(float posX, float posY, color c) {
-    x = posX;
-    y = posY;
+  Block(float x, float y, color c) {
+    this.x = x;
+    this.y = y;
     this.c = c;
   }
 
   void display() {
     rectMode(CENTER);
     fill(c);
-
-    //It looks better blending in imo - Kevin
-    stroke(255); //border
+    stroke(0);
     rect(x, y, lh, lh);
   }
 
-  color gColor() {
+  color getColor() {
     return this.c;
   }
 
-  //changes color to black. Useful for "deleting" a block
-  void cColor(color col) {
-    this.c = col;
+  void setColor(color c) {
+    this.c = c;
   }
 }

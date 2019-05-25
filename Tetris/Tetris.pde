@@ -13,8 +13,9 @@ boolean aPressed, dPressed, sPressed, hPressed, jPressed = false;
 int framesAPressed, framesDPressed, framesSPressed = 0;
 
 Block[][] pField = new Block[20][10];
-int curr = (int) random(7); //generates a random piece's index in its non rotated state (for setup)
-PShape currPiece, nextPiece;
+PShape currPiece;
+int curr = (int) random(7); //for setup
+int next = (int) random(7);
 boolean pieceLocked = false;
 
 PShape b1, b2, b3, b4; //the 4 blocks of a tetromino
@@ -46,8 +47,8 @@ color black = color(0, 0, 0);
 //For the counters
 int lines, score, level = 0;
 
-PShape determinePiece(int curr) {
-  switch (curr) {
+PShape determinePiece(int idx) {
+  switch (idx) {
     case 0: return createI(0);
     case 1: return createO(); //square can't rotate so no point
     case 2: return createJ(0);
@@ -63,30 +64,30 @@ String printPFieldColors() {
   String output = "";
   for (int i = 0; i < 20; ++i) {
     for (int j = 0; j < 10; ++j) {
-      if (pField[i][j].gColor() == IPieceTurqoise)
+      if (pField[i][j].getColor() == IPieceTurqoise)
         output += "Turq ";
 
-      else if (pField[i][j].gColor() == OPieceYellow) {
+      else if (pField[i][j].getColor() == OPieceYellow) {
         output += "Yell ";
       }
 
-      else if (pField[i][j].gColor() == JPieceBlue) {
+      else if (pField[i][j].getColor() == JPieceBlue) {
         output += "Blue ";
       }
 
-      else if (pField[i][j].gColor() == LPieceOrange) {
+      else if (pField[i][j].getColor() == LPieceOrange) {
         output += "Oran ";
       }
 
-      else if (pField[i][j].gColor() == SPieceGreen) {
+      else if (pField[i][j].getColor() == SPieceGreen) {
         output += "Gree ";
       }
 
-      else if (pField[i][j].gColor() == ZPieceRed) {
+      else if (pField[i][j].getColor() == ZPieceRed) {
         output += "Redd ";
       }
 
-      else if (pField[i][j].gColor() == TPiecePurple) {
+      else if (pField[i][j].getColor() == TPiecePurple) {
         output += "Purp ";
       }
 
@@ -204,24 +205,6 @@ int convertY(float ypos) {
   return (int) ((ypos - 150) / 27);
 }
 
-void feedIntoPField() {
-  for (int i = 0; i < 20; ++i) { //20 rows
-    for (int j = 0; j < 10; ++j) { //10 columns
-      if (convertY(ny1) == i && convertX(nx1) == j )
-        pField[i][j].cColor(c);
-
-      if (convertY(ny2) == i && convertX(nx2)== j )
-        pField[i][j].cColor(c);
-
-      if (convertY(ny3)== i && convertX(nx3)== j )
-        pField[i][j].cColor(c);
-
-      if (convertY(ny4)== i && convertX(nx4) == j )
-        pField[i][j].cColor(c);
-    }
-  }
-}
-
 void userControls() {
   if (aPressed) ++framesAPressed;
   if (dPressed) ++framesDPressed;
@@ -255,6 +238,18 @@ void userControls() {
   }
 }
 
+PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and which() won't work for this.
+  switch (idx) {
+    case 0: return IPiece;
+    case 1: return OPiece;
+    case 2: return JPiece;
+    case 3: return LPiece;
+    case 4: return SPiece;
+    case 5: return ZPiece;
+    default: return TPiece; //case 6
+  }
+}
+
 void gameOverScreen() {
   boxFormatting();
   rect(width * 0.50, height * 0.565, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
@@ -273,9 +268,9 @@ void setup() {
   pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
 
   currPiece = determinePiece(curr);
-  nextPiece = determinePiece(curr);
 
   setField();
+  createPieces();
 }
 
 void draw() {
@@ -287,15 +282,18 @@ void draw() {
     if (pieceLocked) {
       dx = 0;
       dy = -1;
-      currPiece = nextPiece;
-      int next = (int) random(7);
+      curr = next;
+      currPiece = determinePiece(curr);
+      next = (int) random(7);
       rotation = 0;
-      nextPiece = determinePiece(next);
       pieceLocked = false;
     }
 
     currPiece = moveDown();
   }
+
+  text("curr: " + curr, width * 0.2, height * 0.5);
+  text("next: " + next, width * 0.2, height * 0.55);
 
   userControls();
   displayField();
