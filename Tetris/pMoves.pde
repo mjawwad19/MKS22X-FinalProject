@@ -1,17 +1,17 @@
 float YBound = pFieldTopY + 24*lh; //20 from just pfield but then another 4 because of the lowest a piece child is (rect)
 PShape rotateLeft() {
-  if (collision()) {
+  if (leftBounds() && rightBounds()) {
     if (rotation == 0) rotation = maxRotations - 1;
     else rotation--; //to ensure looping back to the correct rotation index
-  } else pieceLocked = true;
+  }
   return which();
 }
 
 PShape rotateRight() {
-  if (collision()) {
+  if (leftBounds() && rightBounds()) {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
-  } else pieceLocked = true;
+  } 
   return which();
 }
 
