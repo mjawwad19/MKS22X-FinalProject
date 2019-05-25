@@ -243,8 +243,7 @@ PShape createT(int r) {
   c = TPiecePurple;
   t = 'T';
   int tempR = r % maxRotations;
-
-  if (tempR == 0) {
+    if (tempR == 0) {
     nx1 =pFieldTopX - lh+ dx * lh;
     nx2 =pFieldTopX+ dx * lh;
     nx3 = pFieldTopX + lh+ dx * lh;
@@ -256,10 +255,10 @@ PShape createT(int r) {
   }
 
   else if (tempR == 1) {
-    nx1 =pFieldTopX + lh+ dx * lh;
-    nx2 =pFieldTopX + lh+ dx * lh;
-    nx3 =pFieldTopX + lh+ dx * lh;
-    nx4 =pFieldTopX+ dx * lh;
+    nx1 =pFieldTopX+ dx * lh;
+    nx2 =pFieldTopX+ dx * lh;
+    nx3 =pFieldTopX+ dx * lh;
+    nx4 =pFieldTopX -lh+ dx * lh;
     ny1 =pFieldTopY + dy *lh;
     ny2 =pFieldTopY + lh + dy *lh;
     ny3 =pFieldTopY + 2*lh + dy *lh;
@@ -278,15 +277,14 @@ PShape createT(int r) {
   }
 
   else {
-    nx1 =pFieldTopX - lh+ dx * lh;
-    nx2 =pFieldTopX - lh+ dx * lh;
-    nx3 =pFieldTopX -lh+ dx * lh;
-    nx4 =pFieldTopX+ dx * lh;
+    nx1 =pFieldTopX+ dx * lh;
+    nx2 =pFieldTopX + dx * lh;
+    nx3 =pFieldTopX+ dx * lh;
+    nx4 =pFieldTopX+ lh+ dx * lh;
     ny1 =pFieldTopY + dy *lh;
     ny2 =pFieldTopY +lh + dy *lh;
     ny3 =pFieldTopY + 2*lh + dy *lh;
     ny4 =pFieldTopY + lh + dy *lh;
   }
-
   return createPiece(nx1, ny1, nx2, ny2, nx3, ny3, nx4, ny4, T);
 }
