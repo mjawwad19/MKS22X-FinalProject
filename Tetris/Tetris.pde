@@ -295,7 +295,6 @@ void draw() {
     }
 
     currPiece = moveDown();
-    feed();
   }
 
   userControls();
@@ -307,6 +306,7 @@ void draw() {
   //debug();
 
   shape(currPiece);
+  feed();
 
   //For debugging purposes: check frames a key has been held down (DAS)
   textFormatting();
