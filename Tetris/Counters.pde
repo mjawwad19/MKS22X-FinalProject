@@ -51,9 +51,6 @@ void levelCounter() {
 }
 
 void debug() {
-  //boxFormatting();
-  //rect(width * 0.20, height * 0.50, width * 0.18, height * 0.12);
-
   textFormatting();
   text("x1: " + x1, width * 0.18, height * 0.10);
   text("y1: " + y1, width * 0.18, height * 0.15);
@@ -71,12 +68,4 @@ void debug() {
   text("ny3 :" + ny3, width * 0.18, height * 0.75);
   text("nx4 :" + nx4, width * 0.18, height * 0.80);
   text("ny4 :" + ny4, width * 0.18, height * 0.85);
-}
-
-//Seems like this isn't even used, and yeah I know this isn't a counter
-void gameOverScreen() {
-  boxFormatting();
-  rect(width * 0.50, height * 0.565, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
-  textFormatting();
-  text("GG!", width * 0.50, height * 0.565);
 }

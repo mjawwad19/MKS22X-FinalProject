@@ -9,7 +9,7 @@ boolean gameOver = false;
 
 //Key handling
 boolean keyLock = false; //for keys not directly affecting the game
-boolean aPressed, dPressed, sPressed, jPressed, kPressed = false;
+boolean aPressed, dPressed, sPressed, hPressed, jPressed = false;
 int framesAPressed, framesDPressed, framesSPressed = 0;
 
 Block[][] pField = new Block[20][10];
@@ -255,6 +255,13 @@ void userControls() {
   }
 }
 
+void gameOverScreen() {
+  boxFormatting();
+  rect(width * 0.50, height * 0.565, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
+  textFormatting();
+  text("GG!", width * 0.50, height * 0.565);
+}
+
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -282,6 +289,7 @@ void draw() {
       dy = -1;
       currPiece = nextPiece;
       int next = (int) random(7);
+      rotation = 0;
       nextPiece = determinePiece(next);
       pieceLocked = false;
     }
@@ -341,12 +349,12 @@ void keyPressed() {
     case 's': //down
       sPressed = true;
       break;
-    case 'j': //rotate counterclockwise
-      jPressed = true;
+    case 'h': //rotate counterclockwise
+      hPressed = true;
       currPiece = rotateLeft();
       break;
-    case 'k': //rotate clockwise
-      kPressed = true;
+    case 'j': //rotate clockwise
+      jPressed = true;
       currPiece = rotateRight();
       break;
   }
@@ -371,11 +379,11 @@ void keyReleased() {
     case 's':
       sPressed = false;
       break;
+    case 'h':
+      hPressed = false;
+      break;
     case 'j':
       jPressed = false;
-      break;
-    case 'k':
-      kPressed = false;
       break;
   }
 }
