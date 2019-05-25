@@ -118,3 +118,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - trying to figure out why edge rotation won't work
       - crazy idea but what if we make the grid 12 by 20 but only have the center 10 be black? That should allow rotation at the "edges"
     - Fixed centered rotation for S/Z/L pieces after Kevin gave classic NES Tetris videos showing that our hardcoded rotations were shifted down or to the right when they shouldn't have been
+  - Bug fixes + new bugs:
+    - moveDown() not locking is over
+    - fast last minute changes can cause multiple locks
+      - at least the piece is guaranteed to lock tho so Issue # 3 of day 6 is now something less worse?
+    - still edge rotation doesn't work
