@@ -11,7 +11,7 @@ PShape rotateRight() {
   if (leftBounds() && rightBounds()) {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
-  } 
+  }
   return which();
 }
 

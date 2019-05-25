@@ -315,6 +315,12 @@ void draw() {
 
   if (gameOver) {
     noLoop();
+    background(backgroundGray);
+    displayField();
+    lineCounter();
+    scoreCounter();
+    nextPieceCounter();
+    levelCounter();
     gameOverScreen();
   }
 }
