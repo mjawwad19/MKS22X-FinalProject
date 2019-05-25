@@ -5,7 +5,6 @@ PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
 boolean paused = false;
-boolean gameOver = false;
 
 //Key handling
 boolean keyLock = false; //for keys not directly affecting the game
@@ -44,9 +43,16 @@ float pFieldHeight = lh * 20;
 float pFieldTopX;
 float pFieldTopY;
 color black = color(0, 0, 0);
+color white = color(255, 255, 255);
 
 //For the counters
 int lines, score, level = 0;
+
+boolean gameOver = false;
+color[] barColors = {ZPieceRed, white, JPieceBlue};
+int framesAfterLoss = 0;
+int colorIdx = 0;
+float yPos = pFieldTopY + 140;
 
 PShape determinePiece(int idx) {
   switch (idx) {
@@ -252,10 +258,20 @@ PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and whi
 }
 
 void gameOverScreen() {
-  boxFormatting();
-  rect(width * 0.50, height * 0.565, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
-  textFormatting();
-  text("GG!", width * 0.50, height * 0.565);
+  rectMode(CENTER);
+  color[] barColors = {ZPieceRed, white, JPieceBlue, black};
+  int colorIdx = 0;
+  float yPos = pFieldTopY + lh/4;
+  for (int i = 0; i < 60; ++i) {
+    fill(barColors[colorIdx & 3]);
+    rect(pFieldTopX, yPos, pFieldWidth, lh/4);
+    ++colorIdx;
+    yPos += lh/4;
+    delay(100);
+  }
+  //rect(width * 0.50, height * 0.565, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
+  //textFormatting();
+  //text("GG!", width * 0.50, height * 0.565);
 }
 
 void setup() {
@@ -275,53 +291,66 @@ void setup() {
 }
 
 void draw() {
-  background(backgroundGray); //clear screen
-  ++frame; //unless you have the program running a year in a row, this is never overflowing
-  if (pieceLocked) ++framesPieceLocked;
+  if (!gameOver) {
+    background(backgroundGray); //clear screen
+    ++frame; //unless you have the program running a year in a row, this is never overflowing
+    if (pieceLocked) ++framesPieceLocked;
 
-  //Controls the speed of the game
-  if (frame % getSpeed() == 0) {
-    //Choose a new piece
-    if (pieceLocked && framesPieceLocked >= 6) {
-      dx = 0;
-      dy = -1;
-      curr = next;
-      currPiece = determinePiece(curr);
-      next = (int) random(7);
-      rotation = 0;
-      pieceLocked = false;
-      framesPieceLocked = 0;
+    //Controls the speed of the game
+    if (frame % getSpeed() == 0) {
+      //Choose a new piece
+      if (pieceLocked && framesPieceLocked >= 6) {
+        dx = 0;
+        dy = -1;
+        curr = next;
+        currPiece = determinePiece(curr);
+        next = (int) random(7);
+        rotation = 0;
+        pieceLocked = false;
+        framesPieceLocked = 0;
+      }
+
+      currPiece = moveDown();
     }
 
-    currPiece = moveDown();
-  }
-
-  userControls();
-  displayField();
-  lineCounter();
-  scoreCounter();
-  nextPieceCounter();
-  levelCounter();
-  //debug();
-
-  shape(currPiece);
-  feed();
-
-  //For debugging purposes: check frames a key has been held down (DAS)
-  textFormatting();
-  text("A: " + framesAPressed, width - 70, height - 150);
-  text("D: " + framesDPressed, width - 70, height - 120);
-  text("S: " + framesSPressed, width - 70, height - 90);
-
-  if (gameOver) {
-    noLoop();
-    background(backgroundGray);
+    userControls();
     displayField();
     lineCounter();
     scoreCounter();
     nextPieceCounter();
     levelCounter();
-    gameOverScreen();
+    //debug();
+
+    shape(currPiece);
+    feed();
+
+    //For debugging purposes: check frames a key has been held down (DAS)
+    textFormatting();
+    text("A: " + framesAPressed, width - 70, height - 150);
+    text("D: " + framesDPressed, width - 70, height - 120);
+    text("S: " + framesSPressed, width - 70, height - 90);
+  }
+
+  else {
+    ++framesAfterLoss;
+
+    if (framesAfterLoss == 1) { //only draw this once
+      background(backgroundGray);
+      displayField();
+      lineCounter();
+      scoreCounter();
+      nextPieceCounter();
+      levelCounter();
+    }
+
+    if (framesAfterLoss % 3 == 0 && framesAfterLoss < 183) { //61 bars
+      rectMode(CENTER);
+      fill(barColors[colorIdx % 3]);
+      stroke(barColors[colorIdx % 3]);
+      rect(pFieldTopX - 13.7, yPos, pFieldWidth, lh/3);
+      ++colorIdx;
+      yPos += lh/3;
+    }
   }
 }
 
