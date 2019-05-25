@@ -10,7 +10,7 @@ boolean gameOver = false;
 //Key handling
 boolean keyLock = false; //for keys not directly affecting the game
 boolean aPressed, dPressed, sPressed, jPressed, kPressed = false;
-int framesAPressed, framesDPressed = 0;
+int framesAPressed, framesDPressed, framesSPressed = 0;
 
 Block[][] pField = new Block[20][10];
 int curr = (int) random(7); //generates a random piece's index in its non rotated state (for setup)
@@ -260,6 +260,7 @@ void draw() {
 
   if (aPressed) ++framesAPressed;
   if (dPressed) ++framesDPressed;
+  if (sPressed) ++framesSPressed;
 
   if (framesAPressed == 1)
     currPiece = moveLeft();
@@ -275,6 +276,11 @@ void draw() {
   else if (framesDPressed == 16) {
     currPiece = moveRight();
     framesDPressed = 10;
+  }
+
+  if (framesSPressed == 2) {
+    currPiece = moveDown();
+    framesSPressed = 0;
   }
 
   displayField();
