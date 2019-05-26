@@ -11,6 +11,7 @@ void boxFormatting() {
   strokeWeight(2);
 }
 
+//Really only useful for debugging purposes
 void frameCounter() { //top left
   textFormatting();
   text(String.format("%02d", frame % 60), 40, 30); //2 digits
@@ -21,7 +22,7 @@ void lineCounter() {
   rect(width * 0.50, height * 0.10, pFieldWidth, height * 0.10);
 
   textFormatting();
-  text("LINES-" + String.format("%03d", lines % 240), width * 0.50, height * 0.10);
+  text("LINES-" + String.format("%03d", lines), width * 0.50, height * 0.10);
 }
 
 void scoreCounter() {
@@ -33,21 +34,27 @@ void scoreCounter() {
   text(String.format("%06d", score), width * 0.83, height * 0.25);
 }
 
-void nextPieceCounter() {
+void nextPieceBox() {
   boxFormatting();
   rect(width * 0.805, height * 0.43, width * 0.15, height * 0.20);
 
   textFormatting();
   text("NEXT", width * 0.805, height * 0.38);
 
-  if (next == 0) //I piece; need those edge cases as they don't fit as snugly into the next box
-    shape(getPieceGraphic(next), width * 0.748, height * 0.44);
+  //Need those edge cases as they don't fit as snugly into the next box
+  switch (next) {
+    case 0: //I piece
+      shape(getPieceGraphic(next), width * 0.748, height * 0.44);
+      break;
 
-  else if (next == 1) //O piece
-    shape(getPieceGraphic(next), width * 0.777, height * 0.425);
+    case 1: //O piece
+      shape(getPieceGraphic(next), width * 0.777, height * 0.425);
+      break;
 
-  else
-    shape(getPieceGraphic(next), width * 0.762, height * 0.425);
+    default: //every other piece
+      shape(getPieceGraphic(next), width * 0.762, height * 0.425);
+      break;
+  }
 }
 
 void levelCounter() {

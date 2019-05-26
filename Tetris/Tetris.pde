@@ -4,16 +4,28 @@ import java.util.*;
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
-boolean paused = false;
+color black = color(0, 0, 0);
+color white = color(255, 255, 255);
+
+//Piece colors
+color IPieceTurqoise = color(0, 255, 255);
+color OPieceYellow = color(255, 255, 0);
+color JPieceBlue = color(0, 0, 204);
+color LPieceOrange = color(255, 153, 0);
+color SPieceGreen = color(0, 255, 0);
+color ZPieceRed = color(255, 0, 0);
+color TPiecePurple = color(204, 51, 255);
 
 //Key handling
-boolean keyLock = false; //for keys not directly affecting the game
-boolean aPressed, dPressed, sPressed, hPressed, jPressed = false;
-int framesAPressed, framesDPressed, framesSPressed = 0;
+boolean keyLock = false; //for keys that shouldn't be held down
+boolean aPressed, dPressed, sPressed = false;
+int framesAPressed, framesDPressed, framesSPressed = 0; //for implementing the DAS mechanic
+boolean paused = false;
 
+//For the playing field
 Block[][] pField = new Block[20][10];
 PShape currPiece;
-int curr = (int) random(7); //for setup
+int curr = (int) random(7); //indices for the pieces to generate
 int next = (int) random(7);
 boolean pieceLocked = false;
 int framesPieceLocked = 0;
@@ -27,23 +39,12 @@ int maxRotations;
 int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
 
-//Piece colors
-color IPieceTurqoise = color(0, 255, 255);
-color OPieceYellow = color(255, 255, 0);
-color JPieceBlue = color(0, 0, 204);
-color LPieceOrange = color(255, 153, 0);
-color SPieceGreen = color(0, 255, 0);
-color ZPieceRed = color(255, 0, 0);
-color TPiecePurple = color(204, 51, 255);
-
 //Constants
 float lh = 27.0; //lh = line height
 float pFieldWidth = lh * 10;
 float pFieldHeight = lh * 20;
-float pFieldTopX;
+float pFieldTopX; //have to assign those two later in setup
 float pFieldTopY;
-color black = color(0, 0, 0);
-color white = color(255, 255, 255);
 
 //For the counters
 int lines, score, level = 0;
@@ -299,7 +300,7 @@ void draw() {
     //Controls the speed of the game
     if (frame % getSpeed() == 0) {
       //Choose a new piece
-      if (pieceLocked && framesPieceLocked >= 6) {
+      if (pieceLocked) {
         dx = 0;
         dy = -1;
         curr = next;
@@ -307,7 +308,7 @@ void draw() {
         next = (int) random(7);
         rotation = 0;
         pieceLocked = false;
-        framesPieceLocked = 0;
+        //delay(100);
       }
 
       currPiece = moveDown();
@@ -317,7 +318,7 @@ void draw() {
     displayField();
     lineCounter();
     scoreCounter();
-    nextPieceCounter();
+    nextPieceBox();
     levelCounter();
     //debug();
 
@@ -339,7 +340,7 @@ void draw() {
       displayField();
       lineCounter();
       scoreCounter();
-      nextPieceCounter();
+      nextPieceBox();
       levelCounter();
     }
 
@@ -384,12 +385,18 @@ void keyPressed() {
       sPressed = true;
       break;
     case 'h': //rotate counterclockwise
-      hPressed = true;
-      currPiece = rotateLeft();
+      if (!keyLock) {
+        currPiece = rotateLeft();
+        keyLock = true;
+      }
+
       break;
     case 'j': //rotate clockwise
-      jPressed = true;
-      currPiece = rotateRight();
+      if (!keyLock) {
+        currPiece = rotateRight();
+        keyLock = true;
+      }
+
       break;
   }
 }
@@ -414,10 +421,10 @@ void keyReleased() {
       sPressed = false;
       break;
     case 'h':
-      hPressed = false;
+      keyLock = false;
       break;
     case 'j':
-      jPressed = false;
+      keyLock = false;
       break;
   }
 }

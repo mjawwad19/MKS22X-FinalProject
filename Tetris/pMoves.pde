@@ -1,5 +1,5 @@
 PShape rotateLeft() {
-  if (leftBounds() && rightBounds()) {
+  if (rightBounds()) {
     if (rotation == 0) rotation = maxRotations - 1;
     else rotation--; //to ensure looping back to the correct rotation index
   }
@@ -7,7 +7,7 @@ PShape rotateLeft() {
 }
 
 PShape rotateRight() {
-  if (leftBounds() && rightBounds()) {
+  if (rightBounds()) {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
   }
@@ -62,10 +62,10 @@ PShape which() {
 
 boolean leftBounds() {
   try {
-    return (pField[convertY(y1)][convertX(x1) - 1].getColor() == black) &&
-           (pField[convertY(y2)][convertX(x2) - 1].getColor() == black) &&
-           (pField[convertY(y3)][convertX(x3) - 1].getColor() == black) &&
-           (pField[convertY(y4)][convertX(x4) - 1].getColor() == black);
+    return (pField[convertY(ny1)][convertX(nx1) - 1].getColor() == black) &&
+           (pField[convertY(ny2)][convertX(nx2) - 1].getColor() == black) &&
+           (pField[convertY(ny3)][convertX(nx3) - 1].getColor() == black) &&
+           (pField[convertY(ny4)][convertX(nx4) - 1].getColor() == black);
   }
 
   catch (ArrayIndexOutOfBoundsException e) {
@@ -75,10 +75,10 @@ boolean leftBounds() {
 
 boolean rightBounds() {
   try {
-    return (pField[convertY(y1)][convertX(x1) + 1].getColor() == black) &&
-           (pField[convertY(y2)][convertX(x2) + 1].getColor() == black) &&
-           (pField[convertY(y3)][convertX(x3) + 1].getColor() == black) &&
-           (pField[convertY(y4)][convertX(x4) + 1].getColor() == black);
+    return (pField[convertY(ny1)][convertX(nx1) + 1].getColor() == black) &&
+           (pField[convertY(ny2)][convertX(nx2) + 1].getColor() == black) &&
+           (pField[convertY(ny3)][convertX(nx3) + 1].getColor() == black) &&
+           (pField[convertY(ny4)][convertX(nx4) + 1].getColor() == black);
   }
 
   catch (ArrayIndexOutOfBoundsException e) {
@@ -88,10 +88,10 @@ boolean rightBounds() {
 
 boolean bottomBounds() {
   try {
-    return (pField[convertY(y1) + 1][convertX(x1)].getColor() == black) &&
-           (pField[convertY(y2) + 1][convertX(x2)].getColor() == black) &&
-           (pField[convertY(y3) + 1][convertX(x3)].getColor() == black) &&
-           (pField[convertY(y4) + 1][convertX(x4)].getColor() == black);
+    return (pField[convertY(ny1) + 1][convertX(nx1)].getColor() == black) &&
+           (pField[convertY(ny2) + 1][convertX(nx2)].getColor() == black) &&
+           (pField[convertY(ny3) + 1][convertX(nx3)].getColor() == black) &&
+           (pField[convertY(ny4) + 1][convertX(nx4)].getColor() == black);
   }
 
   catch (ArrayIndexOutOfBoundsException e) {
