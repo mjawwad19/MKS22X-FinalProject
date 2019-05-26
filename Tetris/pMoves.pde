@@ -3,6 +3,7 @@ PShape rotateLeft() {
     if (rotation == 0) rotation = maxRotations - 1;
     else rotation--; //to ensure looping back to the correct rotation index
   }
+
   return which();
 }
 
@@ -11,6 +12,7 @@ PShape rotateRight() {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
   }
+
   return which();
 }
 
@@ -21,7 +23,7 @@ PShape moveDown() {
   else
     pieceLocked = true;
 
-  if (dy < 0)
+  if (dy == 0)
     gameOver = true;
 
   return which();
@@ -99,6 +101,7 @@ boolean bottomBounds() {
   }
 }
 
+//Feed a piece that has been locked into the pField array.
 void feed() {
   if (pieceLocked) {
     pField[convertY(ny1)][convertX(nx1)].setColor(c);

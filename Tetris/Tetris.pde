@@ -34,12 +34,12 @@ PShape b1, b2, b3, b4; //the 4 blocks of a tetromino
 float x1, x2, x3, x4, y1, y2, y3, y4; //the corresponding coordinates
 float nx1, nx2, nx3, nx4, ny1, ny2, ny3, ny4; //useful for checking bounds
 PShape I, O, J, L, S, Z, T;
-int rotation = 24;
+int rotation = 0; //hmm the rotation bug seems to be gone, resetting it to 0 for now
 int maxRotations;
 int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
 
-//Constants
+//Useful constants
 float lh = 27.0; //lh = line height
 float pFieldWidth = lh * 10;
 float pFieldHeight = lh * 20;
@@ -49,6 +49,7 @@ float pFieldTopY;
 //For the counters
 int lines, score, level = 0;
 
+//To deal with the end of the game
 boolean gameOver = false;
 color[] barColors = {ZPieceRed, white, JPieceBlue};
 int framesAfterLoss = 0;
@@ -175,6 +176,7 @@ int getSpeed() {
   }
 }
 
+//Creates a blank board
 void setField() {
   float xB = pFieldWidth/20;
   float yB = pFieldHeight/40;
@@ -246,7 +248,7 @@ void userControls() {
   }
 }
 
-PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and which() won't work for this.
+PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and which() won't work for this as they only obtain the current piece
   switch (idx) {
     case 0: return IPiece;
     case 1: return OPiece;
@@ -256,23 +258,6 @@ PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and whi
     case 5: return ZPiece;
     default: return TPiece; //case 6
   }
-}
-
-void gameOverScreen() {
-  rectMode(CENTER);
-  color[] barColors = {ZPieceRed, white, JPieceBlue, black};
-  int colorIdx = 0;
-  float yPos = pFieldTopY + lh/4;
-  for (int i = 0; i < 60; ++i) {
-    fill(barColors[colorIdx & 3]);
-    rect(pFieldTopX, yPos, pFieldWidth, lh/4);
-    ++colorIdx;
-    yPos += lh/4;
-    delay(100);
-  }
-  //rect(width * 0.50, height * 0.565, pFieldWidth, pFieldHeight); //looks closest to the actual game, by my eye
-  //textFormatting();
-  //text("GG!", width * 0.50, height * 0.565);
 }
 
 void setup() {
@@ -287,8 +272,8 @@ void setup() {
 
   currPiece = determinePiece(curr);
 
-  setField();
-  createPieces();
+  setField(); //creates the playing field (blank though)
+  createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
 }
 
 void draw() {
@@ -299,22 +284,22 @@ void draw() {
 
     //Controls the speed of the game
     if (frame % getSpeed() == 0) {
+      currPiece = moveDown();
+
       //Choose a new piece
-      if (pieceLocked && framesPieceLocked >= 6) {
+      if (pieceLocked && framesPieceLocked >= 15) {
         dx = 0; //reset back to the top of the screen
-        dy = -1;
+        dy = 0;
         curr = next;
         currPiece = determinePiece(curr);
         next = (int) random(7);
-        rotation = 0; 
+        rotation = 0;
         pieceLocked = false;
         framesPieceLocked = 0;
       }
-
-      currPiece = moveDown();
     }
 
-    userControls();
+    if (!pieceLocked) userControls();
     displayField();
     lineCounter();
     scoreCounter();
@@ -322,16 +307,11 @@ void draw() {
     levelCounter();
     //debug();
 
-    shape(currPiece);
+    shape(currPiece); //show the current falling piece
     feed();
-
-    //For debugging purposes: check frames a key has been held down (DAS)
-    textFormatting();
-    text("A: " + framesAPressed, width - 70, height - 150);
-    text("D: " + framesDPressed, width - 70, height - 120);
-    text("S: " + framesSPressed, width - 70, height - 90);
   }
 
+  //Game over!
   else {
     ++framesAfterLoss;
 
@@ -344,6 +324,7 @@ void draw() {
       levelCounter();
     }
 
+    //Animation for loss
     if (framesAfterLoss % 3 == 0 && framesAfterLoss < 183) { //61 bars
       rectMode(CENTER);
       fill(barColors[colorIdx % 3]);
