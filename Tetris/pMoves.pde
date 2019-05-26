@@ -1,5 +1,5 @@
 PShape rotateLeft() {
-  if (rightBounds()) {
+  if (rightBounds() && bottomBounds()) {
     if (rotation == 0) rotation = maxRotations - 1;
     else rotation--; //to ensure looping back to the correct rotation index
   }
@@ -8,7 +8,7 @@ PShape rotateLeft() {
 }
 
 PShape rotateRight() {
-  if (rightBounds()) {
+  if (rightBounds() && bottomBounds()) {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
   }

@@ -34,7 +34,7 @@ PShape b1, b2, b3, b4; //the 4 blocks of a tetromino
 float x1, x2, x3, x4, y1, y2, y3, y4; //the corresponding coordinates
 float nx1, nx2, nx3, nx4, ny1, ny2, ny3, ny4; //useful for checking bounds
 PShape I, O, J, L, S, Z, T;
-int rotation = 0; //hmm the rotation bug seems to be gone, resetting it to 0 for now
+int rotation = 0; //hmm the rotation bug seems to be gone, setting it back to 0 for now
 int maxRotations;
 int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
@@ -281,6 +281,13 @@ void draw() {
     background(backgroundGray); //clear screen
     ++frame; //unless you have the program running a year in a row, this is never overflowing
     if (pieceLocked) ++framesPieceLocked; //delay a new piece being spawned so that the game doesn't become impossible too soon
+    if (!pieceLocked) userControls();
+    displayField();
+    lineCounter();
+    scoreCounter();
+    nextPieceBox();
+    levelCounter();
+    //debug();
 
     //Controls the speed of the game
     if (frame % getSpeed() == 0) {
@@ -298,14 +305,6 @@ void draw() {
         framesPieceLocked = 0;
       }
     }
-
-    if (!pieceLocked) userControls();
-    displayField();
-    lineCounter();
-    scoreCounter();
-    nextPieceBox();
-    levelCounter();
-    //debug();
 
     shape(currPiece); //show the current falling piece
     feed();
