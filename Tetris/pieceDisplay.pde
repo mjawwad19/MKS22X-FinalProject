@@ -77,13 +77,13 @@ void createPieces() {
   TPiece = createShape();
   TPiece.beginShape();
   TPiece.fill(TPiecePurple);
-  TPiece.vertex(0, lh * 1);
-  TPiece.vertex(lh * 1, lh * 1);
-  TPiece.vertex(lh * 1, 0);
-  TPiece.vertex(lh * 2, 0);
-  TPiece.vertex(lh * 2, lh * 1);
+  TPiece.vertex(0, 0);
+  TPiece.vertex(lh * 3, 0);
   TPiece.vertex(lh * 3, lh * 1);
-  TPiece.vertex(lh * 3, lh * 2);
-  TPiece.vertex(0, lh * 2);
+  TPiece.vertex(lh * 2, lh * 1);
+  TPiece.vertex(lh * 2, lh * 2);
+  TPiece.vertex(lh * 1, lh * 2);
+  TPiece.vertex(lh * 1, lh * 1);
+  TPiece.vertex(0, lh * 1);
   TPiece.endShape(CLOSE);
 }

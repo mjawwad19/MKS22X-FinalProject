@@ -295,20 +295,20 @@ void draw() {
   if (!gameOver) {
     background(backgroundGray); //clear screen
     ++frame; //unless you have the program running a year in a row, this is never overflowing
-    if (pieceLocked) ++framesPieceLocked;
+    if (pieceLocked) ++framesPieceLocked; //delay a new piece being spawned so that the game doesn't become impossible too soon
 
     //Controls the speed of the game
     if (frame % getSpeed() == 0) {
       //Choose a new piece
-      if (pieceLocked) {
-        dx = 0;
+      if (pieceLocked && framesPieceLocked >= 6) {
+        dx = 0; //reset back to the top of the screen
         dy = -1;
         curr = next;
         currPiece = determinePiece(curr);
         next = (int) random(7);
-        rotation = 0;
+        rotation = 0; 
         pieceLocked = false;
-        //delay(100);
+        framesPieceLocked = 0;
       }
 
       currPiece = moveDown();
