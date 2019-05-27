@@ -1,5 +1,5 @@
 PShape rotateLeft() {
-  if (rightBounds() && bottomBounds()) {
+  if (fixRotate() && rightBounds() && bottomBounds()) {
     if (rotation == 0) rotation = maxRotations - 1;
     else rotation--; //to ensure looping back to the correct rotation index
   }
@@ -8,7 +8,7 @@ PShape rotateLeft() {
 }
 
 PShape rotateRight() {
-  if (rightBounds() && bottomBounds()) {
+  if (fixRotate() && rightBounds() && bottomBounds()) {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
   }
@@ -109,4 +109,12 @@ void feed() {
     pField[convertY(ny3)][convertX(nx3)].setColor(c);
     pField[convertY(ny4)][convertX(nx4)].setColor(c);
   }
+}
+
+
+boolean fixRotate() {
+  if (t == 'I') {
+    return (convertX(x3) >= 2 && convertX(x3) <= 8 && convertY(y1) >= 2);
+  }
+  else return false;
 }
