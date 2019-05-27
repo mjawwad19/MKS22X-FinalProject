@@ -278,11 +278,23 @@ int clearLines() {
     println(linesToClear.toString());
   }
 
+  Collections.sort(linesToClear);
+
   for (int i = 0; i < 20; ++i) {
     for (Integer line : linesToClear) {
       if (line.intValue() == i) {
         for (int j = 0; j < 10; ++j)
           pField[i][j].setColor(black);
+      }
+    }
+  }
+
+
+  for (Integer line: linesToClear) {
+    for (int i = line.intValue(); i > 0; --i) {
+      for (int j = 0; j < 10; ++j) {
+        pField[i][j].setColor(pField[i - 1][j].getColor());
+        pField[i - 1][j].setColor(black);
       }
     }
   }
