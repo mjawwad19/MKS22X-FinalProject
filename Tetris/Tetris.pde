@@ -299,7 +299,16 @@ int clearLines() {
     }
   }
 
-  return 1;
+  int clearedLines = linesToClear.size();
+  lines += clearedLines;
+
+  switch (clearedLines) {
+    case 1: return 40 * (level + 1);
+    case 2: return 100 * (level + 1);
+    case 3: return 300 * (level + 1);
+    case 4: return 1200 * (level + 1);
+    default: return 0; //case where 0 lines are cleared
+  }
 }
 
 void setup() {
