@@ -126,3 +126,14 @@ void feed() {
   Z: same as S. 
   T: same as S. 
   */
+ 
+ //these methods use the joints (the places that always stay constant in rotation to determine if allowed
+boolean iRotation(){
+  return (convertX(nx3) >= 2 && convertX(nx3) <= 8
+       && convertY(ny3) >=2  && convertY(ny3) <= 18);
+}
+
+boolean jRotation(){
+  return (convertX(nx2) >= 1 && convertX(nx2) <= 8 
+       && convertY(ny2) >= 1 && convertY(ny2) <= 18);
+}
