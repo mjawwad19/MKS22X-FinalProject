@@ -132,3 +132,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - went to experimental with a copy of Tetris now named Rotation_Bounds
       - tried to figure out a way to make rotations work on edges
         - success! sorta... See  [Experiments](Experiments/Experiments.md) for more details
+        
+[Day 10] 5/27/19
+- Kevin: 
+    - Ability to clear lines
+    - Scoring/lines is now tracked as a result of the above
