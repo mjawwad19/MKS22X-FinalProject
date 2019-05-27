@@ -123,3 +123,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - fast last minute changes can cause multiple locks
       - at least the piece is guaranteed to lock tho so Issue # 3 of day 6 is now something less worse?
     - still edge rotation doesn't work
+
+[Day 9] 5/26/19
+- Kevin:
+    - Fixed the bug where a locked piece gets fed into the array multiple times
+    - Code cleanup
