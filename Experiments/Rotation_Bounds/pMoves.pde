@@ -1,5 +1,5 @@
 PShape rotateLeft() {
-  if (fixRotate() && rightBounds() && bottomBounds()) {
+  if (rightBounds() && bottomBounds()) {
     if (rotation == 0) rotation = maxRotations - 1;
     else rotation--; //to ensure looping back to the correct rotation index
   }
@@ -8,7 +8,7 @@ PShape rotateLeft() {
 }
 
 PShape rotateRight() {
-  if (fixRotate() && rightBounds() && bottomBounds()) {
+  if (rightBounds() && bottomBounds()) {
     if (rotation == maxRotations - 1) rotation = 0;
     else rotation++;
   }
@@ -111,10 +111,18 @@ void feed() {
   }
 }
 
-
-boolean fixRotate() {
-  if (t == 'I') {
-    return (convertX(x3) >= 2 && convertX(x3) <= 8 && convertY(y1) >= 2);
-  }
-  else return false;
-}
+/*
+  I bounds: the joint ( - - JOINT -) has to be 2 away from left bound or 1 away from right bound, 
+            2 below top to rotate to standing I.
+  J: the joint ( - - Joint
+                        - ) is 2 away from left bound initially, then 1, then none, then 1.
+                             for the right it's none, then 1, then two then 1. 1 away from.
+                             And at least 1 away from the top from starting.
+  Z: same as S. 
+  L" the joint ( Joint - -
+                 - ) is none, one, two, one (for right bounds its two, one, none, two.
+  S: the joint (   J - ) 
+                 - -     is always 1 from either bound. And at least 1 away from the top from starting.
+  Z: same as S. 
+  T: same as S. 
+  */
