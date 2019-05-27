@@ -65,9 +65,9 @@ PShape which() {
 boolean leftBounds() {
   try {
     return (pField[convertY(ny1)][convertX(nx1) - 1].getColor() == black) &&
-           (pField[convertY(ny2)][convertX(nx2) - 1].getColor() == black) &&
-           (pField[convertY(ny3)][convertX(nx3) - 1].getColor() == black) &&
-           (pField[convertY(ny4)][convertX(nx4) - 1].getColor() == black);
+      (pField[convertY(ny2)][convertX(nx2) - 1].getColor() == black) &&
+      (pField[convertY(ny3)][convertX(nx3) - 1].getColor() == black) &&
+      (pField[convertY(ny4)][convertX(nx4) - 1].getColor() == black);
   }
 
   catch (ArrayIndexOutOfBoundsException e) {
@@ -78,9 +78,9 @@ boolean leftBounds() {
 boolean rightBounds() {
   try {
     return (pField[convertY(ny1)][convertX(nx1) + 1].getColor() == black) &&
-           (pField[convertY(ny2)][convertX(nx2) + 1].getColor() == black) &&
-           (pField[convertY(ny3)][convertX(nx3) + 1].getColor() == black) &&
-           (pField[convertY(ny4)][convertX(nx4) + 1].getColor() == black);
+      (pField[convertY(ny2)][convertX(nx2) + 1].getColor() == black) &&
+      (pField[convertY(ny3)][convertX(nx3) + 1].getColor() == black) &&
+      (pField[convertY(ny4)][convertX(nx4) + 1].getColor() == black);
   }
 
   catch (ArrayIndexOutOfBoundsException e) {
@@ -91,9 +91,9 @@ boolean rightBounds() {
 boolean bottomBounds() {
   try {
     return (pField[convertY(ny1) + 1][convertX(nx1)].getColor() == black) &&
-           (pField[convertY(ny2) + 1][convertX(nx2)].getColor() == black) &&
-           (pField[convertY(ny3) + 1][convertX(nx3)].getColor() == black) &&
-           (pField[convertY(ny4) + 1][convertX(nx4)].getColor() == black);
+      (pField[convertY(ny2) + 1][convertX(nx2)].getColor() == black) &&
+      (pField[convertY(ny3) + 1][convertX(nx3)].getColor() == black) &&
+      (pField[convertY(ny4) + 1][convertX(nx4)].getColor() == black);
   }
 
   catch (ArrayIndexOutOfBoundsException e) {
@@ -111,29 +111,50 @@ void feed() {
   }
 }
 
-/*
-  I bounds: the joint ( - - JOINT -) has to be 2 away from left bound or 1 away from right bound, 
-            2 below top to rotate to standing I.
-  J: the joint ( - - Joint
-                        - ) is 2 away from left bound initially, then 1, then none, then 1.
-                             for the right it's none, then 1, then two then 1. 1 away from.
-                             And at least 1 away from the top from starting.
-  Z: same as S. 
-  L" the joint ( Joint - -
-                 - ) is none, one, two, one (for right bounds its two, one, none, two.
-  S: the joint (   J - ) 
-                 - -     is always 1 from either bound. And at least 1 away from the top from starting.
-  Z: same as S. 
-  T: same as S. 
-  */
- 
- //these methods use the joints (the places that always stay constant in rotation to determine if allowed
-boolean iRotation(){
+//these methods use the joints (the places that always stay constant in rotation to determine if allowed
+boolean iRotation() {
   return (convertX(nx3) >= 2 && convertX(nx3) <= 8
-       && convertY(ny3) >=2  && convertY(ny3) <= 18);
+    && convertY(ny3) >=2  && convertY(ny3) <= 18);
 }
 
-boolean jRotation(){
+boolean jRotation() {
   return (convertX(nx2) >= 1 && convertX(nx2) <= 8 
-       && convertY(ny2) >= 1 && convertY(ny2) <= 18);
+    && convertY(ny2) >= 1 && convertY(ny2) <= 18);
+}
+//the same as j rotation:
+boolean lRotation() {
+  return jRotation();
+}
+//the joint n3 is always constant
+boolean sRotation() {
+  return (convertX(nx3) >= 1 && convertX(nx3) <= 8 
+    &&  convertY(ny3) >= 1 && convertY(ny3) <= 18);
+}
+// the joint n3 is always constant now
+boolean zRotation() {
+  return sRotation();
+}
+
+// the joint n2 is always constant
+boolean tRotation() {
+  return jRotation();
+}
+
+boolean fixRotation() {
+  switch (t) {
+  case 'I':
+    return iRotation();
+  case 'J':
+    return jRotation();
+  case 'L':
+    return lRotation();
+  case 'S':
+    return sRotation();
+  case 'Z':
+    return zRotation();
+  case 'O':
+    return true;
+  default:
+    return tRotation();
+  }
 }
