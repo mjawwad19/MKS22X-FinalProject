@@ -260,6 +260,36 @@ PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and whi
   }
 }
 
+//Simultaneously clears lines and scores
+int clearLines() {
+  ArrayList<Integer> linesToClear = new ArrayList<Integer>();
+
+  for (int i = 0; i < 20; ++i) {
+    boolean fullLine = true;
+    for (int j = 0; j < 10; ++j) {
+      if (pField[i][j].getColor() == black)
+        fullLine = false;
+
+    }
+
+    if (fullLine)
+      linesToClear.add(i);
+
+    println(linesToClear.toString());
+  }
+
+  for (int i = 0; i < 20; ++i) {
+    for (Integer line : linesToClear) {
+      if (line.intValue() == i) {
+        for (int j = 0; j < 10; ++j)
+          pField[i][j].setColor(black);
+      }
+    }
+  }
+
+  return 1;
+}
+
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -303,6 +333,7 @@ void draw() {
         rotation = 0;
         pieceLocked = false;
         framesPieceLocked = 0;
+        score += clearLines();
       }
     }
 
