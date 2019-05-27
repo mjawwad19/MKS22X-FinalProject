@@ -128,3 +128,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 - Kevin:
     - Fixed the bug where a locked piece gets fed into the array multiple times
     - Code cleanup
+- Jawwad:
+    - went to experimental with a copy of Tetris now named Rotation_Bounds
+      - tried to figure out a way to make rotations work on edges
+        - success! sorta... See  [this Experiments](Experiments/Experiments.md) for more details
