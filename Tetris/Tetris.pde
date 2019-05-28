@@ -322,9 +322,9 @@ void setup() {
   font = createFont("PressStart2P-Regular.ttf", 28);
 
   //Music
-  audioName = "music3.wav";
+  audioName = "music2.wav";
   bgMusic = new SoundFile(this, audioName);
-  bgMusic.play();
+  bgMusic.loop();
 
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
@@ -400,8 +400,16 @@ void draw() {
 void keyPressed() {
   switch (key) {
     case (char)10: //pause function - this is the enter key
-      if (looping) noLoop();
-      else loop();
+      if (looping) {
+        noLoop();
+        bgMusic.pause();
+      }
+
+      else {
+        loop();
+        bgMusic.loop();
+      }
+
       break;
     case '-': //proof of concept: decrease level/speed
       if (!keyLock && level > 0) {
