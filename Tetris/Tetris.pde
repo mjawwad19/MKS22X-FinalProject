@@ -1,6 +1,10 @@
 import java.util.*;
+import processing.sound.*;
 
 //Useful globally
+SoundFile bgMusic;
+String audioName;
+
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
@@ -317,6 +321,11 @@ void setup() {
   background(backgroundGray);
   font = createFont("PressStart2P-Regular.ttf", 28);
 
+  //Music
+  audioName = "music3.wav";
+  bgMusic = new SoundFile(this, audioName);
+  bgMusic.play();
+
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
   pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
@@ -368,6 +377,7 @@ void draw() {
 
     if (framesAfterLoss == 1) { //only draw this once
       background(backgroundGray);
+      bgMusic.stop();
       displayField();
       lineCounter();
       scoreCounter();
