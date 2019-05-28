@@ -17,8 +17,8 @@ PShape rotateLeft() {
 PShape rotateRight() {
   if (fixRotation()) {
     if (leftBounds() && rightBounds() && bottomBounds()) {
-      if (rotation == maxRotations - 1) rotation = 0;
-      else rotation++;
+      //if (rotation == maxRotations - 1) rotation = 0;
+      rotation++;
     }
   }
   /* else if ((!leftBounds() || !rightBounds()) && fixRotation()){
@@ -43,14 +43,16 @@ PShape moveDown() {
 }
 
 PShape moveLeft() {
-  if (leftBounds())
+  if (convertX(nx1) > 1  && convertX(nx2) > 1 && 
+      convertX(nx3) > 1  && convertX(nx4) > 1 && leftBounds())
     dx--;
 
   return which();
 }
 
 PShape moveRight() {
-  if (rightBounds())
+  if (convertX(nx1) <10  && convertX(nx2) <10 && 
+      convertX(nx3) <10  && convertX(nx4) <10 && rightBounds())
     dx++;
 
   return which();
@@ -76,32 +78,34 @@ PShape which() {
 }
 
 boolean leftBounds() {
-  try {
-    return (pField[convertY(ny1)][convertX(nx1) -1].getColor() == black) &&
-      (pField[convertY(ny2)][convertX(nx2)-1].getColor() == black) &&
-      (pField[convertY(ny3)][convertX(nx3)-1].getColor() == black) &&
-      (pField[convertY(ny4)][convertX(nx4)-1].getColor() == black);
-  }
-
-  catch (ArrayIndexOutOfBoundsException e) {
-    return false;
-      
-  }
-}
-
-
-boolean rightBounds() {
-  try {
+  if (convertX(nx1) == 1 || convertX(nx2) == 1 || convertX(nx3) == 1 || convertX(nx4) == 1) {
     return (pField[convertY(ny1)][convertX(nx1)+1].getColor() == black) &&
       (pField[convertY(ny2)][convertX(nx2)+1].getColor() == black) &&
       (pField[convertY(ny3)][convertX(nx3)+1].getColor() == black) &&
       (pField[convertY(ny4)][convertX(nx4)+1].getColor() == black);
   }
+  else {
+    return (pField[convertY(ny1)][convertX(nx1) -1].getColor() == black) &&
+      (pField[convertY(ny2)][convertX(nx2)-1].getColor() == black) &&
+      (pField[convertY(ny3)][convertX(nx3)-1].getColor() == black) &&
+      (pField[convertY(ny4)][convertX(nx4)-1].getColor() == black);
+  }
+}
 
-  catch (ArrayIndexOutOfBoundsException e) {
-    return false;
-    }
-      
+
+boolean rightBounds() {
+  if (convertX(nx1) == 10 || convertX(nx2) == 10 || convertX(nx3) == 10 || convertX(nx4) == 10) {
+     return (pField[convertY(ny1)][convertX(nx1) -1].getColor() == black) &&
+      (pField[convertY(ny2)][convertX(nx2)-1].getColor() == black) &&
+      (pField[convertY(ny3)][convertX(nx3)-1].getColor() == black) &&
+      (pField[convertY(ny4)][convertX(nx4)-1].getColor() == black);
+  }
+  else{
+    return (pField[convertY(ny1)][convertX(nx1)+1].getColor() == black) &&
+      (pField[convertY(ny2)][convertX(nx2)+1].getColor() == black) &&
+      (pField[convertY(ny3)][convertX(nx3)+1].getColor() == black) &&
+      (pField[convertY(ny4)][convertX(nx4)+1].getColor() == black);
+  }
   }
 
 boolean bottomBounds() {
@@ -133,12 +137,12 @@ void feed() {
 
 //these methods use the joints (the places that always stay constant in rotation to determine if allowed
 boolean iRotation() {
-  return (convertX(nx3) >= 2 && convertX(nx3) <= 8
+  return (convertX(nx3) >= 3 && convertX(nx3) <= 9
     && convertY(ny3) >=2  /*&& convertY(ny3) <= 18*/);
 }
 
 boolean jRotation() {
-  return (convertX(nx2) >= 1 && convertX(nx2) <= 8 
+  return (convertX(nx2) >= 2 && convertX(nx2) <= 9
     && convertY(ny2) >= 1 /* && convertY(ny2) <= 18*/);
 }
 //the same as j rotation:
@@ -147,7 +151,7 @@ boolean lRotation() {
 }
 //the joint n3 is always constant
 boolean sRotation() {
-  return (convertX(nx3) >= 1 && convertX(nx3) <= 8 
+  return (convertX(nx3) >= 2 && convertX(nx3) <= 9
     &&  convertY(ny3) >= 1 /*&& convertY(ny3) <= 18*/);
 }
 // the joint n3 is always constant now
