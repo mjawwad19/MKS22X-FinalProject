@@ -185,7 +185,7 @@ void setField() {
   for (int r = 0; r < 20; r++) {
     for (int c = 0; c < 12; c++) {
       if (c == 0 || c == 11) {
-        pField[r][c] = new Block(xB,yB, white); //border
+        pField[r][c] = new Block(xB,yB, backgroundGray); //border
       }
       else {
       pField[r][c] = new Block(xB, yB, black);
@@ -202,7 +202,7 @@ void displayField() {
   //Fill in the empty blocks with their actual values
   pushMatrix();
 
-  translate(pFieldWidth, height * 0.190);
+  translate(pFieldWidth *.98, height * 0.190);
   for (int r = 0; r < 20; r++) {
     for (int c = 0; c < 12; c++) {
       pField[r][c].display();
@@ -213,7 +213,7 @@ void displayField() {
 }
 
 int convertX(float xpos) {
-  return (int) ((xpos - 350) / 27);
+  return (int) ((xpos - 320) / 27);
 }
 
 int convertY(float ypos) {
@@ -273,7 +273,7 @@ void setup() {
 
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
-  pFieldTopX = pFieldWidth * 1.275+ lh/2 + 5 * lh;
+  pFieldTopX = pFieldWidth * .98 + lh/2 + 6 * lh;
 
   currPiece = determinePiece(curr);
 
