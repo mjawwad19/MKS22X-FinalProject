@@ -1,15 +1,15 @@
 PShape rotateLeft() {
-   if (fixRotation()) {
+  if (fixRotation()) {
     if (leftBounds() && rightBounds() && bottomBounds()) {
-        if (rotation == 0) rotation = maxRotations - 1;
-        else rotation--; //to ensure looping back to the correct rotation index
+      if (rotation == 0) rotation = maxRotations - 1;
+      else rotation--; //to ensure looping back to the correct rotation index
     }
   }
   //in the case leftBound/rightBound returns false because too close to edge)
- /* else if ((!leftBounds() || !rightBounds()) && fixRotation()){
-    if (rotation == 0) rotation = maxRotations -1;
-    else rotation--;
-  }*/
+  /* else if ((!leftBounds() || !rightBounds()) && fixRotation()){
+   if (rotation == 0) rotation = maxRotations -1;
+   else rotation--;
+   }*/
 
   return which();
 }
@@ -21,10 +21,10 @@ PShape rotateRight() {
       else rotation++;
     }
   }
- /* else if ((!leftBounds() || !rightBounds()) && fixRotation()){
-    if (rotation == 0) rotation = maxRotations -1;
-    else rotation--;
-  }*/
+  /* else if ((!leftBounds() || !rightBounds()) && fixRotation()){
+   if (rotation == 0) rotation = maxRotations -1;
+   else rotation--;
+   }*/
 
   return which();
 }
@@ -85,6 +85,7 @@ boolean leftBounds() {
 
   catch (ArrayIndexOutOfBoundsException e) {
     return false;
+      
   }
 }
 
@@ -99,8 +100,9 @@ boolean rightBounds() {
 
   catch (ArrayIndexOutOfBoundsException e) {
     return false;
+    }
+      
   }
-}
 
 boolean bottomBounds() {
   try {
@@ -118,10 +120,14 @@ boolean bottomBounds() {
 //Feed a piece that has been locked into the pField array.
 void feed() {
   if (pieceLocked) {
-    pField[convertY(ny1)][convertX(nx1)].setColor(c);
-    pField[convertY(ny2)][convertX(nx2)].setColor(c);
-    pField[convertY(ny3)][convertX(nx3)].setColor(c);
-    pField[convertY(ny4)][convertX(nx4)].setColor(c);
+    try {
+      pField[convertY(ny1)][convertX(nx1)].setColor(c);
+      pField[convertY(ny2)][convertX(nx2)].setColor(c);
+      pField[convertY(ny3)][convertX(nx3)].setColor(c);
+      pField[convertY(ny4)][convertX(nx4)].setColor(c);
+    }
+  catch (Exception e) {
+  }
   }
 }
 
