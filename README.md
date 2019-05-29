@@ -137,3 +137,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 - Kevin: 
     - Ability to clear lines
     - Scoring/lines is now tracked as a result of the above
+    
+[Day 11] 5/28/19
+- Kevin: 
+    - Background music (need to find a way to pause music while keeping it on loop, play/pause does not satisfy this purpose)
