@@ -2,14 +2,14 @@ import java.util.*;
 import processing.sound.*;
 
 //Useful globally
-SoundFile bgMusic;
-String audioName;
-
 PFont font;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
 color black = color(0, 0, 0);
 color white = color(255, 255, 255);
+
+//Music
+SoundFile bgMusic;
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -94,6 +94,7 @@ String printPFieldColors() {
 
       else if (pField[i][j].getColor() == SPieceGreen) {
         output += "Gree ";
+
       }
 
       else if (pField[i][j].getColor() == ZPieceRed) {
@@ -243,6 +244,7 @@ void userControls() {
   else if (framesDPressed == 16) {
     currPiece = moveRight();
     framesDPressed = 10;
+
   }
 
   //forceDown a piece. Go down a line every 2 frames S is held down.
@@ -321,11 +323,6 @@ void setup() {
   background(backgroundGray);
   font = createFont("PressStart2P-Regular.ttf", 28);
 
-  //Music
-  audioName = "music2.wav";
-  bgMusic = new SoundFile(this, audioName);
-  bgMusic.loop();
-
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
   pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
@@ -334,6 +331,9 @@ void setup() {
 
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
+
+  bgMusic = new SoundFile(this, "music3.wav");
+  bgMusic.play();
 }
 
 void draw() {
@@ -377,12 +377,12 @@ void draw() {
 
     if (framesAfterLoss == 1) { //only draw this once
       background(backgroundGray);
-      bgMusic.stop();
       displayField();
       lineCounter();
       scoreCounter();
       nextPieceBox();
       levelCounter();
+      bgMusic.stop();
     }
 
     //Animation for loss
@@ -407,7 +407,7 @@ void keyPressed() {
 
       else {
         loop();
-        bgMusic.loop();
+        bgMusic.play();
       }
 
       break;
