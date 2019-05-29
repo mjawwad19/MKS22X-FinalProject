@@ -23,7 +23,7 @@ int framesAPressed, framesDPressed, framesSPressed = 0; //for implementing the D
 boolean paused = false;
 
 //For the playing field
-Block[][] pField = new Block[20][12];
+Block[][] pField = new Block[20][10];
 PShape currPiece;
 int curr = (int) random(7); //indices for the pieces to generate
 int next = (int) random(7);
@@ -41,7 +41,7 @@ int dy = 0;
 
 //Useful constants
 float lh = 27.0; //lh = line height
-float pFieldWidth = lh * 12;
+float pFieldWidth = lh * 10;
 float pFieldHeight = lh * 20;
 float pFieldTopX; //have to assign those two later in setup
 float pFieldTopY;
@@ -72,7 +72,7 @@ PShape determinePiece(int idx) {
 String printPFieldColors() {
   String output = "";
   for (int i = 0; i < 20; ++i) {
-    for (int j = 0; j < 12; ++j) {
+    for (int j = 0; j < 10; ++j) {
       if (pField[i][j].getColor() == IPieceTurqoise)
         output += "Turq ";
 
@@ -178,22 +178,17 @@ int getSpeed() {
 
 //Creates a blank board
 void setField() {
-  float xB = pFieldWidth/24;
+  float xB = pFieldWidth/20;
   float yB = pFieldHeight/40;
 
   //Draw the empty playing field (everything is a block)
   for (int r = 0; r < 20; r++) {
-    for (int c = 0; c < 12; c++) {
-      if (c == 0 || c == 11) {
-        pField[r][c] = new Block(xB,yB, backgroundGray); //border
-      }
-      else {
+    for (int c = 0; c < 10; c++) {
       pField[r][c] = new Block(xB, yB, black);
+      xB += pFieldWidth/10;
       }
-      xB += pFieldWidth/12;
-    }
 
-    xB = pFieldWidth/24;
+    xB = pFieldWidth/20;
     yB += pFieldHeight/20;
   }
 }
@@ -202,9 +197,9 @@ void displayField() {
   //Fill in the empty blocks with their actual values
   pushMatrix();
 
-  translate(pFieldWidth *.98, height * 0.190);
+  translate(pFieldWidth *1.275, height * 0.190);
   for (int r = 0; r < 20; r++) {
-    for (int c = 0; c < 12; c++) {
+    for (int c = 0; c < 10; c++) {
       pField[r][c].display();
     }
   }
@@ -213,7 +208,7 @@ void displayField() {
 }
 
 int convertX(float xpos) {
-  return (int) ((xpos - 320) / 27);
+  return (int) ((xpos - 350) / 27);
 }
 
 int convertY(float ypos) {
@@ -273,7 +268,7 @@ void setup() {
 
   //Assign playing field constants
   pFieldTopY = height * 0.190 + lh/2;
-  pFieldTopX = pFieldWidth * .98 + lh/2 + 6 * lh;
+  pFieldTopX = pFieldWidth * 1.275 + lh/2 + 5 * lh;
 
   currPiece = determinePiece(curr);
 

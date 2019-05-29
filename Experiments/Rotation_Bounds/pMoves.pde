@@ -43,16 +43,16 @@ PShape moveDown() {
 }
 
 PShape moveLeft() {
-  if (convertX(nx1) > 1  && convertX(nx2) > 1 && 
-      convertX(nx3) > 1  && convertX(nx4) > 1 && leftBounds())
+  if (convertX(nx1) > 0  && convertX(nx2) > 0 && 
+      convertX(nx3) > 0  && convertX(nx4) > 0 && leftBounds())
     dx--;
 
   return which();
 }
 
 PShape moveRight() {
-  if (convertX(nx1) <10  && convertX(nx2) <10 && 
-      convertX(nx3) <10  && convertX(nx4) <10 && rightBounds())
+  if (convertX(nx1) <9  && convertX(nx2) <9 && 
+      convertX(nx3) <9  && convertX(nx4) <9 && rightBounds())
     dx++;
 
   return which();
@@ -78,7 +78,7 @@ PShape which() {
 }
 
 boolean leftBounds() {
-  if (convertX(nx1) == 1 || convertX(nx2) == 1 || convertX(nx3) == 1 || convertX(nx4) == 1) {
+  if (convertX(nx1) == 0 || convertX(nx2) == 0 || convertX(nx3) == 0 || convertX(nx4) == 0) {
     return (pField[convertY(ny1)][convertX(nx1)+1].getColor() == black) &&
       (pField[convertY(ny2)][convertX(nx2)+1].getColor() == black) &&
       (pField[convertY(ny3)][convertX(nx3)+1].getColor() == black) &&
@@ -94,7 +94,7 @@ boolean leftBounds() {
 
 
 boolean rightBounds() {
-  if (convertX(nx1) == 10 || convertX(nx2) == 10 || convertX(nx3) == 10 || convertX(nx4) == 10) {
+  if (convertX(nx1) == 8 || convertX(nx2) == 8 || convertX(nx3) == 8 || convertX(nx4) == 8) {
      return (pField[convertY(ny1)][convertX(nx1) -1].getColor() == black) &&
       (pField[convertY(ny2)][convertX(nx2)-1].getColor() == black) &&
       (pField[convertY(ny3)][convertX(nx3)-1].getColor() == black) &&
@@ -137,12 +137,12 @@ void feed() {
 
 //these methods use the joints (the places that always stay constant in rotation to determine if allowed
 boolean iRotation() {
-  return (convertX(nx3) >= 3 && convertX(nx3) <= 9
+  return (convertX(nx3) >= 2 && convertX(nx3) <= 8
     && convertY(ny3) >=2  /*&& convertY(ny3) <= 18*/);
 }
 
 boolean jRotation() {
-  return (convertX(nx2) >= 2 && convertX(nx2) <= 9
+  return (convertX(nx2) >= 1 && convertX(nx2) <= 8
     && convertY(ny2) >= 1 /* && convertY(ny2) <= 18*/);
 }
 //the same as j rotation:
@@ -151,7 +151,7 @@ boolean lRotation() {
 }
 //the joint n3 is always constant
 boolean sRotation() {
-  return (convertX(nx3) >= 2 && convertX(nx3) <= 9
+  return (convertX(nx3) >= 1 && convertX(nx3) <= 8
     &&  convertY(ny3) >= 1 /*&& convertY(ny3) <= 18*/);
 }
 // the joint n2 is always constant now
