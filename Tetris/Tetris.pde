@@ -20,12 +20,6 @@ color SPieceGreen = color(0, 255, 0);
 color ZPieceRed = color(255, 0, 0);
 color TPiecePurple = color(204, 51, 255);
 
-//Key handling
-boolean keyLock = false; //for keys that shouldn't be held down
-boolean aPressed, dPressed, sPressed = false;
-int framesAPressed, framesDPressed, framesSPressed = 0; //for implementing the DAS mechanic
-boolean paused = false;
-
 //For the playing field
 Block[][] pField = new Block[20][10];
 PShape currPiece;
@@ -218,40 +212,6 @@ int convertX(float xpos) {
 
 int convertY(float ypos) {
   return (int) ((ypos - 150) / 27);
-}
-
-void userControls() {
-  if (aPressed) ++framesAPressed;
-  if (dPressed) ++framesDPressed;
-  if (sPressed) ++framesSPressed;
-
-  if (framesAPressed == 1) //if you wish to tap instead of using the auto-shift
-    currPiece = moveLeft();
-
-  /*
-  The exact mechanics of DAS in NES Tetris:
-  - Wait 16 frames after the first initial movement
-  - Every subsequent movement takes 6 frames
-  */
-  else if (framesAPressed == 16) {
-    currPiece = moveLeft();
-    framesAPressed = 10;
-  }
-
-  if (framesDPressed == 1)
-    currPiece = moveRight();
-
-  else if (framesDPressed == 16) {
-    currPiece = moveRight();
-    framesDPressed = 10;
-
-  }
-
-  //forceDown a piece. Go down a line every 2 frames S is held down.
-  if (framesSPressed == 2) {
-    currPiece = moveDown();
-    framesSPressed = 0;
-  }
 }
 
 PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and which() won't work for this as they only obtain the current piece
@@ -452,13 +412,8 @@ void keyPressed() {
 }
 
 void keyReleased() {
+  keyLock = false;
   switch (key) {
-    case '-':
-      keyLock = false;
-      break;
-    case '=':
-      keyLock = false;
-      break;
     case 'a':
       framesAPressed = 0;
       aPressed = false;
@@ -469,12 +424,6 @@ void keyReleased() {
       break;
     case 's':
       sPressed = false;
-      break;
-    case 'h':
-      keyLock = false;
-      break;
-    case 'j':
-      keyLock = false;
       break;
   }
 }
