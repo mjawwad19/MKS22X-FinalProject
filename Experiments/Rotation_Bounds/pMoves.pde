@@ -154,9 +154,9 @@ boolean sRotation() {
   return (convertX(nx3) >= 2 && convertX(nx3) <= 9
     &&  convertY(ny3) >= 1 /*&& convertY(ny3) <= 18*/);
 }
-// the joint n3 is always constant now
+// the joint n2 is always constant now
 boolean zRotation() {
-  return sRotation();
+  return jRotation();
 }
 
 // the joint n2 is always constant
