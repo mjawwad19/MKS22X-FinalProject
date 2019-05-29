@@ -10,6 +10,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 [Day 0] 5/17/19:
   - Jawwad created the repo and began the Block class.
     - x, y, color, accessor, and mutator methods for color.
+    
+_____
 
 [Day 1] 5/18/19:
   - Kevin created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
@@ -17,6 +19,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 
   - Jawwad, after some experimenting with numbers, was able to create a double array of blocks centered on top of the playing field.
     - In the future, the piece lock feature will feed blocks into this array!
+
+_____
 
 [Day 2] 5/19/19:
   - Jawwad considered making the individual pieces implement a Piece class...but nah. Proved harder than it was worth.
@@ -33,6 +37,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 
   - Kevin: Code reorganization, removed black rectangle underneath pField because not needed, level system (can play with speeds using levels)
 
+_____
 
 [Day 3] 5/20/19:
   - Kevin: trying to calm Jawwad down on his "I'm going to procrastinate on everything else in life and focus on CS" phase
@@ -48,6 +53,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - added moving down/left/right (though without bounds) to his working branch
     - **Needs to calm the hell down jesus.**
 
+_____
+
 [Day 4] 5/21/19:
   - mMrged all the movement stuff from Jawwad's branch in class
   - Kevin:
@@ -62,6 +69,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
     - fixed bug where nextPiece generation happened 1 below where it should have (with the simplest dumbest way possible after long thought)
       - this was fixed by setting dy to -1 instead of 0.
     - Fixed YBound restrictions on piece movement/rotation. This will be further expanded upon to check for any 'collision' with pieces already fed into the array
+
+_____
 
 [Day 5] 5/22/19:
   - Both:
@@ -88,6 +97,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
       - score update when this happens
       - display Next piece in box
 
+_____
 
  [Day 6] 5/23/19
   - Jawwad:
@@ -106,7 +116,9 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
   - Kevin:
     - separated displaying/construction of field to keep a locked piece in the field instead of redrawing a clean board every frame. This allows locking to feed into the field array and be saved.
     
- [Day 8] 5/25/19
+_____
+    
+[Day 8] 5/25/19
  - Kevin:
     - Implemented fluid movement so that movement registers the frame after a key is registered (overhauled key handling per Mr. K's suggestions in class), includes forcing down a piece and rotations
     - Implemented the DAS movement style down to the frame
@@ -124,6 +136,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
       - at least the piece is guaranteed to lock tho so Issue # 3 of day 6 is now something less worse?
     - still edge rotation doesn't work
 
+_____
+
 [Day 9] 5/26/19
 - Kevin:
     - Fixed the bug where a locked piece gets fed into the array multiple times
@@ -133,11 +147,15 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
       - tried to figure out a way to make rotations work on edges
         - success! sorta... See  [Experiments](Experiments/Experiments.md) for more details
         
+_____
+
 [Day 10] 5/27/19
 - Kevin: 
     - Ability to clear lines
     - Scoring/lines is now tracked as a result of the above
     
+_____
+
 [Day 11] 5/28/19
 - Kevin: 
     - Background music (need to find a way to pause music while keeping it on loop, play/pause does not satisfy this purpose)
