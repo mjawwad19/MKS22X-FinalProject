@@ -141,3 +141,11 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 [Day 11] 5/28/19
 - Kevin: 
     - Background music (need to find a way to pause music while keeping it on loop, play/pause does not satisfy this purpose)
+- Jawwad:
+    - Fixed rotation at the edges/ rotating out in Experimental
+      - fixed an issue where the constant joint in rotation for J was not always in the same place, causing issues where J piece rotated out of bounds
+      - similar event for Z rotation
+      - as a consequence, spins are now impossible :( but seeing as how we are emulating NES tetris and non modern additions, in which spins have no rewarding system and are extremely rare as is, this feature isn't as nearly missed as it should be.
+        - we're pretty sure the only spin that was working before was T spin and that was by unknown means.
+      - once everyone agrees (show tmrw in class) this will be moved to master. 
+    
