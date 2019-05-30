@@ -11,6 +11,11 @@ color white = color(255, 255, 255);
 //Music
 SoundFile bgMusic;
 
+//startup
+boolean startGame = false;
+boolean start1 = true;
+boolean start2 = false;
+
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
 color OPieceYellow = color(255, 255, 0);
@@ -43,7 +48,7 @@ void setup() {
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
 
-  bgMusic = new SoundFile(this, "music3.wav");
+  bgMusic = new SoundFile(this, "music1.wav");
   bgMusic.play();
 }
 
