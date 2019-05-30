@@ -49,11 +49,20 @@ void setup() {
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
 
   bgMusic = new SoundFile(this, "music1.wav");
+<<<<<<< HEAD
   bgMusic.play();
+=======
+  //bgMusic.play();
+>>>>>>> 5210348020416e258b46a9c8c1a289a48825b456
 }
+
+//1:50 music 1, 6600 frames
 
 void draw() {
   if (!gameOver) {
+    if (frame % 6600 == 0)
+      bgMusic.play();
+
     background(backgroundGray); //clear screen
     ++frame; //unless you have the program running a year in a row, this is never overflowing
     if (pieceLocked) ++framesPieceLocked; //delay a new piece being spawned so that the game doesn't become impossible too soon
