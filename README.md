@@ -170,7 +170,7 @@ _____
 
 [Day 12] 5/29/19 
 - Jawwad:
-      - "merged" rotation_bounds with tetris so now we have working rotation at edges + delete lines/ score updating
+    - "merged" rotation_bounds with tetris so now we have working rotation at edges + delete lines/ score updating
         - in tight areas where one could technically still rotate, the rotation is sometimes locked (most obvious with a z piece that is between an edge and a wall of fed pieces two away from the edge (so the z piece is basically touching both walls) as a side effect.
-      - removed the 12 by 20 grid after fixing code to work on 10 by 20. 
+    - removed the 12 by 20 grid after fixing code to work on 10 by 20. 
 _____
