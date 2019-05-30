@@ -8,45 +8,52 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 ## Development log
 
 [Day 0] 5/17/19:
-  - Jawwad created the repo and began the Block class.
-    - x, y, color, accessor, and mutator methods for color.
+- Jawwad:
+      - created the repo and began the Block class.
+      - x, y, color, accessor, and mutator methods for color.
     
 _____
 
 [Day 1] 5/18/19:
-  - Kevin created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
-  - Kevin created PShapes for all 7 tetrominoes (colored appropriately). (He wanted to solo this) using vertices.
+- Kevin:
+    - created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
+    - created PShapes for all 7 tetrominoes (colored appropriately). (He wanted to solo this) using vertices.
 
-  - Jawwad, after some experimenting with numbers, was able to create a double array of blocks centered on top of the playing field.
-    - In the future, the piece lock feature will feed blocks into this array!
+- Jawwad:
+    - after some experimenting with numbers, was able to create a double array of blocks centered on top of the playing field.
+      - In the future, the piece lock feature will feed blocks into this array!
 
 _____
 
 [Day 2] 5/19/19:
-  - Jawwad considered making the individual pieces implement a Piece class...but nah. Proved harder than it was worth.
-    - Jawwad experiments and pushes through PShape hell and tries to get a working piece with movement, or just not moving when not allowed
+- Jawwad:
+    - considered making the individual pieces implement a Piece class...but nah. Proved harder than it was worth.
+    - experimented and pushed through PShape hell and tries to get a working piece with movement, or just not moving when not allowed
     - All work and no play makes Jawwad a crazy man.
-  - Jawwad figured out an easier way to create the pieces using PShape and children, in line with how the the grid and blocks are formatted.
-    - This can be seen in the Experiments directory under EasyShapes: we will not be using it till we confirm for certain it can move and rotate correctly.
-    - Huzzah Jawwad stayed up and figured out how to make rotate work:
+    - figured out an easier way to create the pieces using PShape and children, in line with how the the grid and blocks are formatted.
+      - This can be seen in the Experiments directory under EasyShapes: we will not be using it till we confirm for certain it can move and rotate correctly.
+    - Huzzah figured out how to make rotate work:
       - hard code in x1, y1, x2, y2, x3, y3, x4, y4 for each rotation in a piece 'constructor'
       - make rotate return this constructor after modifying the rotation value
       - set currPiece to the result of rotate
       - button presses after that :p
-  - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's x and y values. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
+   - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's x and y values. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
 
-  - Kevin: Code reorganization, removed black rectangle underneath pField because not needed, level system (can play with speeds using levels)
+- Kevin: 
+    - Code reorganization, removed black rectangle underneath pField because not needed
+    - level system (can play with speeds using levels)
 
 _____
 
 [Day 3] 5/20/19:
-  - Kevin: trying to calm Jawwad down on his "I'm going to procrastinate on everything else in life and focus on CS" phase
+- Kevin: trying to calm Jawwad down on his "I'm going to procrastinate on everything else in life and focus on CS" phase
     - found a way to not cause epilepsy when rotating a piece YAY
     - helped Jawwad find 3 crucial typos in his piece creation
     - was a great rubber ducky to Jawwad and found his stupid mistakes and bugs and oversights.
     - speed system demo: press the plus or minus keys to increase or decrease the levels which increase or decrease the speed of the pieces falling down respectively.
 
-  - Jawwad: demoed in class to Mr.K/Kevin the rotation --- it's an epilepsy warning, as well as how to create individual pieces by children to Kevin
+- Jawwad: 
+    - demoed in class to Mr.K/Kevin the rotation --- it's an epilepsy warning, as well as how to create individual pieces by children to Kevin
     - ported rotation (Right and Left) to his working branch!
     - fixed a rotation oversight that Kevin pointed out
     - ported ---spent the whole day drawing diagrams so he could figure out ALL of the x and y positions of each children of each rotation of each piece, and got them working and correct like a boss on his working branch!
@@ -57,12 +64,12 @@ _____
 
 [Day 4] 5/21/19:
   - mMrged all the movement stuff from Jawwad's branch in class
-  - Kevin:
+- Kevin:
     -placed x bounds for pieces for moveleft and Right
     - keybindings (though these may be subject to change, Jawwad and Reddit thinks this ain't a great combo of keys)
     - level/speed increaser (this is just for visualization, in final version they will be impacted by score)
     - converting repetitive if else statements to switches
-  - Jawwad:
+- Jawwad:
     - fixed bug that caused J's to generate to Ls and Os to Ts ---typos from Kevin reorganizing switch statements
     - fixed bug where currPiece immediately converted to nextPiece after 1 moveDown (with the simplest dumbest way possible after long thought
       - have currPiece and 1st nextPiece be the same so immediate conversion won't change the shape! Then nextPiece updates as it randomly should
@@ -73,14 +80,14 @@ _____
 _____
 
 [Day 5] 5/22/19:
-  - Both:
+- Both:
     - debugging: print the grid
     - debugging: print all relevant info (xcorrds, y coords, ny coords, nx coords)
-  - Kevin:
+- Kevin:
     - added pause function (press enter) using loop and noLoop
     - conversion of x and y to array positions math
     - fixed bug that caused I's to be constructed like | instead of __
-  - Jawwad:
+- Jawwad:
     - dying sick :/ so working out math/ making Kevin do stuff via Driver/Mapper relationship
      - research on noLoop and loop for pause
     - cleaned up printing of the grid to be less jarring to look at (don't display black!)
@@ -99,8 +106,8 @@ _____
 
 _____
 
- [Day 6] 5/23/19
-  - Jawwad:
+[Day 6] 5/23/19
+- Jawwad:
     - made a rudimentary lock that needs to be improved upon
         - only works on the bottom layer and semi works on top of other pieces:
         - Issue #0: calling moveDown() manually by the S Key on a piece right above any Y bound/collision will cause the piece to not get locked at all, but instead generate the next piece.
@@ -113,24 +120,24 @@ _____
         - Issue #3: similar to Issue #3 and #0, a piece rotating last second may also cause the piece to generate the next piece without locking.
         - freaks out if the top is reached/ 1 away from the top because the piece locks and immediately generates out.
         -we need to code in a game over when this occurs to prevent this.
-  - Kevin:
+- Kevin:
     - separated displaying/construction of field to keep a locked piece in the field instead of redrawing a clean board every frame. This allows locking to feed into the field array and be saved.
     
 _____
     
 [Day 8] 5/25/19
- - Kevin:
+- Kevin:
     - Implemented fluid movement so that movement registers the frame after a key is registered (overhauled key handling per Mr. K's suggestions in class), includes forcing down a piece and rotations
     - Implemented the DAS movement style down to the frame
     - Next piece counter now works
     - Fixed a bug where the rotation saved so that a new block spawned isn't in the default rotation
     - Piece lock delay to mimic NES Tetris (this could be causing an issue with pieces being fed in multiple times, not sure yet)
     - A game over ANIMATION
- - Jawwad is still sick but doesn't want to be complacent
+- Jawwad is still sick but doesn't want to be complacent
     - trying to figure out why edge rotation won't work
       - crazy idea but what if we make the grid 12 by 20 but only have the center 10 be black? That should allow rotation at the "edges"
     - Fixed centered rotation for S/Z/L pieces after Kevin gave classic NES Tetris videos showing that our hardcoded rotations were shifted down or to the right when they shouldn't have been
-  - Bug fixes + new bugs:
+- Bug fixes + new bugs:
     - moveDown() not locking is over
     - fast last minute changes can cause multiple locks
       - at least the piece is guaranteed to lock tho so Issue # 3 of day 6 is now something less worse?
@@ -173,4 +180,6 @@ _____
     - "merged" rotation_bounds with tetris so now we have working rotation at edges + delete lines/ score updating
         - in tight areas where one could technically still rotate, the rotation is sometimes locked (most obvious with a z piece that is between an edge and a wall of fed pieces two away from the edge (so the z piece is basically touching both walls) as a side effect.
     - removed the 12 by 20 grid after fixing code to work on 10 by 20. 
+- Kevin:
+    - cleaned up and reorganized code from Tetris to different tabs 
 _____
