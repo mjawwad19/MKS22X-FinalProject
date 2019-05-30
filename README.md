@@ -9,8 +9,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 
 [Day 0] 5/17/19:
 - Jawwad:
-      - created the repo and began the Block class.
-      - x, y, color, accessor, and mutator methods for color.
+   - created the repo and began the Block class.
+   - x, y, color, accessor, and mutator methods for color.
     
 _____
 
@@ -18,7 +18,6 @@ _____
 - Kevin:
     - created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
     - created PShapes for all 7 tetrominoes (colored appropriately). (He wanted to solo this) using vertices.
-
 - Jawwad:
     - after some experimenting with numbers, was able to create a double array of blocks centered on top of the playing field.
       - In the future, the piece lock feature will feed blocks into this array!
@@ -38,7 +37,6 @@ _____
       - set currPiece to the result of rotate
       - button presses after that :p
    - Idea # 3: instead of using PShapes, why not make each individual piece a block array of 4 values? That way we can move and rotate by just updating the block's x and y values. And access them easily when we are locking. [Seriously this is such a simple way to do this why are we not doing it]
-
 - Kevin: 
     - Code reorganization, removed black rectangle underneath pField because not needed
     - level system (can play with speeds using levels)
@@ -46,12 +44,11 @@ _____
 _____
 
 [Day 3] 5/20/19:
-- Kevin: trying to calm Jawwad down on his "I'm going to procrastinate on everything else in life and focus on CS" phase
+- Kevin: trying to calm Jawwad down on his "I'm going to procrastinate on everything else in life and focus on CS" phase:
     - found a way to not cause epilepsy when rotating a piece YAY
     - helped Jawwad find 3 crucial typos in his piece creation
     - was a great rubber ducky to Jawwad and found his stupid mistakes and bugs and oversights.
     - speed system demo: press the plus or minus keys to increase or decrease the levels which increase or decrease the speed of the pieces falling down respectively.
-
 - Jawwad: 
     - demoed in class to Mr.K/Kevin the rotation --- it's an epilepsy warning, as well as how to create individual pieces by children to Kevin
     - ported rotation (Right and Left) to his working branch!
@@ -63,7 +60,7 @@ _____
 _____
 
 [Day 4] 5/21/19:
-  - mMrged all the movement stuff from Jawwad's branch in class
+- mMrged all the movement stuff from Jawwad's branch in class
 - Kevin:
     -placed x bounds for pieces for moveleft and Right
     - keybindings (though these may be subject to change, Jawwad and Reddit thinks this ain't a great combo of keys)
@@ -89,20 +86,19 @@ _____
     - fixed bug that caused I's to be constructed like | instead of __
 - Jawwad:
     - dying sick :/ so working out math/ making Kevin do stuff via Driver/Mapper relationship
-     - research on noLoop and loop for pause
+    - research on noLoop and loop for pause
     - cleaned up printing of the grid to be less jarring to look at (don't display black!)
     - fixed bug at one child of pshape not converting into the array.
       - the usage of ncoor vs coor is crucial here as some children will not show when rotated because they aren't updated in time
     - [hopefully] fixed rotation left freeze bug when user rotates left too many times
       - by changing rotation to 24 [multiple of 2, 4 and 1 maxRotations]
       - having the rotate functions store a local equivalent of rotation % maxRotation.
-
-    Things to do now/Try to figure out:
-      - lock a piece down by feeding into the array, and more importantly, keep it in the array.
+- Things to do now/Try to figure out:
+    - lock a piece down by feeding into the array, and more importantly, keep it in the array.
         - currently the issue is that currPiece gets locked when YBound is hit, fed into the array, and then changes to nextPiece. But nextpiece is not locked so the feeding of the array is now lost.
-     - "delete" a row/line and shift everything above it down
+    - "delete" a row/line and shift everything above it down
       - score update when this happens
-      - display Next piece in box
+    - display Next piece in box
 
 _____
 
@@ -133,7 +129,7 @@ _____
     - Fixed a bug where the rotation saved so that a new block spawned isn't in the default rotation
     - Piece lock delay to mimic NES Tetris (this could be causing an issue with pieces being fed in multiple times, not sure yet)
     - A game over ANIMATION
-- Jawwad is still sick but doesn't want to be complacent
+- Jawwad: still sick but doesn't want to be complacent:
     - trying to figure out why edge rotation won't work
       - crazy idea but what if we make the grid 12 by 20 but only have the center 10 be black? That should allow rotation at the "edges"
     - Fixed centered rotation for S/Z/L pieces after Kevin gave classic NES Tetris videos showing that our hardcoded rotations were shifted down or to the right when they shouldn't have been
