@@ -47,13 +47,6 @@ float pFieldTopY;
 //For the counters
 int lines, score, level = 0;
 
-//To deal with the end of the game
-boolean gameOver = false;
-color[] barColors = {ZPieceRed, white, JPieceBlue};
-int framesAfterLoss = 0;
-int colorIdx = 0;
-float yPos = pFieldTopY + 140;
-
 PShape determinePiece(int idx) {
   switch (idx) {
     case 0: return createI(0);
@@ -333,27 +326,12 @@ void draw() {
 
   //Game over!
   else {
-    ++framesAfterLoss;
+    ++framesAfterLoss; //log this for the animation
 
-    if (framesAfterLoss == 1) { //only draw this once
-      background(backgroundGray);
-      displayField();
-      lineCounter();
-      scoreCounter();
-      nextPieceBox();
-      levelCounter();
-      bgMusic.stop();
-    }
+    if (framesAfterLoss == 1) //only draw this once
+      drawLastFrame();
 
-    //Animation for loss
-    if (framesAfterLoss % 3 == 0 && framesAfterLoss < 183) { //61 bars
-      rectMode(CENTER);
-      fill(barColors[colorIdx % 3]);
-      stroke(barColors[colorIdx % 3]);
-      rect(pFieldTopX - 13.7, yPos, pFieldWidth, lh/3);
-      ++colorIdx;
-      yPos += lh/3;
-    }
+    lossAnimation();
   }
 }
 
@@ -376,14 +354,12 @@ void keyPressed() {
         --level;
         keyLock = true;
       }
-
       break;
     case '=':
       if (!keyLock) {
         ++level;
         keyLock = true;
       }
-
       break;
     case 'a': //left
       aPressed = true;
@@ -399,14 +375,12 @@ void keyPressed() {
         currPiece = rotateLeft();
         keyLock = true;
       }
-
       break;
     case 'j': //rotate clockwise
       if (!keyLock) {
         currPiece = rotateRight();
         keyLock = true;
       }
-
       break;
   }
 }
