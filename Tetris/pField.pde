@@ -77,8 +77,6 @@ int clearLines() {
 
     if (fullLine)
       linesToClear.add(i);
-
-    println(linesToClear.toString());
   }
 
   Collections.sort(linesToClear);
