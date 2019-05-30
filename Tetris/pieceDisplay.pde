@@ -1,5 +1,17 @@
 PShape IPiece, OPiece, JPiece, LPiece, SPiece, ZPiece, TPiece;
 
+PShape getPieceGraphic(int idx) { //for the next piece: determinePiece() and which() won't work for this as they only obtain the current piece
+  switch (idx) {
+    case 0: return IPiece;
+    case 1: return OPiece;
+    case 2: return JPiece;
+    case 3: return LPiece;
+    case 4: return SPiece;
+    case 5: return ZPiece;
+    default: return TPiece; //case 6
+  }
+}
+
 void createPieces() {
   //Create I piece shape
   IPiece = createShape();

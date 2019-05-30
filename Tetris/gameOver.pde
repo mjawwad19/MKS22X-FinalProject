@@ -2,7 +2,7 @@ boolean gameOver = false;
 color[] barColors = {ZPieceRed, white, JPieceBlue};
 int framesAfterLoss = 0;
 int colorIdx = 0;
-float yPos = pFieldTopY + 140;
+float yPos = 150.3 - 10; //pFieldTopY - 10
 
 void drawLastFrame() {
   background(backgroundGray);
