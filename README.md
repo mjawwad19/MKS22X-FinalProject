@@ -166,4 +166,11 @@ _____
       - as a consequence, spins are now impossible :( but seeing as how we are emulating NES tetris and non modern additions, in which spins have no rewarding system and are extremely rare as is, this feature isn't as nearly missed as it should be.
         - we're pretty sure the only spin that was working before was T spin and that was by unknown means.
       - once everyone agrees (show tmrw in class) this will be moved to master. 
-    
+_____
+
+[Day 12] 5/29/19 
+- Jawwad:
+      - "merged" rotation_bounds with tetris so now we have working rotation at edges + delete lines/ score updating
+        - in tight areas where one could technically still rotate, the rotation is sometimes locked (most obvious with a z piece that is between an edge and a wall of fed pieces two away from the edge (so the z piece is basically touching both walls) as a side effect.
+      - removed the 12 by 20 grid after fixing code to work on 10 by 20. 
+_____
