@@ -13,9 +13,9 @@ SoundFile bgMusic;
 
 //startup
 boolean startGame = false;
-boolean start0 = false;//true;
+boolean start0 = true;
 boolean start1 = false;
-boolean start2 = true;//false;
+boolean start2 = false;
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -41,25 +41,24 @@ int lines, score, level = 0;
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
+  background(backgroundGray);
+  font = createFont("PressStart2P-Regular.ttf", 28);
+
+  currPiece = determinePiece(curr);
+
+  setField(); //creates the playing field (blank though)
+  createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
+
+  bgMusic = new SoundFile(this, "music1.wav");
+  bgMusic.play();
   if (start0) 
     start0();
   else if (start1) 
     start1();
   else if (start2)
     start2();
-  else {
-    background(backgroundGray);
-    font = createFont("PressStart2P-Regular.ttf", 28);
-
-    currPiece = determinePiece(curr);
-
-    setField(); //creates the playing field (blank though)
-    createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-
-    bgMusic = new SoundFile(this, "music1.wav");
-    bgMusic.play();
-  }
 }
+
 
 //1:50 music 1, 6600 frames
 
@@ -67,8 +66,10 @@ void draw() {
   if (start0) {
     image(s0, 0, 0);
   } else if (start1) {
+    start1();
     image(s1, 0, 0);
   } else if (start2) {
+    start2();
     image(s2, 0, 0);
   } else {
     if (!gameOver) {
@@ -167,5 +168,18 @@ void keyReleased() {
   case 's':
     sPressed = false;
     break;
+  }
+}
+
+void mouseClicked() {
+  if (start0) {
+    start0 = false;
+    start1 = true;
+  } else if (start1) {
+    start1 = false;
+    start2 = true;
+  } else if (start2) {
+    start2 = false;
+    startGame = true;
   }
 }
