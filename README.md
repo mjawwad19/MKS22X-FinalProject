@@ -179,3 +179,15 @@ _____
 - Kevin:
     - cleaned up and reorganized code from Tetris to different tabs 
 _____
+
+[Day 13] 5/30/19
+- Jawwad:
+    - began work on startup before the actual game in start tab
+      - there are three start screens (the title screen, type/music selection screen, and level selection screen). These have been downloaded pngs that have been resized a little bit in the data folder + edited/ cleaned to black in certain sections as arrays will go ontop.
+   - setup and draw take boolean values to determine what to display (start0, start1, start2, startGame)
+- Kevin:
+   - tested music (3 choices) in class 
+      - (music pausing when game is paused and starting where left off)
+   - began writing code to loop music before it fades and ends.
+_____
+
