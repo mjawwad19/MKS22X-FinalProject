@@ -14,8 +14,8 @@ SoundFile bgMusic;
 //startup
 boolean startGame = false;
 boolean start0 = false;//true;
-boolean start1 = true;//false;
-boolean start2 = false;
+boolean start1 = false;
+boolean start2 = true;//false;
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
