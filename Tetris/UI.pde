@@ -68,11 +68,18 @@ void levelCounter() {
 
 void statistics() {
   boxFormatting();
-  rect(width * 0.175, height * 0.59, width * 0.25, pFieldHeight * 0.925);
+  rect(width * 0.175, height * 0.59, width * 0.25, pFieldHeight * 0.95);
 
   textFormatting();
   textFont(smallFont);
   text("STATISTICS", width * 0.175, height * 0.28);
+  shape(TPiece, width * 0.09, height * 0.33);
+  shape(JPiece, width * 0.09, height * 0.33 + 2.5 * lh);
+  shape(ZPiece, width * 0.09, height * 0.33 + 5 * lh);
+  shape(OPiece, width * 0.09, height * 0.33 + 7.5 * lh);
+  shape(SPiece, width * 0.09, height * 0.33 + 10 * lh);
+  shape(LPiece, width * 0.09, height * 0.33 + 12.5 * lh);
+  shape(IPiece, width * 0.09, height * 0.33 + 15 * lh);
 
 }
 

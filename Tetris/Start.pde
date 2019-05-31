@@ -15,3 +15,7 @@ void start2() {
   s2 = loadImage("startup2.png");
   s2.resize(960,720);
 }
+
+boolean startPress = false;
+boolean selectedM = false;
+boolean selectedL = false;
