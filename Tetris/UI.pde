@@ -51,7 +51,7 @@ void nextPieceBox() {
       shape(getPieceGraphic(next), width * 0.777, height * 0.425);
       break;
 
-    default: //every other piece
+    default: //every ottrueher piece
       shape(getPieceGraphic(next), width * 0.762, height * 0.425);
       break;
   }
@@ -64,6 +64,16 @@ void levelCounter() {
   textFormatting();
   text("LEVEL", width * 0.82, height * 0.60);
   text(String.format("%02d", level), width * 0.83, height * 0.65);
+}
+
+void statistics() {
+  boxFormatting();
+  rect(width * 0.175, height * 0.59, width * 0.25, pFieldHeight * 0.925);
+
+  textFormatting();
+  textFont(smallFont);
+  text("STATISTICS", width * 0.175, height * 0.28);
+
 }
 
 void debug() {

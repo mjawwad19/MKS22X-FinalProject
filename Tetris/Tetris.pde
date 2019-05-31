@@ -3,6 +3,7 @@ import processing.sound.*;
 
 //Useful globally
 PFont font;
+PFont smallFont;
 int frame = 0; //helpful to keep track of as the speed of the game is based on 60 fps
 color backgroundGray = color(64, 71, 71);
 color black = color(0, 0, 0);
@@ -15,7 +16,7 @@ SoundFile bgMusic;
 boolean startGame = false;
 boolean start0 = false;//true;
 boolean start1 = false;
-boolean start2 = true;//false;
+boolean start2 = false;//false;
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -41,15 +42,16 @@ int lines, score, level = 0;
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
-  if (start0) 
+  if (start0)
     start0();
-  else if (start1) 
+  else if (start1)
     start1();
   else if (start2)
     start2();
   else {
     background(backgroundGray);
     font = createFont("PressStart2P-Regular.ttf", 28);
+    smallFont = createFont("PressStart2P-Regular.ttf", 20);
 
     currPiece = determinePiece(curr);
 
@@ -84,6 +86,7 @@ void draw() {
       scoreCounter();
       nextPieceBox();
       levelCounter();
+      statistics();
       //debug();
 
       //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)

@@ -11,6 +11,7 @@ void drawLastFrame() {
   scoreCounter();
   nextPieceBox();
   levelCounter();
+  statistics();
   bgMusic.stop();
 }
 
