@@ -13,7 +13,8 @@ SoundFile bgMusic;
 
 //startup
 boolean startGame = false;
-boolean start1 = true;
+boolean start0 = false;//true;
+boolean start1 = true;//false;
 boolean start2 = false;
 
 //Piece colors
@@ -40,121 +41,131 @@ int lines, score, level = 0;
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
-  background(backgroundGray);
-  font = createFont("PressStart2P-Regular.ttf", 28);
+  if (start0) 
+    start0();
+  else if (start1) 
+    start1();
+  else if (start2)
+    start2();
+  else {
+    background(backgroundGray);
+    font = createFont("PressStart2P-Regular.ttf", 28);
 
-  currPiece = determinePiece(curr);
+    currPiece = determinePiece(curr);
 
-  setField(); //creates the playing field (blank though)
-  createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
+    setField(); //creates the playing field (blank though)
+    createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
 
-  bgMusic = new SoundFile(this, "music1.wav");
-<<<<<<< HEAD
-  bgMusic.play();
-=======
-  //bgMusic.play();
->>>>>>> 5210348020416e258b46a9c8c1a289a48825b456
+    bgMusic = new SoundFile(this, "music1.wav");
+    bgMusic.play();
+  }
 }
 
 //1:50 music 1, 6600 frames
 
 void draw() {
-  if (!gameOver) {
-    if (frame % 6600 == 0)
-      bgMusic.play();
+  if (start0) {
+    image(s0, 0, 0);
+  } else if (start1) {
+    image(s1, 0, 0);
+  } else if (start2) {
+    image(s2, 0, 0);
+  } else {
+    if (!gameOver) {
+      if (frame % 6600 == 0)
+        bgMusic.play();
 
-    background(backgroundGray); //clear screen
-    ++frame; //unless you have the program running a year in a row, this is never overflowing
-    if (pieceLocked) ++framesPieceLocked; //delay a new piece being spawned so that the game doesn't become impossible too soon
-    if (!pieceLocked) userControls();
-    displayField();
-    lineCounter();
-    scoreCounter();
-    nextPieceBox();
-    levelCounter();
-    //debug();
+      background(backgroundGray); //clear screen
+      ++frame; //unless you have the program running a year in a row, this is never overflowing
+      if (pieceLocked) ++framesPieceLocked; //delay a new piece being spawned so that the game doesn't become impossible too soon
+      if (!pieceLocked) userControls();
+      displayField();
+      lineCounter();
+      scoreCounter();
+      nextPieceBox();
+      levelCounter();
+      //debug();
 
-    //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
-    tasksTiedToLevel();
+      //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
+      tasksTiedToLevel();
 
-    shape(currPiece); //show the current falling piece
-    feed();
-  }
+      shape(currPiece); //show the current falling piece
+      feed();
+    }
 
-  //Game over!
-  else {
-    ++framesAfterLoss; //log this for the animation
+    //Game over!
+    else {
+      ++framesAfterLoss; //log this for the animation
 
-    if (framesAfterLoss == 1) //only draw this once
-      drawLastFrame();
+      if (framesAfterLoss == 1) //only draw this once
+        drawLastFrame();
 
-    lossAnimation();
+      lossAnimation();
+    }
   }
 }
 
 void keyPressed() {
   switch (key) {
     case (char)10: //pause function - this is the enter key
-      if (looping) {
-        noLoop();
-        bgMusic.pause();
-      }
+    if (looping) {
+      noLoop();
+      bgMusic.pause();
+    } else {
+      loop();
+      bgMusic.play();
+    }
 
-      else {
-        loop();
-        bgMusic.play();
-      }
-
-      break;
-    case '-': //proof of concept: decrease level/speed
-      if (!keyLock && level > 0) {
-        --level;
-        keyLock = true;
-      }
-      break;
-    case '=':
-      if (!keyLock) {
-        ++level;
-        keyLock = true;
-      }
-      break;
-    case 'a': //left
-      aPressed = true;
-      break;
-    case 'd': //right
-      dPressed = true;
-      break;
-    case 's': //down
-      sPressed = true;
-      break;
-    case 'h': //rotate counterclockwise
-      if (!keyLock) {
-        currPiece = rotateLeft();
-        keyLock = true;
-      }
-      break;
-    case 'j': //rotate clockwise
-      if (!keyLock) {
-        currPiece = rotateRight();
-        keyLock = true;
-      }
-      break;
+    break;
+  case '-': //proof of concept: decrease level/speed
+    if (!keyLock && level > 0) {
+      --level;
+      keyLock = true;
+    }
+    break;
+  case '=':
+    if (!keyLock) {
+      ++level;
+      keyLock = true;
+    }
+    break;
+  case 'a': //left
+    aPressed = true;
+    break;
+  case 'd': //right
+    dPressed = true;
+    break;
+  case 's': //down
+    sPressed = true;
+    break;
+  case 'h': //rotate counterclockwise
+    if (!keyLock) {
+      currPiece = rotateLeft();
+      keyLock = true;
+    }
+    break;
+  case 'j': //rotate clockwise
+    if (!keyLock) {
+      currPiece = rotateRight();
+      keyLock = true;
+    }
+    break;
   }
 }
 
 void keyReleased() {
   keyLock = false;
   switch (key) {
-    case 'a':
-      framesAPressed = 0;
-      aPressed = false;
-      break;
-    case 'd':
-      framesDPressed = 0;
-      dPressed = false;
-      break;
-    case 's':
-      sPressed = false;
-      break;
+  case 'a':
+    framesAPressed = 0;
+    aPressed = false;
+    break;
+  case 'd':
+    framesDPressed = 0;
+    dPressed = false;
+    break;
+  case 's':
+    sPressed = false;
+    break;
   }
 }
