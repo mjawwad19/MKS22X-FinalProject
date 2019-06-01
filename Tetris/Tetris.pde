@@ -16,11 +16,7 @@ SoundFile bgMusic;
 boolean startGame = false;
 boolean start0 = true;
 boolean start1 = false;
-<<<<<<< HEAD
-boolean start2 = false;//false;
-=======
 boolean start2 = false;
->>>>>>> e5f78ebd50ffdac1c5523c0a90f20b763bd2de3e
 
 //Piece colors
 color IPieceTurqoise = color(0, 255, 255);
@@ -46,9 +42,6 @@ int lines, score, level = 0;
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
-<<<<<<< HEAD
-  if (start0)
-=======
   background(backgroundGray);
   font = createFont("PressStart2P-Regular.ttf", 28);
 
@@ -60,28 +53,11 @@ void setup() {
   bgMusic = new SoundFile(this, "music1.wav");
   bgMusic.play();
   if (start0) 
->>>>>>> e5f78ebd50ffdac1c5523c0a90f20b763bd2de3e
     start0();
   else if (start1)
     start1();
   else if (start2)
     start2();
-<<<<<<< HEAD
-  else {
-    background(backgroundGray);
-    font = createFont("PressStart2P-Regular.ttf", 28);
-    smallFont = createFont("PressStart2P-Regular.ttf", 20);
-
-    currPiece = determinePiece(curr);
-
-    setField(); //creates the playing field (blank though)
-    createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-
-    bgMusic = new SoundFile(this, "music1.wav");
-    bgMusic.play();
-  }
-=======
->>>>>>> e5f78ebd50ffdac1c5523c0a90f20b763bd2de3e
 }
 
 
@@ -134,7 +110,7 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-    case (char)10: //pause function - this is the enter key
+    case (char)10: //pause function - this is the enter key -- also used to go through screens.
     if (looping) {
       noLoop();
       bgMusic.pause();
