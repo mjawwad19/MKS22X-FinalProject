@@ -191,3 +191,7 @@ _____
    - began writing code to loop music before it fades and ends.
 _____
 
+[Day 14] 5/31/19
+- Kevin: 
+   - Got started on a statistics tab tracking how many pieces of each type have been dropped
+
