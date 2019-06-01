@@ -8,6 +8,7 @@ int frame = 0; //helpful to keep track of as the speed of the game is based on 6
 color backgroundGray = color(64, 71, 71);
 color black = color(0, 0, 0);
 color white = color(255, 255, 255);
+boolean transitioned = false;
 
 //Music
 SoundFile bgMusic;
@@ -36,8 +37,13 @@ int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
 
 //For the counters
+<<<<<<< HEAD
 int lines, score = 0;
 int level;
+=======
+int lines, score, level, startLevel = 0;
+
+>>>>>>> 56665618514d89aa1681ca54b05978097ed36e38
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -46,20 +52,26 @@ void setup() {
   smallFont = createFont("PressStart2P-Regular.ttf", 20);
 
   currPiece = determinePiece(curr);
+  pieceStats();
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-  if (start0) 
+
+  if (start0)
     start0();
   else if (start1) {
     start1();
     if (indexM  != 3)bgMusic.play();
 }
+<<<<<<< HEAD
   else if (start2) {
     start2(); 
     level = cLevel();
   }
+=======
+  else if (start2)
+    start2();
+>>>>>>> 56665618514d89aa1681ca54b05978097ed36e38
 }
-
 
 //1:50 music 1, 6600 frames
 
@@ -93,14 +105,22 @@ void draw() {
       levelCounter();
       statistics();
 
-      if (frame % 6600 == 0)
-        if (indexM != 3) bgMusic.play();
-      //debug();
+      if (frame % 6600 == 0) {
+        if (indexM != 3) {
+          bgMusic.stop();
+          bgMusic.play();
+        }
+      }
 
       //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
       tasksTiedToLevel();
 
       shape(currPiece); //show the current falling piece
+
+      //Avoid the shape from sticking out at the top
+      fill(backgroundGray);
+      stroke(backgroundGray);
+      rect(width * 0.50, height * 0.17, pFieldWidth, lh - 2);
       feed();
     }
 
