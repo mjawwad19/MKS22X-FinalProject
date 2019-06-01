@@ -69,7 +69,7 @@ void cycleLChoice() {
       else indexL -= 10;
         break;
       case 'w':
-      if (indexL >= 9) indexL += 10;
+      if (indexL <= 9) indexL += 10;
       else indexL -= 10;
         break;
       case 'a':
