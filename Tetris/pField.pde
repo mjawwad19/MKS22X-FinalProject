@@ -102,7 +102,7 @@ int clearLines() {
 
   int clearedLines = linesToClear.size();
   if (transitioned) {
-    if (lines / 10 < (lines + clearedLines) / 10)
+    if (lines / 10 < (lines + clearedLines) / 10) //logic checks that the second digit of a number has increased
       ++level;
   }
 

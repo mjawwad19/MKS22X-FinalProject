@@ -4,13 +4,6 @@ void tasksTiedToLevel() {
 
     //Choose a new piece
     if (pieceLocked && framesPieceLocked >= 15) {
-      if (!transitioned) {
-        if (lines >= (startLevel * 10 + 10) || lines >= max(100, (startLevel * 10 - 50))) {
-          transitioned = true;
-          ++level;
-        }
-      }
-
       dx = 0; //reset back to the top of the screen
       dy = 0;
       curr = next;
@@ -21,6 +14,13 @@ void tasksTiedToLevel() {
       pieceLocked = false;
       framesPieceLocked = 0;
       score += clearLines();
+
+      if (!transitioned) { //pre-transition: mechanism to prevent advancing levels too quickly, which punishes those that start on a later level
+        if (lines >= (startLevel * 10 + 10) || lines >= max(100, (startLevel * 10 - 50))) {
+          transitioned = true;
+          ++level;
+        }
+      }
     }
   }
 }

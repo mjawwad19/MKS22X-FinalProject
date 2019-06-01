@@ -108,6 +108,11 @@ void draw() {
       tasksTiedToLevel();
 
       shape(currPiece); //show the current falling piece
+
+      //Avoid the shape from sticking out at the top
+      fill(backgroundGray);
+      stroke(backgroundGray);
+      rect(width * 0.50, height * 0.17, pFieldWidth, lh - 2);
       feed();
     }
 
