@@ -1,3 +1,6 @@
+//For statistics
+int Ts, Js, Zs, Os, Ss, Ls, Is = 0;
+
 void textFormatting() {
   textFont(font);
   textAlign(CENTER, CENTER);
