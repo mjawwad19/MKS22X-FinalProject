@@ -119,6 +119,39 @@ void musics() {
   } else text("OFF", width * .585, height * .87);
 }
 
+void levels() {
+  textFormatting();
+  textFont(smallFont);
+  float xText = width * .28;
+  float yText = height * .4;
+  for (int i = 0; i < 10; i++) {
+    if (i == indexL) {
+      fill(choiceC);
+      text("" + i, xText, yText);
+      fill(white);
+      xText += width * .05;
+    }
+    else {
+      text("" + i, xText, yText);
+      xText += width *.05;
+    }
+  }
+  yText = height * .47;
+  xText = width * .28;
+  for (int i = 10; i < 20; i++) {
+    if (i == indexL) {
+      fill(choiceC);
+      text("" + i, xText, yText);
+      fill(white);
+      xText += width *.05;
+    }
+    else {
+      text("" + i, xText, yText);
+      xText+= width *.05;
+    }
+  }
+}
+
 void debug() {
   textFormatting();
   text("x1: " + x1, width * 0.18, height * 0.10);

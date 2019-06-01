@@ -36,8 +36,8 @@ int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
 
 //For the counters
-int lines, score, level = 0;
-
+int lines, score = 0;
+int level;
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -54,8 +54,10 @@ void setup() {
     start1();
     if (indexM  != 3)bgMusic.play();
 }
-  else if (start2)
-    start2();   
+  else if (start2) {
+    start2(); 
+    level = cLevel();
+  }
 }
 
 
@@ -73,6 +75,11 @@ void draw() {
   } else if (start2) {
     start2();
     background(s2);
+    cycleLChoice();
+    levels();
+    level = cLevel();
+    
+    
   } else {
     if (!gameOver) {
       background(backgroundGray); //clear screen
