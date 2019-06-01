@@ -8,6 +8,31 @@ void tasksTiedToLevel() {
       dy = 0;
       curr = next;
       currPiece = determinePiece(curr);
+
+      switch (t) {
+      case 'I':
+        ++Is;
+        break;
+      case 'J':
+        ++Js;
+        break;
+      case 'L':
+        ++Ls;
+        break;
+      case 'S':
+        ++Ss;
+        break;
+      case 'Z':
+        ++Zs;
+        break;
+      case 'O':
+        ++Os;
+        break;
+      default: //T case
+        ++Ts;
+        break;
+      }
+
       next = (int) random(7);
       rotation = 0;
       pieceLocked = false;
