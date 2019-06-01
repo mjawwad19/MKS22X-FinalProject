@@ -14,6 +14,13 @@ void tasksTiedToLevel() {
       pieceLocked = false;
       framesPieceLocked = 0;
       score += clearLines();
+
+      if (!transitioned) { //pre-transition: mechanism to prevent advancing levels too quickly, which punishes those that start on a later level
+        if (lines >= (startLevel * 10 + 10) || lines >= max(100, (startLevel * 10 - 50))) {
+          transitioned = true;
+          ++level;
+        }
+      }
     }
   }
 }
