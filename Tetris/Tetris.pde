@@ -46,17 +46,16 @@ void setup() {
   smallFont = createFont("PressStart2P-Regular.ttf", 20);
 
   currPiece = determinePiece(curr);
-
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-  bgMusic = new SoundFile(this, "music1.wav");
-  bgMusic.play();
   if (start0) 
     start0();
-  else if (start1)
+  else if (start1) {
     start1();
+    if (indexM  != 3)bgMusic.play();
+}
   else if (start2)
-    start2();
+    start2();   
 }
 
 
@@ -68,7 +67,9 @@ void draw() {
   } else if (start1) {
     start1();
     background(s1);
+    cycleMChoice();
     musics();
+    cMusic();
   } else if (start2) {
     start2();
     background(s2);
@@ -86,7 +87,7 @@ void draw() {
       statistics();
 
       if (frame % 6600 == 0)
-        bgMusic.play();
+        if (indexM != 3) bgMusic.play();
       //debug();
 
       //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
@@ -110,13 +111,13 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-    case (char)10: //pause function - this is the enter key -- also used to go through screens.
+    case (char)10: //pause function - this is the enter key
     if (looping) {
       noLoop();
-      bgMusic.pause();
+      if (indexM != 3) bgMusic.pause();
     } else {
       loop();
-      bgMusic.play();
+      if (indexM != 3) bgMusic.play();
     }
 
     break;
@@ -173,6 +174,7 @@ void keyReleased() {
   }
 }
 
+//just goes through screens
 void mouseClicked() {
   if (start0) {
     start0 = false;
