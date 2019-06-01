@@ -14,7 +14,7 @@ SoundFile bgMusic;
 
 //startup
 boolean startGame = false;
-boolean start0 = false;
+boolean start0 = true;
 boolean start1 = false;
 boolean start2 = false;
 
@@ -50,35 +50,14 @@ void setup() {
 
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-
-<<<<<<< HEAD
-  if (start0)
-=======
   bgMusic = new SoundFile(this, "music1.wav");
   bgMusic.play();
   if (start0) 
->>>>>>> 1ff22640629ab85caf841dc9c4fd03b3b6e8f171
     start0();
   else if (start1)
     start1();
   else if (start2)
     start2();
-<<<<<<< HEAD
-  else {
-    background(backgroundGray);
-    font = createFont("PressStart2P-Regular.ttf", 28);
-    smallFont = createFont("PressStart2P-Regular.ttf", 20);
-
-    currPiece = determinePiece(curr);
-
-    setField(); //creates the playing field (blank though)
-    createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-
-    bgMusic = new SoundFile(this, "music1.wav");
-    bgMusic.play();
-  }
-=======
->>>>>>> 1ff22640629ab85caf841dc9c4fd03b3b6e8f171
 }
 
 
