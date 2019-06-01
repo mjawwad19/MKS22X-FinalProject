@@ -14,8 +14,7 @@ boolean transitioned = false;
 SoundFile bgMusic;
 
 //startup
-boolean startGame = false;
-boolean start0 = false;
+boolean start0 = true;
 boolean start1 = false;
 boolean start2 = false;
 
@@ -48,7 +47,7 @@ void setup() {
   smallFont = createFont("PressStart2P-Regular.ttf", 20);
 
   currPiece = determinePiece(curr);
-
+  pieceStats();
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
 
@@ -58,34 +57,20 @@ void setup() {
     start1();
   else if (start2)
     start2();
-  else {
-    background(backgroundGray);
-    font = createFont("PressStart2P-Regular.ttf", 28);
-    smallFont = createFont("PressStart2P-Regular.ttf", 20);
-
-    currPiece = determinePiece(curr);
-    pieceStats();
-
-    setField(); //creates the playing field (blank though)
-    createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-
-    bgMusic = new SoundFile(this, "music1.wav");
-    bgMusic.play();
-  }
 }
-
 
 //1:50 music 1, 6600 frames
 
 void draw() {
   if (start0) {
-    image(s0, 0, 0);
+    background(s0);
   } else if (start1) {
     start1();
-    image(s1, 0, 0);
+    background(s1);
+    musics();
   } else if (start2) {
     start2();
-    image(s2, 0, 0);
+    background(s2);
   } else {
     if (!gameOver) {
       background(backgroundGray); //clear screen
@@ -202,6 +187,5 @@ void mouseClicked() {
     start2 = true;
   } else if (start2) {
     start2 = false;
-    startGame = true;
   }
 }
