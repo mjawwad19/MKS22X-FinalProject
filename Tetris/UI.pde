@@ -76,13 +76,22 @@ void statistics() {
   textFormatting();
   textFont(smallFont);
   text("STATISTICS", width * 0.175, height * 0.28);
-  shape(TPiece, width * 0.09, height * 0.33);
-  shape(JPiece, width * 0.09, height * 0.33 + 2.5 * lh);
-  shape(ZPiece, width * 0.09, height * 0.33 + 5 * lh);
-  shape(OPiece, width * 0.09, height * 0.33 + 7.5 * lh);
-  shape(SPiece, width * 0.09, height * 0.33 + 10 * lh);
-  shape(LPiece, width * 0.09, height * 0.33 + 12.5 * lh);
-  shape(IPiece, width * 0.09, height * 0.33 + 15 * lh);
+  shape(TPiece, width * 0.06, height * 0.33);
+  shape(JPiece, width * 0.06, height * 0.33 + 2.5 * lh);
+  shape(ZPiece, width * 0.06, height * 0.33 + 5 * lh);
+  shape(OPiece, width * 0.06, height * 0.33 + 7.5 * lh);
+  shape(SPiece, width * 0.06, height * 0.33 + 10 * lh);
+  shape(LPiece, width * 0.06, height * 0.33 + 12.5 * lh);
+  shape(IPiece, width * 0.06, height * 0.33 + 15 * lh);
+
+  fill(ZPieceRed);
+  text(String.format("%03d", Ts), width * 0.22, height * 0.36);
+  text(String.format("%03d", Js), width * 0.22, height * 0.36 + 2.5 * lh);
+  text(String.format("%03d", Zs), width * 0.22, height * 0.36 + 5 * lh);
+  text(String.format("%03d", Os), width * 0.22, height * 0.36 + 7.5 * lh);
+  text(String.format("%03d", Ss), width * 0.22, height * 0.36 + 10 * lh);
+  text(String.format("%03d", Ls), width * 0.22, height * 0.36 + 12.5 * lh);
+  text(String.format("%03d", Is), width * 0.22, height * 0.36 + 15 * lh);
 
 }
 
