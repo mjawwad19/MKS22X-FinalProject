@@ -46,17 +46,17 @@ void nextPieceBox() {
 
   //Need those edge cases as they don't fit as snugly into the next box
   switch (next) {
-    case 0: //I piece
-      shape(getPieceGraphic(next), width * 0.748, height * 0.44);
-      break;
+  case 0: //I piece
+    shape(getPieceGraphic(next), width * 0.748, height * 0.44);
+    break;
 
-    case 1: //O piece
-      shape(getPieceGraphic(next), width * 0.777, height * 0.425);
-      break;
+  case 1: //O piece
+    shape(getPieceGraphic(next), width * 0.777, height * 0.425);
+    break;
 
-    default: //every ottrueher piece
-      shape(getPieceGraphic(next), width * 0.762, height * 0.425);
-      break;
+  default: //every ottrueher piece
+    shape(getPieceGraphic(next), width * 0.762, height * 0.425);
+    break;
   }
 }
 
@@ -92,16 +92,31 @@ void statistics() {
   text(String.format("%03d", Ss), width * 0.22, height * 0.36 + 10 * lh);
   text(String.format("%03d", Ls), width * 0.22, height * 0.36 + 12.5 * lh);
   text(String.format("%03d", Is), width * 0.22, height * 0.36 + 15 * lh);
-
 }
 
 void musics() {
   textFormatting();
   //textFont(smallFont);
-  text("MUSIC - 1", width * .57, height * .6);
-  text("MUSIC - 2", width * .57, height * .7);
-  text("MUSIC - 3", width * .57, height * .8);
-  text("OFF", width * .585, height * .87);
+  if (indexM == 0) {
+    fill(choiceC);
+    text("MUSIC - 1", width * .57, height * .6);
+    fill(white);
+  } else   text("MUSIC - 1", width * .57, height * .6);
+  if (indexM == 1) {
+    fill(choiceC);
+    text("MUSIC - 2", width * .57, height * .7);
+    fill(white);
+  } else text("MUSIC - 2", width * .57, height * .7);
+  if (indexM == 2) {
+    fill(choiceC); 
+    text("MUSIC - 3", width * .57, height * .8);
+    fill(white);
+  } else text("MUSIC - 3", width * .57, height * .8);
+  if (indexM == 3) {
+    fill(choiceC);
+    text("OFF", width * .585, height * .87);
+    fill(white);
+  } else text("OFF", width * .585, height * .87);
 }
 
 void debug() {
