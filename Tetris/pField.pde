@@ -101,6 +101,11 @@ int clearLines() {
   }
 
   int clearedLines = linesToClear.size();
+  if (transitioned) {
+    if (lines / 10 < (lines + clearedLines) / 10)
+      ++level;
+  }
+
   lines += clearedLines;
 
   switch (clearedLines) {

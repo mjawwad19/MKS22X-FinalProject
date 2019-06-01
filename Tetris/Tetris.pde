@@ -8,13 +8,14 @@ int frame = 0; //helpful to keep track of as the speed of the game is based on 6
 color backgroundGray = color(64, 71, 71);
 color black = color(0, 0, 0);
 color white = color(255, 255, 255);
+boolean transitioned = false;
 
 //Music
 SoundFile bgMusic;
 
 //startup
 boolean startGame = false;
-boolean start0 = true;
+boolean start0 = false;
 boolean start1 = false;
 boolean start2 = false;
 
@@ -37,7 +38,7 @@ int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
 
 //For the counters
-int lines, score, level = 0;
+int lines, score, level, startLevel = 0;
 
 void setup() {
   size(960, 720);
@@ -50,20 +51,13 @@ void setup() {
 
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-<<<<<<< HEAD
 
   if (start0)
-=======
-  bgMusic = new SoundFile(this, "music1.wav");
-  bgMusic.play();
-  if (start0) 
->>>>>>> bad2357515e86ca363b7c8b7ac7fe55a8f44c486
     start0();
   else if (start1)
     start1();
   else if (start2)
     start2();
-<<<<<<< HEAD
   else {
     background(backgroundGray);
     font = createFont("PressStart2P-Regular.ttf", 28);
@@ -78,8 +72,6 @@ void setup() {
     bgMusic = new SoundFile(this, "music1.wav");
     bgMusic.play();
   }
-=======
->>>>>>> bad2357515e86ca363b7c8b7ac7fe55a8f44c486
 }
 
 
@@ -107,9 +99,10 @@ void draw() {
       levelCounter();
       statistics();
 
-      if (frame % 6600 == 0)
+      if (frame % 6600 == 0) {
+        bgMusic.stop();
         bgMusic.play();
-      //debug();
+      }
 
       //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
       tasksTiedToLevel();
