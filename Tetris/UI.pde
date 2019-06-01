@@ -86,6 +86,15 @@ void statistics() {
 
 }
 
+void musics() {
+  textFormatting();
+  //textFont(smallFont);
+  text("MUSIC - 1", width * .57, height * .6);
+  text("MUSIC - 2", width * .57, height * .7);
+  text("MUSIC - 3", width * .57, height * .8);
+  text("OFF", width * .585, height * .87);
+}
+
 void debug() {
   textFormatting();
   text("x1: " + x1, width * 0.18, height * 0.10);

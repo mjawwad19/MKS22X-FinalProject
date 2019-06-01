@@ -9,7 +9,7 @@ void start0() {
 void start1() {
   s1 = loadImage("startup1.png");
   s1.resize(960,720);
-  rect(480, 500, 100, 120); 
+  
 }
 void start2() {
   s2 = loadImage("startup2.png");

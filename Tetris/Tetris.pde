@@ -13,7 +13,6 @@ color white = color(255, 255, 255);
 SoundFile bgMusic;
 
 //startup
-boolean startGame = false;
 boolean start0 = true;
 boolean start1 = false;
 boolean start2 = false;
@@ -65,13 +64,14 @@ void setup() {
 
 void draw() {
   if (start0) {
-    image(s0, 0, 0);
+    background(s0);
   } else if (start1) {
     start1();
-    image(s1, 0, 0);
+    background(s1);
+    musics();
   } else if (start2) {
     start2();
-    image(s2, 0, 0);
+    background(s2);
   } else {
     if (!gameOver) {
       background(backgroundGray); //clear screen
@@ -182,6 +182,5 @@ void mouseClicked() {
     start2 = true;
   } else if (start2) {
     start2 = false;
-    startGame = true;
   }
 }
