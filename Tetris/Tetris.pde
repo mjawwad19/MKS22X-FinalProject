@@ -96,6 +96,10 @@ void draw() {
     start1();
     background(s1);
     cycleMChoice();
+    if (second() % 2 == 1){
+      text("CLICK MOUSE", width * .79, height * .24);
+      text("TO CONTINUE", width * .79, height * .3);
+    }
     screen1Text();
     musics();
     cMusic();
