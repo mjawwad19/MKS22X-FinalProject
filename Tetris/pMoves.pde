@@ -5,12 +5,6 @@ PShape rotateLeft() {
       else rotation--; //to ensure looping back to the correct rotation index
     }
   }
-  //in the case leftBound/rightBound returns false because too close to edge)
-  /* else if ((!leftBounds() || !rightBounds()) && fixRotation()){
-   if (rotation == 0) rotation = maxRotations -1;
-   else rotation--;
-   }*/
-
   return which();
 }
 
@@ -21,10 +15,6 @@ PShape rotateRight() {
       rotation++;
     }
   }
-  /* else if ((!leftBounds() || !rightBounds()) && fixRotation()){
-   if (rotation == 0) rotation = maxRotations -1;
-   else rotation--;
-   }*/
 
   return which();
 }
@@ -147,13 +137,13 @@ void feed() {
 
 //these methods use the joints (the places that always stay constant in rotation to determine if allowed
 boolean iRotation() {
-  return (convertX(nx3) >= 1 && convertX(nx3) <= 8
-    && convertY(ny3) >= 1  /*&& convertY(ny3) <= 18*/);
+  return (convertX(nx3) >= 2 && convertX(nx3) <= 8
+    && convertY(ny3) >= 2  /*&& convertY(ny3) <= 18*/);
 }
 
 boolean jRotation() {
-  return (convertX(nx2) >= 0 && convertX(nx2) <= 8
-    && convertY(ny2) >= 0 /* && convertY(ny2) <= 18*/);
+  return (convertX(nx2) >= 1 && convertX(nx2) <= 8
+    && convertY(ny2) >= 1 /* && convertY(ny2) <= 18*/);
 }
 //the same as j rotation:
 boolean lRotation() {
@@ -161,8 +151,8 @@ boolean lRotation() {
 }
 //the joint n3 is always constant
 boolean sRotation() {
-  return (convertX(nx3) >= 0 && convertX(nx3) <= 8
-    &&  convertY(ny3) >= 0 /*&& convertY(ny3) <= 18*/);
+  return (convertX(nx3) >= 1 && convertX(nx3) <= 8
+    &&  convertY(ny3) >= 1 /*&& convertY(ny3) <= 18*/);
 }
 // the joint n2 is always constant now
 boolean zRotation() {
