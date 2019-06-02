@@ -166,7 +166,7 @@ void draw() {
 void keyPressed() {
   switch (key) {
     case (char)10: //pause function - this is the enter key
-      if (!start0 && !start1 && !start2)
+      if (!start0 && !start1 && !start2 && !gameOver)
         if (looping) {
           noLoop();
           if (indexM != 3) bgMusic.pause();
@@ -234,12 +234,18 @@ void keyReleased() {
 //just goes through screens
 void mouseClicked() {
   if (start0) {
+    mainMenuPick.stop();
+    mainMenuPick.play();
     start0 = false;
     start1 = true;
   } else if (start1) {
+    mainMenuPick.stop();
+    mainMenuPick.play();
     start1 = false;
     start2 = true;
   } else if (start2) {
+    mainMenuPick.stop();
+    mainMenuPick.play();
     start2 = false;
   }
 }

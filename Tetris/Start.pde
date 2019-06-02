@@ -49,10 +49,14 @@ void cycleMChoice() {
   if (keyPressed) {
     switch (key) {
     case 's':
+      mainMenuSwitch.stop();
+      mainMenuSwitch.play();
       if (indexM == 3) indexM = 0;
       else indexM++;
       break;
     case 'w':
+      mainMenuSwitch.stop();
+      mainMenuSwitch.play();
       if (indexM == 0) indexM = 3;
       else indexM--;
       break;
@@ -65,18 +69,26 @@ void cycleLChoice() {
   if (keyPressed) {
     switch (key) {
       case 's':
+      mainMenuSwitch.stop();
+      mainMenuSwitch.play();
       if (indexL <= 9) indexL += 10;
       else indexL -= 10;
         break;
       case 'w':
+      mainMenuSwitch.stop();
+      mainMenuSwitch.play();
       if (indexL <= 9) indexL += 10;
       else indexL -= 10;
         break;
       case 'a':
+      mainMenuSwitch.stop();
+      mainMenuSwitch.play();
       if (indexL >= 1) indexL --;
       else indexL = 19;
         break;
       case 'd':
+      mainMenuSwitch.stop();
+      mainMenuSwitch.play();
       if (indexL <= 18) indexL++;
       else indexL = 0;
         break;
