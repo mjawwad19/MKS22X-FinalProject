@@ -1,6 +1,6 @@
 PShape rotateLeft() {
   if (fixRotation()) {
-    if (leftBounds() && rightBounds() && bottomBounds()) {
+    if (leftBounds() && rightBounds() && bottomBounds() && innerBounds()) {
       if (rotation == 0) rotation = maxRotations - 1;
       else rotation--; //to ensure looping back to the correct rotation index
 
@@ -13,7 +13,7 @@ PShape rotateLeft() {
 
 PShape rotateRight() {
   if (fixRotation()) {
-    if (leftBounds() && rightBounds() && bottomBounds()) {
+    if (leftBounds() && rightBounds() && bottomBounds() && innerBounds()) {
       //if (rotation == maxRotations - 1) rotation = 0;
       rotation++;
 
@@ -132,6 +132,13 @@ boolean bottomBounds() {
     return false;
   }
 }
+
+boolean innerBounds() {
+     return (pField[convertY(ny1)][convertX(nx1)].getColor() == black) &&
+      (pField[convertY(ny2)][convertX(nx2)].getColor() == black) &&
+      (pField[convertY(ny3)][convertX(nx3)].getColor() == black) &&
+      (pField[convertY(ny4)][convertX(nx4)].getColor() == black);
+  }
 
 //Feed a piece that has been locked into the pField array.
 void feed() {
