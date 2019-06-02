@@ -12,7 +12,13 @@ boolean transitioned = false;
 
 //Music
 SoundFile bgMusic;
-SoundFile lockSound;
+SoundFile levelUp = new SoundFile(this, "levelUp.wav");
+SoundFile lineClear = new SoundFile(this, "lineClear.wav");
+SoundFile lockSound = new SoundFile(this, "lockSound.wav");
+SoundFile mainMenuPick = new SoundFile(this, "mainMenuPick.wav");
+SoundFile mainMenuSwitch = new SoundFile(this, "mainMenuSwitch.wav");
+SoundFile rotateSound = new SoundFile(this, "rotateSound.wav");
+SoundFile topOut = new SoundFile(this, "topOut.wav");
 
 //startup
 boolean start0 = true;
@@ -52,7 +58,6 @@ void setup() {
   pieceStats();
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
-  lockSound = new SoundFile(this, "lockSound.wav");
 
   if (start0)
     start0();
