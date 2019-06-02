@@ -38,9 +38,14 @@ int dy = 0;
 
 //For the counters
 int lines, score = 0;
+<<<<<<< HEAD
 int level = 15;
 int startLevel = level;
 
+=======
+int startLevel;
+int level;
+>>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -59,10 +64,18 @@ void setup() {
     start1();
     if (indexM  != 3)bgMusic.play();
 }
+<<<<<<< HEAD
   else if (start2)
     start2();
 
   println(level);
+=======
+  else if (start2) {
+    start2(); 
+    startLevel = cLevel();
+    level = cLevel();
+  }
+>>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
 }
 
 //1:50 music 1, 6600 frames
@@ -79,6 +92,12 @@ void draw() {
   } else if (start2) {
     start2();
     background(s2);
+    cycleLChoice();
+    levels();
+    level = cLevel();
+    startLevel = cLevel();
+    
+    
   } else {
     if (!gameOver) {
       background(backgroundGray); //clear screen
@@ -149,7 +168,7 @@ void keyPressed() {
     }
 
     break;
-  case '-': //proof of concept: decrease level/speed
+ /* case '-': //proof of concept: decrease level/speed
     if (!keyLock && level > 0) {
       --level;
       keyLock = true;
@@ -160,7 +179,7 @@ void keyPressed() {
       ++level;
       keyLock = true;
     }
-    break;
+    break;*/
   case 'a': //left
     aPressed = true;
     break;

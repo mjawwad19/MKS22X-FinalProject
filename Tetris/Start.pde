@@ -1,5 +1,10 @@
 //used in screen 1
 int[] lvls = new int [20]; //the ability to choose which level you begin on
+void setLevels() {
+  for (int i = 0; i < 20; i++) {
+    lvls[i] = i;
+  }
+}
 //used in screen 2
 PImage s0, s1, s2;
 void start0() {
@@ -21,8 +26,9 @@ boolean selectedL = false;
 
 color choiceC = color(0, 255, 0); //green
 int indexM = 0;
+int indexL = 0;
 
-
+//--------------Music --------------------
 boolean cMusic() {
   if (indexM == 0) {
     bgMusic = new SoundFile(this, "music1.wav");
@@ -52,4 +58,34 @@ void cycleMChoice() {
       break;
     }
   }
+}
+
+//-----------Level ---------------------
+void cycleLChoice() {
+  if (keyPressed) {
+    switch (key) {
+      case 's':
+      if (indexL <= 9) indexL += 10;
+      else indexL -= 10;
+        break;
+      case 'w':
+      if (indexL <= 9) indexL += 10;
+      else indexL -= 10;
+        break;
+      case 'a':
+      if (indexL >= 1) indexL --;
+      else indexL = 19;
+        break;
+      case 'd':
+      if (indexL <= 18) indexL++;
+      else indexL = 0;
+        break;
+    }
+  }
+}
+
+
+
+int cLevel() {
+  return indexL;
 }

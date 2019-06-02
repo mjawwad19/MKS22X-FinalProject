@@ -184,7 +184,7 @@ _____
 - Jawwad:
     - began work on startup before the actual game in start tab
       - there are three start screens (the title screen, type/music selection screen, and level selection screen). These have been downloaded pngs that have been resized a little bit in the data folder + edited/ cleaned to black in certain sections as arrays will go ontop.
-   - setup and draw take boolean values to determine what to display (start0, start1, start2, startGame)
+   - setup and draw take boolean values to determine what to display (start0, start1, start2)
 - Kevin:
    - tested music (3 choices) in class 
       - (music pausing when game is paused and starting where left off)
@@ -194,4 +194,28 @@ _____
 [Day 14] 5/31/19
 - Kevin: 
    - Got started on a statistics tab tracking how many pieces of each type have been dropped
+- Jawwad:
+    - Figured out what order to put the screen loading in setup so music would not be disrupted.
+      - screen progression through mouseclicks
+_____
+
+[Day 15] 6/1/19 (We're so close!)
+- Kevin:
+   - math calculations for requirements of level progression
+- Jawwad:
+    - edited startup screens to be blank in certain areas
+    - user can now select music, highlighted by green instead of white text, via the S and W keys. Mouseclick to confirm
+      - music is automatically turned off at the beginning of game, regardless of selection. Press enter twice after selecting the music.
+         - we are trying to fix this so music begins playing as soon as the player is on startup level selection
+    - user can now select what level to start from. Please note that whatever level you start from + 1 * 10 is how many lines you need to clear in order to progress to next level. And that level is directly tied to speed so don't choose something you can't handle!
+      - also highlighted by green text instead of white. Use W,A,S,D to choose and mouseclick to confirm.
+- BUGS found/ Things to Fix/Alter
+    - only happened once and cannot recreate but definitely happened: I piece last minute movement when ___ over an upright Z piece went over the z piece.
+    - make sure level progression is correct because we started having merging heads and last commits showing whenever there was a merge in processing and had to remove them for the program to actually run.
+    - T spins! Try to make leftBounds/RightBounds/fixRotation apply in createT() instead of when rotating to allow spins, as per K's suggestion of try to rotate, see if in bounds, do or don't based on response.
+      - currently our code is: see if in bounds, then rotate if yes. This leads to areas where pieces cannot rotate because at least one point is touching DESPITE having space to rotate.
+_____
+
+    
+   
 
