@@ -90,10 +90,13 @@ void setup() {
 void draw() {
   if (start0) {
     background(s0);
+    begin(); 
+    if (second() % 2 == 1) text("CLICK MOUSE TO CONTINUE", width * .35, height * .75);
   } else if (start1) {
     start1();
     background(s1);
     cycleMChoice();
+    screen1Text();
     musics();
     cMusic();
   } else if (start2) {
@@ -103,6 +106,7 @@ void draw() {
     levels();
     level = cLevel();
     startLevel = cLevel();
+    if (second() % 2 == 1) text("CLICK MOUSE TO BEGIN", width * .5, height * .75);
 
 
   } else {

@@ -152,6 +152,18 @@ void levels() {
   }
 }
 
+void begin() {
+  textFormatting();
+  textFont(smallFont);
+  text("A RECREATION BY JAWWAD AND KEVIN", width *.5, height *.5);
+}
+
+void screen1Text() {
+  textFormatting();
+  text("GAME TYPE", width *.32, height * .125);
+  text("A - TYPE", width * .38, height *.265);
+  text("MUSIC", width * .32, height * .45);
+}
 void debug() {
   textFormatting();
   text("x1: " + x1, width * 0.18, height * 0.10);
