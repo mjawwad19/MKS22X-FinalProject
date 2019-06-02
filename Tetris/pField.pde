@@ -113,7 +113,9 @@ int clearLines() {
     case 2: return 100 * (level + 1);
     case 3: return 300 * (level + 1);
     case 4: return 1200 * (level + 1);
-    default: return 0; //case where 0 lines are cleared
+    default:
+      lockSound.play();
+      return 0; //case where 0 lines are cleared
   }
 }
 

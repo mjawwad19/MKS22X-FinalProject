@@ -12,6 +12,7 @@ boolean transitioned = false;
 
 //Music
 SoundFile bgMusic;
+SoundFile lockSound;
 
 //startup
 boolean start0 = true;
@@ -51,6 +52,7 @@ void setup() {
   pieceStats();
   setField(); //creates the playing field (blank though)
   createPieces(); //this is only used to generate PShapes that can be used in the next piece box.
+  lockSound = new SoundFile(this, "lockSound.wav");
 
   if (start0)
     start0();
