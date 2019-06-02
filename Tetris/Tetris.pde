@@ -39,9 +39,14 @@ int dy = 0;
 //For the counters
 int lines, score = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 int level = 15;
 int startLevel = level;
 
+=======
+int startLevel;
+int level;
+>>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
 =======
 int startLevel;
 int level;
@@ -65,16 +70,22 @@ void setup() {
     if (indexM  != 3)bgMusic.play();
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
   else if (start2)
     start2();
 
   println(level);
 =======
+=======
+>>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
   else if (start2) {
     start2(); 
     startLevel = cLevel();
     level = cLevel();
   }
+<<<<<<< HEAD
+>>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
+=======
 >>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
 }
 
