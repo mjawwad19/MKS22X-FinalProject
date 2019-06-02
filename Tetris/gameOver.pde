@@ -5,6 +5,7 @@ int colorIdx = 0;
 float yPos = 150.3 - 10; //pFieldTopY - 10
 
 void drawLastFrame() {
+  topOut.play();
   background(backgroundGray);
   displayField();
   lineCounter();

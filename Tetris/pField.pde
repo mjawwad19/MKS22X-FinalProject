@@ -102,18 +102,33 @@ int clearLines() {
 
   int clearedLines = linesToClear.size();
   if (transitioned) {
-    if (lines / 10 < (lines + clearedLines) / 10) //logic checks that the second digit of a number has increased
+    if (lines / 10 < (lines + clearedLines) / 10) {//logic checks that the second digit of a number has increased
       ++level;
+      levelUp.play();
+    }
   }
 
   lines += clearedLines;
 
   switch (clearedLines) {
-    case 1: return 40 * (level + 1);
-    case 2: return 100 * (level + 1);
-    case 3: return 300 * (level + 1);
-    case 4: return 1200 * (level + 1);
+    case 1:
+      lineClear.stop();
+      lineClear.play();
+      return 40 * (level + 1);
+    case 2:
+      lineClear.stop();
+      lineClear.play();
+      return 100 * (level + 1);
+    case 3:
+      lineClear.stop();
+      lineClear.play();
+      return 300 * (level + 1);
+    case 4:
+      tetrisClear.stop();
+      tetrisClear.play();
+      return 1200 * (level + 1);
     default:
+      lockSound.stop();
       lockSound.play();
       return 0; //case where 0 lines are cleared
   }
