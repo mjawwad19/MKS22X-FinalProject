@@ -38,19 +38,8 @@ int dy = 0;
 
 //For the counters
 int lines, score = 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-int level = 15;
-int startLevel = level;
+int level, startLevel;
 
-=======
-int startLevel;
-int level;
->>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
-=======
-int startLevel;
-int level;
->>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
 void setup() {
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
@@ -67,26 +56,14 @@ void setup() {
     start0();
   else if (start1) {
     start1();
-    if (indexM  != 3)bgMusic.play();
+    //if (indexM  != 3)bgMusic.play();
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-  else if (start2)
-    start2();
 
-  println(level);
-=======
-=======
->>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
   else if (start2) {
-    start2(); 
+    start2();
     startLevel = cLevel();
     level = cLevel();
   }
-<<<<<<< HEAD
->>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
-=======
->>>>>>> 52eea0a8ba8ac0063a6d3ba58532c13ccc60f28a
 }
 
 //1:50 music 1, 6600 frames
@@ -107,10 +84,31 @@ void draw() {
     levels();
     level = cLevel();
     startLevel = cLevel();
-    
-    
+
+
   } else {
     if (!gameOver) {
+      if (indexM != 3 && indexM == 0) { //music 1 loop
+        if (frame % 6600 == 0) {
+          bgMusic.stop();
+          bgMusic.play();
+        }
+      }
+
+      if (indexM != 3 && indexM == 1) { //music 2 loop
+        if (frame % 4250 == 0) {
+          bgMusic.stop();
+          bgMusic.play();
+        }
+      }
+
+      if (indexM != 3 && indexM == 2) { //music 2 loop
+        if (frame % 2010 == 0) {
+          bgMusic.stop();
+          bgMusic.play();
+        }
+      }
+
       background(backgroundGray); //clear screen
       ++frame; //unless you have the program running a year in a row, this is never overflowing
       if (pieceLocked) ++framesPieceLocked; //delay a new piece being spawned so that the game doesn't become impossible too soon
@@ -121,27 +119,6 @@ void draw() {
       nextPieceBox();
       levelCounter();
       statistics();
-
-      if (indexM != 3 && indexM == 0) { //music 1 loop
-        if (frame % 6600 == 0) {
-          bgMusic.stop();
-          bgMusic.play();
-        }
-      }
-
-      if (indexM != 3 && indexM == 1) { //music 2 loop
-        if (frame % 4080 == 0) {
-          bgMusic.stop();
-          bgMusic.play();
-        }
-      }
-
-      if (indexM != 3 && indexM == 2) { //music 2 loop
-        if (frame % 2820 == 0) {
-          bgMusic.stop();
-          bgMusic.play();
-        }
-      }
 
       //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
       tasksTiedToLevel();
@@ -170,13 +147,16 @@ void draw() {
 void keyPressed() {
   switch (key) {
     case (char)10: //pause function - this is the enter key
-    if (looping) {
-      noLoop();
-      if (indexM != 3) bgMusic.pause();
-    } else {
-      loop();
-      if (indexM != 3) bgMusic.play();
-    }
+      if (!start0 && !start1 && !start2)
+        if (looping) {
+          noLoop();
+          if (indexM != 3) bgMusic.pause();
+        }
+
+        else {
+          loop();
+          if (indexM != 3) bgMusic.play();
+      }
 
     break;
  /* case '-': //proof of concept: decrease level/speed
