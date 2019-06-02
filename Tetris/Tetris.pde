@@ -12,6 +12,15 @@ boolean transitioned = false;
 
 //Music
 SoundFile bgMusic;
+SoundFile levelUp;
+SoundFile lineClear;
+SoundFile lockSound;
+SoundFile mainMenuPick;
+SoundFile mainMenuSwitch;
+SoundFile pieceMove;
+SoundFile rotateSound;
+SoundFile tetrisClear;
+SoundFile topOut;
 
 //startup
 boolean start0 = true;
@@ -41,6 +50,16 @@ int lines, score = 0;
 int level, startLevel;
 
 void setup() {
+  levelUp = new SoundFile(this, "levelUp.wav");
+  lineClear = new SoundFile(this, "lineClear.wav");
+  lockSound = new SoundFile(this, "lockSound.wav");
+  mainMenuPick = new SoundFile(this, "mainMenuPick.wav");
+  mainMenuSwitch = new SoundFile(this, "mainMenuSwitch.wav");
+  pieceMove = new SoundFile(this, "pieceMove.wav");
+  rotateSound = new SoundFile(this, "rotateSound.wav");
+  tetrisClear = new SoundFile(this, "tetrisClear.wav");
+  topOut = new SoundFile(this, "topOut.wav");
+
   size(960, 720);
   frameRate(60); //believe this is by default but whatever
   background(backgroundGray);

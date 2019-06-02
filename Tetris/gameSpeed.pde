@@ -19,6 +19,8 @@ void tasksTiedToLevel() {
         if (lines >= (startLevel * 10 + 10) || lines >= max(100, (startLevel * 10 - 50))) {
           transitioned = true;
           ++level;
+          levelUp.stop();
+          levelUp.play();
         }
       }
     }

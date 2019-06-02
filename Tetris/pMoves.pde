@@ -3,6 +3,9 @@ PShape rotateLeft() {
     if (leftBounds() && rightBounds() && bottomBounds()) {
       if (rotation == 0) rotation = maxRotations - 1;
       else rotation--; //to ensure looping back to the correct rotation index
+
+      rotateSound.stop();
+      rotateSound.play();
     }
   }
   return which();
@@ -13,6 +16,9 @@ PShape rotateRight() {
     if (leftBounds() && rightBounds() && bottomBounds()) {
       //if (rotation == maxRotations - 1) rotation = 0;
       rotation++;
+
+      rotateSound.stop();
+      rotateSound.play();
     }
   }
 
@@ -34,8 +40,11 @@ PShape moveDown() {
 
 PShape moveLeft() {
   if (convertX(nx1) > 0  && convertX(nx2) > 0 &&
-      convertX(nx3) > 0  && convertX(nx4) > 0 && leftBounds())
+      convertX(nx3) > 0  && convertX(nx4) > 0 && leftBounds()) {
     dx--;
+    pieceMove.stop();
+    pieceMove.play();
+  }
 
   else {
     framesAPressed = 15;
@@ -47,8 +56,11 @@ PShape moveLeft() {
 
 PShape moveRight() {
   if (convertX(nx1) <9  && convertX(nx2) <9 &&
-      convertX(nx3) <9  && convertX(nx4) <9 && rightBounds())
+      convertX(nx3) <9  && convertX(nx4) <9 && rightBounds()) {
     dx++;
+    pieceMove.stop();
+    pieceMove.play();
+  }
 
   else {
     framesAPressed = 15;
