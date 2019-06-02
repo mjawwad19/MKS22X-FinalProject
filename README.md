@@ -213,6 +213,7 @@ _____
     - only happened once and cannot recreate but definitely happened: I piece last minute movement when ___ over an upright Z piece went over the z piece.
     - make sure level progression is correct because we started having merging heads and last commits showing whenever there was a merge in processing and had to remove them for the program to actually run.
     - T spins! Try to make leftBounds/RightBounds/fixRotation apply in createT() instead of when rotating to allow spins, as per K's suggestion of try to rotate, see if in bounds, do or don't based on response.
+      - currently our code is: see if in bounds, then rotate if yes. This leads to areas where pieces cannot rotate because at least one point is touching DESPITE having space to rotate.
 _____
 
     
