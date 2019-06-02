@@ -37,7 +37,9 @@ int dx = 0; //distance away from spawn point (top center of screen)
 int dy = 0;
 
 //For the counters
-int lines, score, level, startLevel = 0;
+int lines, score = 0;
+int level = 15;
+int startLevel = level;
 
 void setup() {
   size(960, 720);
@@ -59,6 +61,8 @@ void setup() {
 }
   else if (start2)
     start2();
+
+  println(level);
 }
 
 //1:50 music 1, 6600 frames
@@ -88,8 +92,22 @@ void draw() {
       levelCounter();
       statistics();
 
-      if (frame % 6600 == 0) {
-        if (indexM != 3) {
+      if (indexM != 3 && indexM == 0) { //music 1 loop
+        if (frame % 6600 == 0) {
+          bgMusic.stop();
+          bgMusic.play();
+        }
+      }
+
+      if (indexM != 3 && indexM == 1) { //music 2 loop
+        if (frame % 4080 == 0) {
+          bgMusic.stop();
+          bgMusic.play();
+        }
+      }
+
+      if (indexM != 3 && indexM == 2) { //music 2 loop
+        if (frame % 2820 == 0) {
           bgMusic.stop();
           bgMusic.play();
         }

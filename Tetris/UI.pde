@@ -108,7 +108,7 @@ void musics() {
     fill(white);
   } else text("MUSIC - 2", width * .57, height * .7);
   if (indexM == 2) {
-    fill(choiceC); 
+    fill(choiceC);
     text("MUSIC - 3", width * .57, height * .8);
     fill(white);
   } else text("MUSIC - 3", width * .57, height * .8);

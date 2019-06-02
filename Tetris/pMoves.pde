@@ -47,6 +47,11 @@ PShape moveLeft() {
       convertX(nx3) > 0  && convertX(nx4) > 0 && leftBounds())
     dx--;
 
+  else {
+    framesAPressed = 15;
+    framesDPressed = 15;
+  }
+
   return which();
 }
 
@@ -54,6 +59,11 @@ PShape moveRight() {
   if (convertX(nx1) <9  && convertX(nx2) <9 &&
       convertX(nx3) <9  && convertX(nx4) <9 && rightBounds())
     dx++;
+
+  else {
+    framesAPressed = 15;
+    framesDPressed = 15;
+  }
 
   return which();
 }
