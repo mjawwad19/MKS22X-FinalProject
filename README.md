@@ -9,7 +9,22 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 - Clone this repo somewhere. 
 - Open Tetris.pde in Processing. 
 - The Sound library is required. Go to Sketch (on the top bar in Processing) > Import Library > Add Library... > Search "sound" > Install "Sound" by the Processing Foundation
-- Click run. ??? Profit!
+- Click run. ??? Profit/enjoy!
+
+## Controls
+On the main menu:
+- W/S: cycle through music
+- W/S/A/D: cycle through levels
+- Progress from one screen to the next by clicking (prominently displayed in-game)
+
+In-game:
+- A/D: move the piece left and right. If you wish, you can also hold down those keys for pieces to automatically move (DAS) - you do not have to tap multiple times. 
+- S: force down a piece if you prefer playing fast (reminder, there is no instant drop-down)
+- H: rotate a piece counterclockwise
+- J: rotate a piece clockwise
+- Enter: pause the game
+- Just for show: pressing the + and - keys will increase or decrease the level/speed of the game in-game. You normally cannot do this. 
+
 
 ## Development log
 
