@@ -136,6 +136,7 @@ void draw() {
         }
       }
 
+      //Don't want pieces to fall instantly
       if (frame == 2)
         delay(1000);
 
@@ -149,7 +150,6 @@ void draw() {
       nextPieceBox();
       levelCounter();
       statistics();
-      text(frame, 40, 40);
 
       //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
       tasksTiedToLevel();
