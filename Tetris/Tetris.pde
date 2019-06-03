@@ -136,6 +136,9 @@ void draw() {
         }
       }
 
+      if (frame == 2)
+        delay(1000);
+
       background(backgroundGray); //clear screen
       ++frame; //unless you have the program running a year in a row, this is never overflowing
       if (pieceLocked) ++framesPieceLocked; //delay a new piece being spawned so that the game doesn't become impossible too soon
@@ -146,6 +149,7 @@ void draw() {
       nextPieceBox();
       levelCounter();
       statistics();
+      text(frame, 40, 40);
 
       //Depends on the speed/level of the game, basically the game logic is here (gameSpeed.pde)
       tasksTiedToLevel();
