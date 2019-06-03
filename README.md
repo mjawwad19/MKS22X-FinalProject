@@ -5,6 +5,12 @@ Authors: Mohammad Jawwad and Kevin Li
 
 Classic Tetris is different from more modern Tetris versions in that the gameplay may look slow due to the fact that there is no instant drop-down, holding pieces, and multiple piece preview. It requires a different way of thinking - you must make sure you build your stack to accommodate any piece that may be thrown at you (all of the pieces are not guaranteed to be dropped at least once every 12 pieces like modern Tetris). At some point, the hardest part of the game may be your ability to move pieces fast enough to a desired location.
 
+## How to run
+- Clone this repo somewhere. 
+- Open Tetris.pde in Processing. 
+- The Sound library is required. Go to Sketch (on the top bar in Processing) > Import Library > Add Library... > Search "sound" > Install "Sound" by the Processing Foundation
+- Click run. ??? Profit!
+
 ## Development log
 
 [Day 0] 5/17/19:
