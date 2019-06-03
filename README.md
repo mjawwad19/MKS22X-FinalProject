@@ -218,7 +218,7 @@ _____
 [Day 16] 6/2/19
 - Kevin: 
     - fixed music not immediately playing once game started issue
-    - added more sound effects for level, music, startup progression, rotation, movement, and locking.
+    - added more sound effects for level selection, music selection, startup progression, rotation, movement, leveling up and locking.
     - finished looping for all music files.
 - Jawwad:
     - attempted and hopefully fixed overlapping over fed pieces hard-to-replicate- bug via checking if the piece's immediate conversion as well as to the left, right, and down of it are all available.
