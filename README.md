@@ -211,11 +211,26 @@ _____
       - also highlighted by green text instead of white. Use W,A,S,D to choose and mouseclick to confirm.
 - BUGS found/ Things to Fix/Alter
     - only happened once and cannot recreate but definitely happened: I piece last minute movement when ___ over an upright Z piece went over the z piece.
-    - make sure level progression is correct because we started having merging heads and last commits showing whenever there was a merge in processing and had to remove them for the program to actually run.
     - T spins! Try to make leftBounds/RightBounds/fixRotation apply in createT() instead of when rotating to allow spins, as per K's suggestion of try to rotate, see if in bounds, do or don't based on response.
       - currently our code is: see if in bounds, then rotate if yes. This leads to areas where pieces cannot rotate because at least one point is touching DESPITE having space to rotate.
 _____
 
+[Day 16] 6/2/19
+- Kevin: 
+    - fixed music not immediately playing once game started issue
+    - added more sound effects for level, music, startup progression, rotation, movement, and locking.
+    - finished looping for all music files.
+- Jawwad:
+    - attempted and hopefully fixed overlapping over fed pieces hard-to-replicate- bug via checking if the piece's immediate conversion as well as to the left, right, and down of it are all available.
+    - Attempted to fix T spins (these were the only spins available in NES tetris, and even then super conservative) and failed :/
+      - the closest attempt caused pieces to generate at origin (left hand corner) once there were boundary issues.
+    - Added instructions for user at startup screens with a little bit of blinking
+      - also cleaned up start up screen images/refined the text using text instead of the image, and added our names.
+    - fixed a bug that caused pieces to rotate out of left bounds and reinstated upper bounds just in case.
+- Stuff not Happy about:
+    - the keys are so awkward I keep hitting J and K for rotation instead of H and J,
+    - spinning, even though it's uber rare to begin with in the actual game, would be nice to keep :/
+_____
     
    
 
