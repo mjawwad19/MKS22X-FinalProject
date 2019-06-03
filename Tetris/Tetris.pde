@@ -90,7 +90,7 @@ void setup() {
 void draw() {
   if (start0) {
     background(s0);
-    begin(); 
+    begin();
     if (second() % 2 == 1) text("CLICK MOUSE TO CONTINUE", width * .35, height * .75);
   } else if (start1) {
     start1();
@@ -186,7 +186,7 @@ void keyPressed() {
       }
 
     break;
- /* case '-': //proof of concept: decrease level/speed
+  case '-': //proof of concept: decrease level/speed
     if (!keyLock && level > 0) {
       --level;
       keyLock = true;
@@ -197,7 +197,7 @@ void keyPressed() {
       ++level;
       keyLock = true;
     }
-    break;*/
+    break;
   case 'a': //left
     aPressed = true;
     break;
