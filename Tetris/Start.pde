@@ -49,16 +49,22 @@ void cycleMChoice() {
   if (keyPressed) {
     switch (key) {
     case 's':
-      mainMenuSwitch.stop();
-      mainMenuSwitch.play();
-      if (indexM == 3) indexM = 0;
-      else indexM++;
+      if (!keyLock) {
+        mainMenuSwitch.stop();
+        mainMenuSwitch.play();
+        if (indexM == 3) indexM = 0;
+        else indexM++;
+        keyLock = true;
+      }
       break;
     case 'w':
-      mainMenuSwitch.stop();
-      mainMenuSwitch.play();
-      if (indexM == 0) indexM = 3;
-      else indexM--;
+      if (!keyLock) {
+        mainMenuSwitch.stop();
+        mainMenuSwitch.play();
+        if (indexM == 0) indexM = 3;
+        else indexM--;
+        keyLock = true;
+      }
       break;
     }
   }
@@ -69,28 +75,40 @@ void cycleLChoice() {
   if (keyPressed) {
     switch (key) {
       case 's':
-      mainMenuSwitch.stop();
-      mainMenuSwitch.play();
-      if (indexL <= 9) indexL += 10;
-      else indexL -= 10;
+        if (!keyLock) {
+          mainMenuSwitch.stop();
+          mainMenuSwitch.play();
+          if (indexL <= 9) indexL += 10;
+          else indexL -= 10;
+          keyLock = true;
+        }
         break;
       case 'w':
-      mainMenuSwitch.stop();
-      mainMenuSwitch.play();
-      if (indexL <= 9) indexL += 10;
-      else indexL -= 10;
+        if (!keyLock) {
+          mainMenuSwitch.stop();
+          mainMenuSwitch.play();
+          if (indexL <= 9) indexL += 10;
+          else indexL -= 10;
+          keyLock = true;
+        }
         break;
       case 'a':
-      mainMenuSwitch.stop();
-      mainMenuSwitch.play();
-      if (indexL >= 1) indexL --;
-      else indexL = 19;
+        if (!keyLock) {
+          mainMenuSwitch.stop();
+          mainMenuSwitch.play();
+          if (indexL >= 1) indexL --;
+          else indexL = 19;
+          keyLock = true;
+        }
         break;
       case 'd':
-      mainMenuSwitch.stop();
-      mainMenuSwitch.play();
-      if (indexL <= 18) indexL++;
-      else indexL = 0;
+        if (!keyLock) {
+          mainMenuSwitch.stop();
+          mainMenuSwitch.play();
+          if (indexL <= 18) indexL++;
+          else indexL = 0;
+          keyLock = true;
+        }
         break;
     }
   }

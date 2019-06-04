@@ -91,13 +91,13 @@ void draw() {
   if (start0) {
     background(s0);
     begin();
-    if (second() % 2 == 1) text("CLICK MOUSE TO CONTINUE", width * .35, height * .75);
+    if (second() % 2 == 1) text("PRESS (ENTER) TO CONTINUE", width * .35, height * .75);
   } else if (start1) {
     start1();
     background(s1);
     cycleMChoice();
     if (second() % 2 == 1){
-      text("CLICK MOUSE", width * .79, height * .24);
+      text("PRESS (ENTER)", width * .79, height * .24);
       text("TO CONTINUE", width * .79, height * .3);
     }
     screen1Text();
@@ -110,7 +110,7 @@ void draw() {
     levels();
     level = cLevel();
     startLevel = cLevel();
-    if (second() % 2 == 1) text("CLICK MOUSE TO BEGIN", width * .5, height * .75);
+    if (second() % 2 == 1) text("PRESS (ENTER) TO CONTINUE", width * .5, height * .75);
 
 
   } else {
@@ -177,8 +177,8 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-    case (char)10: //pause function - this is the enter key
-      if (!start0 && !start1 && !start2 && !gameOver)
+    case (char)10: //pause function - this is the enter key (in-game)
+      if (!start0 && !start1 && !start2 && !gameOver) {
         if (looping) {
           noLoop();
           if (indexM != 3) bgMusic.pause();
@@ -187,8 +187,34 @@ void keyPressed() {
         else {
           loop();
           if (indexM != 3) bgMusic.play();
+        }
       }
 
+      else { //out of the game
+        if (!keyLock) {
+          if (start0) {
+            mainMenuPick.stop();
+            mainMenuPick.play();
+            start0 = false;
+            start1 = true;
+          }
+
+          else if (start1) {
+            mainMenuPick.stop();
+            mainMenuPick.play();
+            start1 = false;
+            start2 = true;
+          }
+
+          else if (start2) {
+            mainMenuPick.stop();
+            mainMenuPick.play();
+            start2 = false;
+          }
+
+          keyLock = true;
+        }
+      }
     break;
   case '-': //proof of concept: decrease level/speed
     if (!keyLock && level > 0) {
@@ -211,9 +237,28 @@ void keyPressed() {
   case 's': //down
     sPressed = true;
     break;
-  case 'h': //rotate counterclockwise
+  case 'h': //rotate counterclockwise and return in the main menu
     if (!keyLock) {
-      currPiece = rotateLeft();
+      if (!start0 && !start1 && !start2 && !gameOver) {
+        currPiece = rotateLeft();
+      }
+
+      else {
+        if (start1) {
+          mainMenuPick.stop();
+          mainMenuPick.play();
+          start1 = false;
+          start0 = true;
+        }
+
+        else if (start2) {
+          mainMenuPick.stop();
+          mainMenuPick.play();
+          start2 = false;
+          start1 = true;
+        }
+      }
+
       keyLock = true;
     }
     break;
@@ -243,6 +288,7 @@ void keyReleased() {
   }
 }
 
+/*
 //just goes through screens
 void mouseClicked() {
   if (start0) {
@@ -261,3 +307,4 @@ void mouseClicked() {
     start2 = false;
   }
 }
+*/
