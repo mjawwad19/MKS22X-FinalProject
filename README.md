@@ -44,7 +44,7 @@ _____
     - created the playing field, score, and line boxes (using the NES font, can update itself as normally text stays on screen).
     - created PShapes for all 7 tetrominoes (colored appropriately). (He wanted to solo this) using vertices.
 - Jawwad:
-    - after some experimenting with numbers, was able to create a double array of blocks centered on top of the playing field.
+    - after some experimenting with numbers, was able to create a ***double array*** of blocks centered on top of the playing field.
       - In the future, the piece lock feature will feed blocks into this array!
 
 _____
@@ -179,10 +179,10 @@ _____
 
 [Day 10] 5/27/19
 - Kevin: 
-    - Ability to clear lines
+    - Ability to clear lines via ***collection.sorting*** the lines that are filled in an ***arrayList*** known as linesToClear
     - Scoring/lines is now tracked as a result of the above
-    
-_____
+       - the grid is tracked upon and checked every frame in draw, and if there are any lines that are full, they will be added as an integer of what row they are on to linesToClear, sorted, turned to black {aka cleared}, removed from linesToClear, and the score shall update.
+____
 
 [Day 11] 5/28/19
 - Kevin: 
