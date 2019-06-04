@@ -15,7 +15,7 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 On the main menu:
 - W/S: cycle through music
 - W/S/A/D: cycle through levels
-- Progress from one screen to the next by ENTER (prominently displayed in-game)
+- Progress from one screen to the next with ENTER (prominently displayed in-game)
 - H: Go back to previous startup screen
 
 In-game:
@@ -29,6 +29,23 @@ In-game:
 - You normally cannot do this. 
 ```
 
+## Working features
+   - Choose music (or none at all)
+   - Choose level to start on: 0-19 to mimic NES Tetris. A level calculator is used so that starting on a high level is not punished (e.g. you wouldn't want to go to from level 18 to 19 in just 10 lines while someone who starts on level 0 takes 190 lines). 
+   - The first piece is frozen at the top of the screen so that the user can get their bearings. 
+   - Statistics keep track of how many of each type of piece have been dropped. 
+   - RNG: it is unforgiving and will not cycle through every single piece every 12 lines like Modern Tetris versions. You deal with what you get and build accordingly so that the RNG does not screw you over. 
+   - Line, score, and level counters. Obviously, the more lines cleared at once, the more points you earn. Since you cannot (feasibly) play on level 29 and above, you have to make the most of your lines. 
+   - Next piece box
+   - Piece rotations using the right-handed rotation system used in NES Tetris 
+   - Line clearing (1, 2, 3 at once, or a tetris)
+   - Bounds for the allowed movements. We chose to restrict movement rather than keep movements open to prevent illegal movements. 
+   - Pieces fall down the screen but gets "fed" into a 2D array of Block objects, from which calculations can be done via index instead of x and y. 
+   - Speed system of the game is dependent on how many frames it takes for a piece to fall one line. On level 0 a piece takes 48 frames to fall down 1 line, which equates to something like 18 seconds to fall completely down the screen. On level 19 a piece takes 2 frames to fall 1 line, which equates to two-thirds of a second to fall completely down the screen. 
+   - Movement: you can choose to either tap A and D repeatedly or rely on DAS: delayed auto-shift. It is the same phenomenon as when you try typing a letter repeatedly like "aaaaaaaaaa". You don't spam A presses, you hold A down. The first "a" appears on screen instantly, while there is a relatively long delay until the next "a" appears, and the rest of the "a"s are typed at a fast and consistent speed. This delay is required so that you don't accidentally make multiple movements when you only intended to do one. 
+   - There is a game over screen/animation mimicking NES Tetris as well.
+   - Sound effects are strewn all over the game. 
+   - Some keys are locked after pressing them: you aren't meant to hold them down (like rotate and selecting a level to play on).
 
 ## Development log
 
