@@ -76,9 +76,7 @@ void setup() {
   else if (start1) {
     start1();
     //if (indexM  != 3)bgMusic.play();
-}
-
-  else if (start2) {
+  } else if (start2) {
     start2();
     startLevel = cLevel();
     level = cLevel();
@@ -96,7 +94,7 @@ void draw() {
     start1();
     background(s1);
     cycleMChoice();
-    if (second() % 2 == 1){
+    if (second() % 2 == 1) {
       text("PRESS (ENTER)", width * .79, height * .24);
       text("TO CONTINUE", width * .79, height * .3);
     }
@@ -111,8 +109,6 @@ void draw() {
     level = cLevel();
     startLevel = cLevel();
     if (second() % 2 == 1) text("PRESS (ENTER) TO CONTINUE", width * .5, height * .75);
-
-
   } else {
     if (!gameOver) {
       if (indexM != 3 && indexM == 0) { //music 1 loop
@@ -178,43 +174,35 @@ void draw() {
 void keyPressed() {
   switch (key) {
     case (char)10: //pause function - this is the enter key (in-game)
-      if (!start0 && !start1 && !start2 && !gameOver) {
-        if (looping) {
-          noLoop();
-          if (indexM != 3) bgMusic.pause();
-        }
-
-        else {
-          loop();
-          if (indexM != 3) bgMusic.play();
-        }
+    if (!start0 && !start1 && !start2 && !gameOver) {
+      if (looping) {
+        noLoop();
+        if (indexM != 3) bgMusic.pause();
+      } else {
+        loop();
+        if (indexM != 3) bgMusic.play();
       }
-
-      else { //out of the game
-        if (!keyLock) {
-          if (start0) {
-            mainMenuPick.stop();
-            mainMenuPick.play();
-            start0 = false;
-            start1 = true;
-          }
-
-          else if (start1) {
-            mainMenuPick.stop();
-            mainMenuPick.play();
-            start1 = false;
-            start2 = true;
-          }
-
-          else if (start2) {
-            mainMenuPick.stop();
-            mainMenuPick.play();
-            start2 = false;
-          }
-
-          keyLock = true;
+    } else { //out of the game
+      if (!keyLock) {
+        if (start0) {
+          mainMenuPick.stop();
+          mainMenuPick.play();
+          start0 = false;
+          start1 = true;
+        } else if (start1) {
+          mainMenuPick.stop();
+          mainMenuPick.play();
+          start1 = false;
+          start2 = true;
+        } else if (start2) {
+          mainMenuPick.stop();
+          mainMenuPick.play();
+          start2 = false;
         }
+
+        keyLock = true;
       }
+    }
     break;
   case '-': //proof of concept: decrease level/speed
     if (!keyLock && level > 0) {
@@ -241,17 +229,13 @@ void keyPressed() {
     if (!keyLock) {
       if (!start0 && !start1 && !start2 && !gameOver) {
         currPiece = rotateLeft();
-      }
-
-      else {
+      } else {
         if (start1) {
           mainMenuPick.stop();
           mainMenuPick.play();
           start1 = false;
           start0 = true;
-        }
-
-        else if (start2) {
+        } else if (start2) {
           mainMenuPick.stop();
           mainMenuPick.play();
           start2 = false;
@@ -264,8 +248,10 @@ void keyPressed() {
     break;
   case 'j': //rotate clockwise
     if (!keyLock) {
-      currPiece = rotateRight();
-      keyLock = true;
+      if (!start0 && !start1 && !start2 && !gameOver) {
+        currPiece = rotateRight();
+        keyLock = true;
+      }
     }
     break;
   }
@@ -290,21 +276,21 @@ void keyReleased() {
 
 /*
 //just goes through screens
-void mouseClicked() {
-  if (start0) {
-    mainMenuPick.stop();
-    mainMenuPick.play();
-    start0 = false;
-    start1 = true;
-  } else if (start1) {
-    mainMenuPick.stop();
-    mainMenuPick.play();
-    start1 = false;
-    start2 = true;
-  } else if (start2) {
-    mainMenuPick.stop();
-    mainMenuPick.play();
-    start2 = false;
-  }
-}
-*/
+ void mouseClicked() {
+ if (start0) {
+ mainMenuPick.stop();
+ mainMenuPick.play();
+ start0 = false;
+ start1 = true;
+ } else if (start1) {
+ mainMenuPick.stop();
+ mainMenuPick.play();
+ start1 = false;
+ start2 = true;
+ } else if (start2) {
+ mainMenuPick.stop();
+ mainMenuPick.play();
+ start2 = false;
+ }
+ }
+ */
