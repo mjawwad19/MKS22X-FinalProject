@@ -52,7 +52,7 @@ _____
 [Day 2] 5/19/19:
 - Jawwad:
     - considered making the individual pieces implement a Piece class...but nah. Proved harder than it was worth.
-    - experimented and pushed through PShape hell and tries to get a working piece with movement, or just not moving when not allowed
+    - experimented and pushed through PShape hell and tried to get a working piece with movement, or just not moving when not allowed
     - All work and no play makes Jawwad a crazy man.
     - figured out an easier way to create the pieces using PShape and children, in line with how the the grid and blocks are formatted.
       - This can be seen in the Experiments directory under EasyShapes: we will not be using it till we confirm for certain it can move and rotate correctly.
@@ -85,9 +85,9 @@ _____
 _____
 
 [Day 4] 5/21/19:
-- mMrged all the movement stuff from Jawwad's branch in class
+- Merged all the movement stuff from Jawwad's branch in class
 - Kevin:
-    -placed x bounds for pieces for moveleft and Right
+    - placed x bounds for pieces for moveleft and Right
     - keybindings (though these may be subject to change, Jawwad and Reddit thinks this ain't a great combo of keys)
     - level/speed increaser (this is just for visualization, in final version they will be impacted by score)
     - converting repetitive if else statements to switches
