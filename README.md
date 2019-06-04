@@ -15,7 +15,8 @@ Classic Tetris is different from more modern Tetris versions in that the gamepla
 On the main menu:
 - W/S: cycle through music
 - W/S/A/D: cycle through levels
-- Progress from one screen to the next by clicking (prominently displayed in-game)
+- Progress from one screen to the next by ENTER (prominently displayed in-game)
+- H: Go back to previous startup screen
 
 In-game:
 - A/D: move the piece left and right. If you wish, you can also hold down those keys for pieces to automatically move (DAS) - you do not have to tap multiple times. 
@@ -23,7 +24,10 @@ In-game:
 - H: rotate a piece counterclockwise
 - J: rotate a piece clockwise
 - Enter: pause the game
-- Just for show: pressing the + and - keys will increase or decrease the level/speed of the game in-game. You normally cannot do this. 
+- Just for show: pressing the + and - keys will increase or decrease the level/speed of the game in-game. 
+```diff
+- You normally cannot do this. 
+```
 
 
 ## Development log
@@ -233,6 +237,7 @@ _____
 - BUGS found/ Things to Fix/Alter
     - only happened once and cannot recreate but definitely happened: I piece last minute movement when ___ over an upright Z piece went over the z piece.
     - T spins! Try to make leftBounds/RightBounds/fixRotation apply in createT() instead of when rotating to allow spins, as per K's suggestion of try to rotate, see if in bounds, do or don't based on response.
+      - these are the only ones present in NES tetris
       - currently our code is: see if in bounds, then rotate if yes. This leads to areas where pieces cannot rotate because at least one point is touching DESPITE having space to rotate.
 _____
 
@@ -246,12 +251,37 @@ _____
     - Attempted to fix T spins (these were the only spins available in NES tetris, and even then super conservative) and failed :/
       - the closest attempt caused pieces to generate at origin (left hand corner) once there were boundary issues.
     - Added instructions for user at startup screens with a little bit of blinking
+      ```diff
+      + this does not exist in game, just a small touch.
+      ```
       - also cleaned up start up screen images/refined the text using text instead of the image, and added our names.
     - fixed a bug that caused pieces to rotate out of left bounds and reinstated upper bounds just in case.
 - Stuff not Happy about:
     - the keys are so awkward I keep hitting J and K for rotation instead of H and J,
     - spinning, even though it's uber rare to begin with in the actual game, would be nice to keep :/
+      - as of this point we have not found a way to allow T Spins to work properly and at all times, so 
+      ```diff 
+      - we will not be pursuing it at this stage
+      ```
 _____
-    
+[Day 17] 6/3/19
+- Kevin: 
+    - added instructions to README
+    - removed visual debug stuf
+    - in an effort to what we have determined to be a piece rotating last second when already locked, causing the overlap issue, added a delay to piece generation.
+    - Jawwad is preparing for EID
+_____
+[Day 18] 6/4/19 <<Finale... but also Eid>>
+- Kevin:
+    - driver mapper relationship once more because Jawwad is stuck with Eid festivities:
+      - added the option to go back in start up using the H key
+      - changed the continue key from mouseclicking to enter.
+- Jawwad:
+    - only was able to be up on for 30 minutes before getting back to work BUT
+      - fixed a bug that caused audio to act really weird (and creepy) if the player decided to go back to previous screen after pressing J.
+         - coincidentally, clicking J in an area it wasn't supposed to be called could sometimes change the color of the "Press ENTER to Continue" message.
+    - updated README with DevLogs + instructions, color coding certain parts of NES tetris that were removed/added in devLog
+_____
+
    
 
